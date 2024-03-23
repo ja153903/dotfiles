@@ -25,5 +25,3 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 status --is-interactive; and rbenv init - fish | source
-
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
