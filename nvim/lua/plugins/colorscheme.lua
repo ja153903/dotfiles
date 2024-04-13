@@ -1,10 +1,9 @@
 return {
   {
     "catppuccin/nvim",
-    enabled = false,
+    lazy = false,
+    priority = 1000,
     name = "catppuccin",
-    -- lazy = false,
-    -- priority = 1000,
     config = function()
       require("catppuccin").setup({
         flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -23,7 +22,13 @@ return {
         no_italic = false, -- Force no italic
         no_bold = false, -- Force no bold
         no_underline = false, -- Force no underline
-        color_overrides = {},
+        color_overrides = {
+          mocha = {
+            base = "#000000",
+            mantle = "#000000",
+            crust = "#000000",
+          },
+        },
         custom_highlights = {},
         integrations = {
           cmp = true,
@@ -144,8 +149,6 @@ return {
   { "fcancelinha/northern.nvim", branch = "master", enabled = false },
   {
     "tiagovla/tokyodark.nvim",
-    lazy = false,
-    priority = 1000,
     opts = {
       -- custom options here
     },
@@ -156,7 +159,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyodark",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }
