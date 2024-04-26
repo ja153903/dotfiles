@@ -7,8 +7,9 @@ local palettes = {
 return {
   {
     "EdenEast/nightfox.nvim",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       require("nightfox").setup({
         palettes = palettes,
