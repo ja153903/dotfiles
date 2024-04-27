@@ -182,7 +182,11 @@ return {
       {
         "<leader>o",
         function()
-          require("oil").open()
+          local current_buffer = vim.api.nvim_get_current_buf()
+          local file_name = vim.api.nvim_buf_get_name(current_buffer)
+          local current_directory = vim.fn.expand('%:p:h')
+
+          require("oil").open_float(current_directory)
         end,
       },
     },
