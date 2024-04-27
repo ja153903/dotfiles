@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.font = wezterm.font_with_fallback({ "Gintronic", "nonicons" })
-config.font_size = 14
+config.font_size = 13
 config.enable_scroll_bar = false
 config.window_padding = {
 	left = 0,
