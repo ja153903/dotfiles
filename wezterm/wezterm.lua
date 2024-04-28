@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
-config.font = wezterm.font_with_fallback({ "Gintronic", "nonicons" })
+config.font = wezterm.font_with_fallback({ "Berkeley Mono", "nonicons" })
 config.font_size = 13
 config.enable_scroll_bar = false
 config.window_padding = {
