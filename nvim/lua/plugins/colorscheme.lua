@@ -1,8 +1,9 @@
 return {
   {
     "catppuccin/nvim",
-    lazy = false,
-    priority = 1000,
+    enabled = false,
+    -- lazy = false,
+    -- priority = 1000,
     name = "catppuccin",
     config = function()
       require("catppuccin").setup({
@@ -74,6 +75,7 @@ return {
   },
   {
     "rose-pine/neovim",
+    enabled = false,
     name = "rose-pine",
     opts = {
       variant = "moon", -- auto, main, moon, or dawn
@@ -141,10 +143,11 @@ return {
       end,
     },
   },
+  { "miikanissi/modus-themes.nvim", priority = 1000 },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
+      colorscheme = "modus_vivendi",
     },
   },
 }
