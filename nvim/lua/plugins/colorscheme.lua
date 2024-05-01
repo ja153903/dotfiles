@@ -75,10 +75,11 @@ return {
   },
   {
     "rose-pine/neovim",
-    enabled = false,
     name = "rose-pine",
+    lazy = false,
+    priority = 1000,
     opts = {
-      variant = "moon", -- auto, main, moon, or dawn
+      variant = "dawn", -- auto, main, moon, or dawn
       dim_inactive_windows = false,
       extend_background_behind_borders = true,
 
@@ -135,18 +136,19 @@ return {
         if highlight.undercurl then
           highlight.undercurl = false
         end
-        --
+
         -- Change palette colour
-        -- if highlight.fg == palette.pine then
-        --     highlight.fg = palette.foam
-        -- end
+        if highlight.fg == palette.pine then
+            highlight.fg = palette.foam
+        end
       end,
     },
   },
   {
     "miikanissi/modus-themes.nvim",
-    priority = 1000,
-    lazy = false,
+    enabled = false,
+    -- priority = 1000,
+    -- lazy = false,
     opts = {
       variant = "default", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
       transparent = false, -- Transparent background (as supported by the terminal)
@@ -181,7 +183,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "modus_vivendi",
+      colorscheme = "rose-pine",
     },
   },
 }
