@@ -170,7 +170,11 @@ return {
       ---@param highlights Highlights
       ---@param colors ColorScheme
       on_highlights = function(highlights, colors)
-        highlights['@tag.tsx'] = { fg = '#00eff0', style = 'bold' }
+        highlights["@tag.tsx"] = { fg = "#00eff0", style = "bold" }
+        highlights.DiagnosticError = { fg = colors.error, bg = colors.bg_dim }
+        highlights.DiagnosticWarn = { fg = colors.warning, bg = colors.bg_dim }
+        highlights.DiagnosticInfo = { fg = colors.info, bg = colors.bg_dim }
+        highlights.DiagnosticHint = { fg = colors.hint, bg = colors.bg_dim }
       end,
     },
   },
