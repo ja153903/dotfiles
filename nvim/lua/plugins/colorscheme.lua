@@ -148,7 +148,7 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      variant = "tinted", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
+      variant = "default", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
       transparent = false, -- Transparent background (as supported by the terminal)
       dim_inactive = false, -- "non-current" windows are dimmed
       styles = {
