@@ -79,7 +79,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      variant = "dawn", -- auto, main, moon, or dawn
+      variant = "moon", -- auto, main, moon, or dawn
       dim_inactive_windows = false,
       extend_background_behind_borders = true,
 

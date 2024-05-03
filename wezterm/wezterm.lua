@@ -1,8 +1,8 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
-local colors = require('lua/rose-pine-dawn').colors()
-local window_frame = require('lua/rose-pine-dawn').window_frame()
+local colors = require('lua/rose-pine').colors()
+local window_frame = require('lua/rose-pine').window_frame()
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
@@ -10,6 +10,7 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 config.font = wezterm.font_with_fallback({ "Berkeley Mono", "nonicons" })
 config.font_size = 14
+config.freetype_load_flags = 'NO_HINTING'
 config.enable_scroll_bar = false
 config.window_padding = {
 	left = 0,
