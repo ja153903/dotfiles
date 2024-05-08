@@ -1,14 +1,14 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
-local colors = require('lua/rose-pine').colors()
-local window_frame = require('lua/rose-pine').window_frame()
+-- local colors = require('lua/rose-pine').colors()
+-- local window_frame = require('lua/rose-pine').window_frame()
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
-config.font = wezterm.font_with_fallback({ "Berkeley Mono", "nonicons" })
+config.font = wezterm.font_with_fallback({ "MonoLisa", "nonicons" })
 config.font_size = 14
 config.freetype_load_flags = 'NO_HINTING'
 config.enable_scroll_bar = false
@@ -21,9 +21,10 @@ config.window_padding = {
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.tab_max_width = 64
-config.colors = colors
-config.window_frame = window_frame
+-- config.colors = colors
+-- config.window_frame = window_frame
 config.line_height = 1.5
+config.color_scheme = 'Tomorrow Night Eighties'
 
 -- config.color_scheme = 'Modus-Vivendi'
 -- local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
