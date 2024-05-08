@@ -10,7 +10,7 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 config.font = wezterm.font_with_fallback({ "MonoLisa", "nonicons" })
 config.font_size = 14
-config.freetype_load_flags = 'NO_HINTING'
+config.freetype_load_flags = "NO_HINTING"
 config.enable_scroll_bar = false
 config.window_padding = {
 	left = 0,
@@ -24,7 +24,7 @@ config.tab_max_width = 64
 -- config.colors = colors
 -- config.window_frame = window_frame
 config.line_height = 1.5
-config.color_scheme = 'Tomorrow Night Eighties'
+config.color_scheme = "OneDark (Gogh)"
 
 -- config.color_scheme = 'Modus-Vivendi'
 -- local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]

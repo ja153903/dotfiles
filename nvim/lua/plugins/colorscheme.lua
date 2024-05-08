@@ -162,15 +162,11 @@ return {
       end,
     },
   },
-  {
-    "RRethy/base16-nvim",
-    lazy = false,
-    priority = 1000,
-  },
+  { "navarasu/onedark.nvim", lazy = false, priority = 1000 },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "base16-tomorrow-night-eighties",
+      colorscheme = "onedark",
     },
   },
 }
