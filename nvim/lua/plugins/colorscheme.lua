@@ -210,9 +210,14 @@ return {
     end,
   },
   {
+    "kdheepak/monochrome.nvim",
+    lazy = false,
+    priority = 1000
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      colorscheme = "monochrome",
     },
   },
 }
