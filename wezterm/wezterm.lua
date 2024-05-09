@@ -25,7 +25,7 @@ config.tab_max_width = 64
 -- config.window_frame = window_frame
 config.line_height = 1.5
 
-config.color_scheme = 'Modus-Vivendi'
+-- config.color_scheme = 'Modus-Vivendi'
 local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 custom.background = "#0E0E0E"
 custom.tab_bar.background = "#040404"
