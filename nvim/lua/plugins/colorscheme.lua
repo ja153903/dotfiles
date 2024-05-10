@@ -75,8 +75,9 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    lazy = false,
-    priority = 1000,
+    enabled = false,
+    -- lazy = false,
+    -- priority = 1000,
     opts = {
       variant = "moon", -- auto, main, moon, or dawn
       dim_inactive_windows = false,
