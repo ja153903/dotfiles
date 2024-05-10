@@ -25,3 +25,6 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 status --is-interactive; and rbenv init - fish | source
+
+# opam configuration
+source /Users/jaimeabbariao/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
