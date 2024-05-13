@@ -12,7 +12,7 @@ return {
         "eslint-lsp",
         "clangd",
         "elixir-ls",
-        "solargraph"
+        "solargraph",
       },
     },
   },
@@ -68,7 +68,7 @@ return {
       ---@type lspconfig.options
       servers = {
         ocamllsp = {
-          mason = false
+          mason = false,
         },
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
