@@ -13,6 +13,8 @@ fish_add_path /usr/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.luarocks/bin
 fish_add_path $GOPATH/bin
+fish_add_path $HOME/.cabal/bin
+fish_add_path $HOME/.ghcup/bin
 
 if set -q VIRTUAL_ENV
     echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
@@ -28,3 +30,5 @@ status --is-interactive; and rbenv init - fish | source
 
 # opam configuration
 source /Users/jaimeabbariao/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /Users/jaimeabbariao/.ghcup/bin # ghcup-env
