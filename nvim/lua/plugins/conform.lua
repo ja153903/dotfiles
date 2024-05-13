@@ -18,6 +18,7 @@ return {
           typescriptreact = { "prettier", "eslint" },
           python = { "isort", "ruff_fix", "ruff_format" },
           cpp = { "clang_format" },
+          ocaml = { "ocamlformat" },
         },
         -- LazyVim will merge the options you set here with builtin formatters.
         -- You can also define any custom formatters here.
