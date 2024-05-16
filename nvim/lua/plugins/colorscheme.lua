@@ -75,9 +75,9 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    -- enabled = false,
-    lazy = false,
-    priority = 1000,
+    enabled = false,
+    -- lazy = false,
+    -- priority = 1000,
     opts = {
       variant = "main", -- auto, main, moon, or dawn
       dim_inactive_windows = false,
@@ -211,10 +211,11 @@ return {
       })
     end,
   },
+  { "romgrk/doom-one.vim", lazy = false, priority = 1000 },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
+      colorscheme = "doom-one",
     },
   },
 }
