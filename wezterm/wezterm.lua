@@ -24,18 +24,18 @@ config.tab_max_width = 64
 -- config.colors = colors
 -- config.window_frame = window_frame
 config.line_height = 1.4
-config.color_scheme = 'DoomOne'
+-- config.color_scheme = 'DoomOne'
 
--- local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
--- custom.background = "#1E232A"
--- custom.tab_bar.background = "#040404"
--- custom.tab_bar.inactive_tab.bg_color = "#0f0f0f"
--- custom.tab_bar.new_tab.bg_color = "#080808"
---
--- config.color_schemes = {
--- 	["OLEDppuccin"] = custom,
--- }
--- config.color_scheme = "OLEDppuccin"
+local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+custom.background = "#040404"
+custom.tab_bar.background = "#040404"
+custom.tab_bar.inactive_tab.bg_color = "#0f0f0f"
+custom.tab_bar.new_tab.bg_color = "#080808"
+
+config.color_schemes = {
+	["OLEDppuccin"] = custom,
+}
+config.color_scheme = "OLEDppuccin"
 
 -- timeout_milliseconds defaults to 1000 and can be omitted
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
