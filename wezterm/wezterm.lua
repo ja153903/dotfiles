@@ -30,6 +30,21 @@ config.window_background_opacity = 0.95
 
 local custom = wezterm.color.get_builtin_schemes()["Solarized Dark - Patched"]
 custom.background = "#00141A"
+custom.tab_bar = {
+  background = "#00141A",
+  active_tab = {
+    bg_color = "#2C3300",
+    fg_color = "#FFF"
+  },
+  inactive_tab = {
+    bg_color = "#00141A",
+    fg_color = "#FFF"
+  },
+  new_tab = {
+    bg_color = "#002B36",
+    fg_color = "#EEE8D5"
+  }
+}
 
 config.color_schemes = { ["Solarized Osaka"] = custom }
 config.color_scheme = "Solarized Osaka"
