@@ -25,8 +25,14 @@ config.tab_max_width = 64
 -- config.window_frame = window_frame
 config.line_height = 1.2
 -- config.color_scheme = 'DoomOne'
-config.color_scheme = "Solarized Dark Higher Contrast"
-config.window_background_opacity = 0.85
+config.color_scheme = "Solarized Dark - Patched"
+config.window_background_opacity = 0.95
+
+local custom = wezterm.color.get_builtin_schemes()["Solarized Dark - Patched"]
+custom.background = "#00141A"
+
+config.color_schemes = { ["Solarized Osaka"] = custom }
+config.color_scheme = "Solarized Osaka"
 
 -- local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 -- custom.background = "#040404"
