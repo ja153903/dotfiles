@@ -33,7 +33,7 @@ custom.background = "#00141A"
 custom.tab_bar = {
   background = "#00141A",
   active_tab = {
-    bg_color = "#2C3300",
+    bg_color = "#063642",
     fg_color = "#FFF"
   },
   inactive_tab = {
