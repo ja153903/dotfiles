@@ -211,12 +211,16 @@ return {
       })
     end,
   },
-  { "romgrk/doom-one.vim", lazy = false, priority = 1000 },
-  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "moonfly",
+      colorscheme = "solarized-osaka",
     },
   },
 }
