@@ -26,10 +26,11 @@ config.tab_max_width = 64
 config.line_height = 1.2
 -- config.color_scheme = 'DoomOne'
 config.color_scheme = "Solarized Dark - Patched"
-config.window_background_opacity = 0.95
+config.window_background_opacity = 1.0
 
 local custom = wezterm.color.get_builtin_schemes()["Solarized Dark - Patched"]
 custom.background = "#00141A"
+custom.foreground = "#FFF"
 custom.tab_bar = {
   background = "#00141A",
   active_tab = {
