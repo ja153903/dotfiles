@@ -50,6 +50,11 @@ custom.tab_bar = {
 config.color_schemes = { ["Solarized Osaka"] = custom }
 config.color_scheme = "Solarized Osaka"
 
+config.inactive_pane_hsb = {
+  saturation = 1.0,
+  brightness = 1.0,
+}
+
 -- local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 -- custom.background = "#040404"
 -- custom.tab_bar.background = "#040404"
