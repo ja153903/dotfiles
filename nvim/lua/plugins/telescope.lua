@@ -99,7 +99,8 @@ return {
       end
 
       return {
-        defaults = {
+        defaults = vim.tbl_extend("force", require("telescope.themes").get_ivy(), {
+
           prompt_prefix = " ",
           selection_caret = " ",
           -- open files in the first window that is an actual file.
@@ -130,7 +131,7 @@ return {
               ["q"] = actions.close,
             },
           },
-        },
+        }),
       }
     end,
   },
