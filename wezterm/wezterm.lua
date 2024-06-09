@@ -24,32 +24,33 @@ config.tab_max_width = 64
 -- config.colors = colors
 -- config.window_frame = window_frame
 config.line_height = 1.4
--- config.color_scheme = 'DoomOne'
--- config.color_scheme = "Solarized Dark - Patched"
-config.window_background_opacity = 1.0
+-- config.color_scheme = "DoomOne"
+config.color_scheme = "Solarized Dark - Patched"
+config.window_background_opacity = 0.9
+config.macos_window_background_blur = 20
 
--- local custom = wezterm.color.get_builtin_schemes()["Solarized Dark - Patched"]
--- custom.background = "#00141A"
--- -- custom.background = "#000"
--- custom.foreground = "#FFF"
--- custom.tab_bar = {
--- 	background = "#00141A",
--- 	active_tab = {
--- 		bg_color = "#063642",
--- 		fg_color = "#FFF",
--- 	},
--- 	inactive_tab = {
--- 		bg_color = "#00141A",
--- 		fg_color = "#FFF",
--- 	},
--- 	new_tab = {
--- 		bg_color = "#002B36",
--- 		fg_color = "#EEE8D5",
--- 	},
--- }
---
--- config.color_schemes = { ["Solarized Osaka"] = custom }
--- config.color_scheme = "Solarized Osaka"
+local custom = wezterm.color.get_builtin_schemes()["Solarized Dark - Patched"]
+custom.background = "#00141A"
+-- custom.background = "#000"
+custom.foreground = "#FFF"
+custom.tab_bar = {
+	background = "#00141A",
+	active_tab = {
+		bg_color = "#063642",
+		fg_color = "#FFF",
+	},
+	inactive_tab = {
+		bg_color = "#00141A",
+		fg_color = "#FFF",
+	},
+	new_tab = {
+		bg_color = "#002B36",
+		fg_color = "#EEE8D5",
+	},
+}
+
+config.color_schemes = { ["Solarized Osaka"] = custom }
+config.color_scheme = "Solarized Osaka"
 
 config.inactive_pane_hsb = {
 	saturation = 1.0,
