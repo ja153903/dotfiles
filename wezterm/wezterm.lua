@@ -26,7 +26,7 @@ config.tab_max_width = 64
 config.line_height = 1.4
 -- config.color_scheme = "DoomOne"
 config.color_scheme = "Solarized Dark - Patched"
-config.window_background_opacity = 0.7
+config.window_background_opacity = 0.85
 config.macos_window_background_blur = 20
 
 local custom = wezterm.color.get_builtin_schemes()["Solarized Dark - Patched"]

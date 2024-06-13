@@ -16,6 +16,7 @@ fish_add_path $GOPATH/bin
 fish_add_path $HOME/.cabal/bin
 fish_add_path $HOME/.ghcup/bin
 fish_add_path $HOME/.rye/shims
+fish_add_path $HOME/Downloads/roc_nightly-macos_apple_silicon-2024-06-12-a6f1408b5c9
 
 if set -q VIRTUAL_ENV
     echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
