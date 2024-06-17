@@ -25,7 +25,7 @@ config.tab_max_width = 64
 -- config.window_frame = window_frame
 config.line_height = 1.4
 -- config.color_scheme = "DoomOne"
--- config.color_scheme = "Solarized Dark - Patched"
+config.color_scheme = "Solarized Dark - Patched"
 config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
 
@@ -33,7 +33,7 @@ local custom = wezterm.color.get_builtin_schemes()["Solarized Dark - Patched"]
 -- local custom = wezterm.color.get_builtin_schemes()["Monokai (base16)"]
 custom.background = "#00141A"
 -- custom.background = "#000"
-custom.background = "#272822"
+-- custom.background = "#272822"
 custom.foreground = "#FFF"
 custom.tab_bar = {
   background = "#00141A",
