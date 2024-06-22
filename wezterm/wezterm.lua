@@ -7,7 +7,7 @@ local color_schemes = require("lua/color_schemes")
 local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
-config.font = wezterm.font_with_fallback({ "Berkeley Mono", "nonicons" })
+config.font = wezterm.font_with_fallback({ "MonoLisa", "nonicons" })
 config.font_size = 14
 config.freetype_load_flags = "NO_HINTING"
 config.enable_scroll_bar = false
@@ -26,7 +26,7 @@ config.window_background_opacity = 0.95
 config.macos_window_background_blur = 30
 
 config.color_schemes = color_schemes
-config.color_scheme = "Gruvbox light, soft (base16)"
+config.color_scheme = "Gruvbox Material (Gogh)"
 
 config.inactive_pane_hsb = {
   saturation = 1.0,
