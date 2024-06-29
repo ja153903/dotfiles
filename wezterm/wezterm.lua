@@ -26,7 +26,7 @@ config.window_background_opacity = 0.93
 config.macos_window_background_blur = 30
 
 config.color_schemes = color_schemes
-config.color_scheme = "Gruvbox dark, hard (base16)"
+config.color_scheme = "Solarized Osaka"
 
 config.inactive_pane_hsb = {
   saturation = 1.0,
