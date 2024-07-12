@@ -22,11 +22,11 @@ config.tab_bar_at_bottom = true
 config.tab_max_width = 64
 config.line_height = 1.4
 
-config.window_background_opacity = 0.93
-config.macos_window_background_blur = 30
+-- config.window_background_opacity = 0.93
+-- config.macos_window_background_blur = 30
 
 config.color_schemes = color_schemes
-config.color_scheme = "Solarized Osaka"
+config.color_scheme = "tokyonight-storm"
 
 config.inactive_pane_hsb = {
   saturation = 1.0,
