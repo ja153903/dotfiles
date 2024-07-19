@@ -1,9 +1,9 @@
 set -x EDITOR nvim
 set -x PNPM_HOME $HOME/Library/pnpm
 set -gx PYENV_VIRTUALENV_DISABLE_PROMPT 1
-set -x LDFLAGS "-L$(brew --prefix openssl@1.1)/lib"
-set -x CFLAGS "-I$(brew --prefix openssl@1.1)/include"
-set -x SWIG_FEATURES "-I$(brew --prefix openssl@1.1)/include"
+set -x LDFLAGS "-L$(brew --prefix)/lib"
+set -x CFLAGS "-I$(brew --prefix)/include"
+set -x SWIG_FEATURES "-I$(brew --prefix)/include"
 set -x GOPATH $HOME/go
 
 fish_add_path $HOME/.cargo/bin

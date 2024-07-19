@@ -7,8 +7,8 @@ local color_schemes = require("lua/color_schemes")
 local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
-config.font = wezterm.font_with_fallback({ "Berkeley Mono", "nonicons" })
-config.font_size = 16
+config.font = wezterm.font_with_fallback({ "MonoLisa", "nonicons" })
+config.font_size = 14
 config.freetype_load_flags = "NO_HINTING"
 config.enable_scroll_bar = false
 config.window_padding = {
@@ -26,7 +26,7 @@ config.line_height = 1.4
 -- config.macos_window_background_blur = 30
 
 config.color_schemes = color_schemes
-config.color_scheme = "tokyonight-storm"
+config.color_scheme = "Modus Vivendi (Gogh)"
 
 config.inactive_pane_hsb = {
   saturation = 1.0,
