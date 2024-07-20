@@ -53,3 +53,6 @@ text = '#ffffff'
 [shell]
 program = "/opt/homebrew/bin/fish"
 args = ["-l", "-c", "zellij"]
+
+[window]
+option_as_alt = "OnlyLeft"
