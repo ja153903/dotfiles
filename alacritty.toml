@@ -49,3 +49,7 @@ foreground = '#ffffff'
 [colors.selection]
 background = '#5a5a5a'
 text = '#ffffff'
+
+[shell]
+program = "/opt/homebrew/bin/fish"
+args = ["-l", "-c", "zellij"]
