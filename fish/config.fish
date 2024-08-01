@@ -31,7 +31,151 @@ set --export PATH $BUN_INSTALL/bin $PATH
 status --is-interactive; and rbenv init - fish | source
 
 # opam configuration
-source /Users/jaimeabbariao/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+source /Users/jaimeabbariao/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
+echo -e "\nsource "(brew --prefix asdf)"/libexec/asdf.fish" >>~/.config/fish/config.fish
 
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /Users/jaimeabbariao/.ghcup/bin $PATH # ghcup-env
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+set -gx PATH $HOME/.cabal/bin /Users/jaimeabbariao/.ghcup/bin $PATH # ghcup-env
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
