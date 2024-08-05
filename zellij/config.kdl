@@ -2,7 +2,7 @@ default_shell "fish"
 // pane_frames false
 
 // theme "catppuccin-mocha"
-theme "dracula"
+theme "catppuccin-latte"
 themes {
   noriko {
     bg "#dddddd"
@@ -29,6 +29,19 @@ themes {
     cyan 139 233 253
     white 255 255 255
     orange 255 184 108
+  }
+  catppuccin-latte {
+    bg "#acb0be" // Surface2
+    fg "#acb0be" // Surface2
+    red "#d20f39"
+    green "#40a02b"
+    blue "#1e66f5"
+    yellow "#df8e1d"
+    magenta "#ea76cb" // Pink
+    orange "#fe640b" // Peach
+    cyan "#04a5e5" // Sky
+    black "#dce0e8" // Crust
+    white "#4c4f69" // Text
   }
 }
 

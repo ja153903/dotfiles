@@ -1,6 +1,5 @@
 [font]
 size = 14.0
-offset.y = 3
 
 [font.bold]
 family = "MonoLisa Nerd Font"
@@ -18,42 +17,46 @@ style = "Italic"
 family = "MonoLisa Nerd Font"
 style = "Regular"
 
-# Colors (Tomorrow Night)
-
-# Default colors
-[colors.primary]
-background = '#151515'
-foreground = '#c5c8c6'
-
-[colors.cursor]
-text = '#1d1f21'
-cursor = '#ffffff'
-
-# Normal colors
-[colors.normal]
-black = '#1d1f21'
-red = '#cc6666'
-green = '#b5bd68'
-yellow = '#e6c547'
-blue = '#81a2be'
-magenta = '#b294bb'
-cyan = '#70c0ba'
-white = '#373b41'
-
-# Bright colors
-[colors.bright]
-black = '#666666'
-red = '#ff3334'
-green = '#9ec400'
-yellow = '#f0c674'
-blue = '#81a2be'
-magenta = '#b77ee0'
-cyan = '#54ced6'
-white = '#282a2e'
-
 [shell]
 program = "/opt/homebrew/bin/fish"
 args = ["-l", "-c", "zellij"]
 
 [window]
 option_as_alt = "OnlyLeft"
+
+# github Alacritty Colors
+
+# Default colors
+[colors.primary]
+background = '#ffffff'
+foreground = '#24292f'
+
+# Normal colors
+[colors.normal]
+black = '#24292e'
+red = '#d73a49'
+green = '#28a745'
+yellow = '#dbab09'
+blue = '#0366d6'
+magenta = '#5a32a3'
+cyan = '#0598bc'
+white = '#6a737d'
+
+# Bright colors
+[colors.bright]
+black = '#959da5'
+red = '#cb2431'
+green = '#22863a'
+yellow = '#b08800'
+blue = '#005cc5'
+magenta = '#5a32a3'
+cyan = '#3192aa'
+white = '#d1d5da'
+
+[[colors.indexed_colors]]
+index = 16
+color = '#d18616'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#cb2431'
