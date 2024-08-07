@@ -2,7 +2,7 @@ default_shell "fish"
 // pane_frames false
 
 // theme "catppuccin-mocha"
-theme "catppuccin-latte"
+theme "dracula"
 themes {
   noriko {
     bg "#dddddd"

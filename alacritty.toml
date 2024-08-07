@@ -1,5 +1,6 @@
 [font]
 size = 14.0
+offset.y = 2
 
 [font.bold]
 family = "MonoLisa Nerd Font"
@@ -24,39 +25,32 @@ args = ["-l", "-c", "zellij"]
 [window]
 option_as_alt = "OnlyLeft"
 
-# github Alacritty Colors
+# Colors (Solarized Osaka)
+# Source https://github.com/craftzdog/solarized-osaka.nvim
 
 # Default colors
 [colors.primary]
-background = '#ffffff'
-foreground = '#24292f'
+background = '#001a1d'
+foreground = '#839496'
 
 # Normal colors
 [colors.normal]
-black = '#24292e'
-red = '#d73a49'
-green = '#28a745'
-yellow = '#dbab09'
-blue = '#0366d6'
-magenta = '#5a32a3'
-cyan = '#0598bc'
-white = '#6a737d'
+black = '#073642'
+red = '#dc322f'
+green = '#859900'
+yellow = '#b58900'
+blue = '#268bd2'
+magenta = '#d33682'
+cyan = '#2aa198'
+white = '#eee8d5'
 
 # Bright colors
 [colors.bright]
-black = '#959da5'
-red = '#cb2431'
-green = '#22863a'
-yellow = '#b08800'
-blue = '#005cc5'
-magenta = '#5a32a3'
-cyan = '#3192aa'
-white = '#d1d5da'
-
-[[colors.indexed_colors]]
-index = 16
-color = '#d18616'
-
-[[colors.indexed_colors]]
-index = 17
-color = '#cb2431'
+black = '#4c4c4c'
+red = '#cb4b16'
+green = '#586e75'
+yellow = '#657b83'
+blue = '#839496'
+magenta = '#6c71c4'
+cyan = '#93a1a1'
+white = '#fdf6e3'
