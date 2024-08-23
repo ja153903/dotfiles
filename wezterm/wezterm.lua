@@ -26,7 +26,7 @@ config.line_height = 1.3
 -- config.macos_window_background_blur = 30
 
 config.color_schemes = color_schemes
-config.color_scheme = "Tokyo Night Storm"
+config.color_scheme = "Modus-Vivendi"
 
 config.inactive_pane_hsb = {
   saturation = 1.0,
