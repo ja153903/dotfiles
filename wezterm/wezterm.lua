@@ -22,8 +22,8 @@ config.tab_bar_at_bottom = true
 config.tab_max_width = 64
 config.line_height = 1.3
 
-config.window_background_opacity = 0.9
-config.macos_window_background_blur = 20
+-- config.window_background_opacity = 0.9
+-- config.macos_window_background_blur = 20
 
 config.color_schemes = color_schemes
 config.color_scheme = "niji"
