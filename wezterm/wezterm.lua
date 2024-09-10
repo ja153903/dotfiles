@@ -26,7 +26,7 @@ config.line_height = 1.3
 -- config.macos_window_background_blur = 20
 
 config.color_schemes = color_schemes
-config.color_scheme = "niji"
+config.color_scheme = "Kanagawa (Gogh)"
 
 config.inactive_pane_hsb = {
   saturation = 1.0,
