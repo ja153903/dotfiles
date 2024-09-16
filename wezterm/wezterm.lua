@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+local rose_pine_theme = wezterm.plugin.require("https://github.com/neapsix/wezterm").main
 local color_schemes = require("lua/color_schemes")
 
 -- This will hold the configuration.
@@ -26,8 +27,8 @@ config.line_height = 1.3
 -- config.macos_window_background_blur = 20
 
 config.color_schemes = color_schemes
--- config.color_scheme = "Kanagawa (Gogh)"
-config.color_scheme = "niji"
+config.colors = rose_pine_theme.colors()
+config.window_frame = rose_pine_theme.window_frame()
 
 config.inactive_pane_hsb = {
   saturation = 1.0,
