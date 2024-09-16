@@ -39,3 +39,63 @@ set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin /Users/jaimeabbariao/.ghcup/bin $PATH # ghcup-env
 
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
