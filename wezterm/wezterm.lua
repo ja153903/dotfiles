@@ -27,7 +27,7 @@ config.line_height = 1.3
 -- config.macos_window_background_blur = 20
 
 config.color_schemes = color_schemes
-config.color_scheme = "Solarized Osaka"
+config.color_scheme = "nightfox"
 -- config.colors = rose_pine_theme.colors()
 -- config.window_frame = rose_pine_theme.window_frame()
 
