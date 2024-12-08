@@ -7,7 +7,7 @@ local color_schemes = require("lua/color_schemes")
 local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
-config.font = wezterm.font_with_fallback({ "MonoLisa Nerd Font", "nonicons" })
+config.font = wezterm.font_with_fallback({ "OperatorMono Nerd Font", "nonicons" })
 config.font_size = 13
 config.freetype_load_flags = "NO_HINTING"
 config.enable_scroll_bar = false
