@@ -1,4 +1,4 @@
-general.import = ["./carbonfox.toml"]
+general.import = ["~/programming/dotfiles/carbonfox.toml"]
 
 [font]
 size = 12.0
