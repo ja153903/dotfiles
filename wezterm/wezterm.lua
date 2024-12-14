@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.font = wezterm.font_with_fallback({ "MonoLisa", "nonicons" })
-config.font_size = 12
+config.font_size = 13
 config.freetype_load_flags = "NO_HINTING"
 config.enable_scroll_bar = false
 config.window_padding = {
@@ -20,7 +20,7 @@ config.window_padding = {
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.tab_max_width = 64
-config.line_height = 1.3
+config.line_height = 1
 
 config.color_schemes = color_schemes
 config.color_scheme = "carbonfox"
