@@ -1,23 +1,23 @@
 general.import = ["~/programming/dotfiles/carbonfox.toml"]
 
 [font]
-size = 13.0
-offset.y = 2
+size = 14.0
+offset.y = 4
 
 [font.bold]
-family = "MonoLisa Nerd Font"
+family = "MonaspiceKr Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "MonoLisa Nerd Font"
+family = "MonaspiceKr Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "MonoLisa Nerd Font"
+family = "MonaspiceKr Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "MonoLisa Nerd Font"
+family = "MonaspiceKr Nerd Font"
 style = "Regular"
 
 [terminal.shell]
