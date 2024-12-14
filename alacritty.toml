@@ -1,8 +1,8 @@
 general.import = ["~/programming/dotfiles/carbonfox.toml"]
 
 [font]
-size = 14.0
-offset.y = 4
+size = 13.0
+offset.y = 5
 
 [font.bold]
 family = "MonaspiceKr Nerd Font"
@@ -18,7 +18,7 @@ style = "Italic"
 
 [font.normal]
 family = "MonaspiceKr Nerd Font"
-style = "Regular"
+style = "Light"
 
 [terminal.shell]
 program = "/opt/homebrew/bin/fish"
