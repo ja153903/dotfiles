@@ -13,7 +13,6 @@ fish_add_path /usr/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.luarocks/bin
 fish_add_path $GOPATH/bin
-fish_add_path $HOME/.rye/shims
 
 if set -q VIRTUAL_ENV
     echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
