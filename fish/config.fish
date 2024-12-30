@@ -28,3 +28,5 @@ status --is-interactive; and rbenv init - fish | source
 
 uv generate-shell-completion fish | source
 uvx --generate-shell-completion fish | source
+
+test -r '/Users/jaimeabbariao/.opam/opam-init/init.fish' && source '/Users/jaimeabbariao/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
