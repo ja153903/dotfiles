@@ -5,6 +5,8 @@ set -x LDFLAGS "-L$(brew --prefix)/lib"
 set -x CFLAGS "-I$(brew --prefix)/include"
 set -x SWIG_FEATURES "-I$(brew --prefix)/include"
 set -x GOPATH $HOME/go
+set -x ZELLIJ_AUTO_ATTACH true
+set -x ZELLIJ_AUTO_EXIT true
 
 fish_add_path $HOME/.cargo/bin
 fish_add_path /opt/homebrew/bin
@@ -29,4 +31,17 @@ status --is-interactive; and rbenv init - fish | source
 uv generate-shell-completion fish | source
 uvx --generate-shell-completion fish | source
 
-test -r '/Users/jaimeabbariao/.opam/opam-init/init.fish' && source '/Users/jaimeabbariao/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
+if status is-interactive
+    # Autostart zellij
+    if not set -q ZELLIJ
+        if test "$ZELLIJ_AUTO_ATTACH" = true
+            zellij attach -c
+        else
+            zellij
+        end
+
+        if test "$ZELLIJ_AUTO_EXIT" = true
+            kill $fish_pid
+        end
+    end
+end
