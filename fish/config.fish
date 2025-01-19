@@ -15,6 +15,8 @@ fish_add_path /usr/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.luarocks/bin
 fish_add_path $GOPATH/bin
+fish_add_path $HOME/.cabal/bin
+fish_add_path $HOME/.ghcup/bin
 
 if set -q VIRTUAL_ENV
     echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
@@ -30,3 +32,6 @@ status --is-interactive; and rbenv init - fish | source
 
 uv generate-shell-completion fish | source
 uvx --generate-shell-completion fish | source
+
+eval $(opam env)
+
