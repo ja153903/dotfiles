@@ -1,9 +1,11 @@
 theme = solarized_osaka
 
 font-family = TX-02
-font-thicken = true
+font-size = 12
+font-feature = +calt
 font-feature = +liga
-font-size = 16
+font-feature = +dlig
+font-thicken = true
 
 adjust-cell-height = 15
 
