@@ -1,0 +1,44 @@
+theme = solarized_osaka
+
+font-family = TX-02
+font-thicken = true
+font-feature = +liga
+font-size = 13
+
+adjust-cell-height = 15
+
+cursor-style = block
+cursor-style-blink = true
+
+freetype-load-flags = no-hinting
+
+shell-integration = fish
+
+bold-is-bright = true
+
+window-padding-x = 10
+window-padding-y = 5
+
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+
+clipboard-read = allow
+clipboard-write = allow
+
+# Keybinds
+keybind = ctrl+e>n=new_split:right
+keybind = ctrl+e>shift+n=new_split:left
+keybind = ctrl+e>d=new_split:down
+keybind = ctrl+e>shift+d=new_split:up
+
+keybind = ctrl+e>l=goto_split:right
+keybind = ctrl+e>h=goto_split:left
+keybind = ctrl+e>j=goto_split:bottom
+keybind = ctrl+e>k=goto_split:top
+
+keybind = ctrl+e>shift+l=resize_split:right,50
+keybind = ctrl+e>shift+h=resize_split:left,50
+keybind = ctrl+e>shift+j=resize_split:down,50
+keybind = ctrl+e>shift+k=resize_split:up,50
+
+keybind = ctrl+e>equal=equalize_splits
