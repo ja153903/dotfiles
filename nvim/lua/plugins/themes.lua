@@ -65,10 +65,12 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    enabled = false,
+    lazy = false,
+    priority = 1000,
+    -- enabled = false,
     config = function()
       require("rose-pine").setup({
-        variant = "auto", -- auto, main, moon, or dawn
+        variant = "moon", -- auto, main, moon, or dawn
         dark_variant = "main", -- main, moon, or dawn
         dim_inactive_windows = false,
         extend_background_behind_borders = true,
@@ -118,22 +120,22 @@ return {
 
         palette = {
           -- Override the builtin palette per variant
-          -- moon = {
-          --     base = '#18191a',
-          --     overlay = '#363738',
-          -- },
+          moon = {
+            base = "#18191a",
+            overlay = "#363738",
+          },
         },
 
         highlight_groups = {
-          -- Comment = { fg = "foam" },
-          -- VertSplit = { fg = "muted", bg = "muted" },
+          Comment = { fg = "foam" },
+          VertSplit = { fg = "muted", bg = "muted" },
         },
 
         before_highlight = function(group, highlight, palette)
           -- Disable all undercurls
-          -- if highlight.undercurl then
-          --     highlight.undercurl = false
-          -- end
+          if highlight.undercurl then
+            highlight.undercurl = false
+          end
           --
           -- Change palette colour
           -- if highlight.fg == palette.pine then
@@ -143,7 +145,7 @@ return {
       })
 
       -- vim.cmd("colorscheme rose-pine-main")
-      -- vim.cmd("colorscheme rose-pine-moon")
+      vim.cmd("colorscheme rose-pine-moon")
       -- vim.cmd("colorscheme rose-pine-dawn")
     end,
   },
@@ -248,8 +250,9 @@ return {
   },
   {
     "Mofiqul/vscode.nvim",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
@@ -283,7 +286,7 @@ return {
       -- require('vscode').load()
 
       -- load the theme without affecting devicon colors.
-      vim.cmd.colorscheme("vscode")
+      -- vim.cmd.colorscheme("vscode")
     end,
   },
 }

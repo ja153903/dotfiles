@@ -1,7 +1,7 @@
-theme = Dark+
+theme = rose-pine-dark
 
 font-family = TX-02
-font-size = 13
+font-size = 12
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
