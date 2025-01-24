@@ -22,8 +22,6 @@ if set -q VIRTUAL_ENV
     echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
 end
 
-starship init fish | source
-
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
@@ -34,4 +32,3 @@ uv generate-shell-completion fish | source
 uvx --generate-shell-completion fish | source
 
 eval $(opam env)
-
