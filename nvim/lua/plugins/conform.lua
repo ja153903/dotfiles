@@ -49,11 +49,11 @@ return {
           fish = { "fish_indent" },
           sh = { "shfmt" },
           cpp = { "clang-format" },
-          typescript = { "biome", "prettier", stop_after_first = true },
-          typescriptreact = { "biome", "prettier", stop_after_first = true },
-          javascript = { "biome", "prettier", stop_after_first = true },
-          javascriptreact = { "biome", "prettier", stop_after_first = true },
-          python = { "black", stop_after_first = true },
+          typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
+          typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+          javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
+          javascriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+          python = { "ruff_format", stop_after_first = true, lsp_format = "fallback" },
           ocaml = { "ocamlformat" },
         },
         ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
@@ -63,6 +63,8 @@ return {
             require_cwd = true,
           },
           prettier = { require_cwd = true },
+          prettierd = { require_cwd = true },
+          ruff_format = { require_cwd = true },
         },
       }
       return opts
