@@ -124,6 +124,7 @@ return {
         "marksman",
         "cssls",
         "biome",
+        "gleam",
       }
 
       local lsp_config = require("lspconfig")
