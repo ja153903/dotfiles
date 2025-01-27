@@ -116,6 +116,17 @@ return {
         },
       })
 
+      local lsp_config = require("lspconfig")
+
+      -- setup for typst
+      lsp_config.tinymist.setup({
+        settings = {
+          formatterMode = "typstyle",
+          exportPdf = "onType",
+          semanticTokens = "disable",
+        },
+      })
+
       local servers_without_complex_setup = {
         "basedpyright",
         "ruff",
@@ -126,8 +137,6 @@ return {
         "biome",
         "gleam",
       }
-
-      local lsp_config = require("lspconfig")
 
       for _, server in ipairs(servers_without_complex_setup) do
         lsp_config[server].setup({
