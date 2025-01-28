@@ -1,6 +1,7 @@
 return {
   {
     "ibhagwan/fzf-lua",
+    enabled = false,
     config = function()
       require("fzf-lua").setup({
         winopts = {
