@@ -125,9 +125,9 @@ keybinds clear-defaults=true {
     }
 }
 
-// plugins {
-//    compact-bar location="zellij:compact-bar"
-// }
+plugins {
+   compact-bar location="zellij:compact-bar"
+}
 
 // Plugins to load in the background when a new session starts
 load_plugins {
