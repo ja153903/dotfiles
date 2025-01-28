@@ -6,3 +6,7 @@ nvim/.repro
 nvim/foo.*
 nvim/*.log
 nvim/data
+
+zellij/zjstatus-releases
+
+.DS_Store
