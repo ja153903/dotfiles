@@ -1,7 +1,7 @@
 theme = rose-pine-dark
 
 font-family = TX-02
-font-size = 15
+font-size = 13.5
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
@@ -13,8 +13,6 @@ cursor-style = block
 cursor-style-blink = true
 
 freetype-load-flags = no-hinting
-
-shell-integration = fish
 
 bold-is-bright = true
 
