@@ -5,7 +5,7 @@ set -x LDFLAGS "-L$(brew --prefix)/lib"
 set -x CFLAGS "-I$(brew --prefix)/include"
 set -x SWIG_FEATURES "-I$(brew --prefix)/include"
 set -x GOPATH $HOME/go
-set -x ZELLIJ_AUTO_ATTACH true
+set -x ZELLIJ_AUTO_START true
 set -x ZELLIJ_AUTO_EXIT true
 
 fish_add_path $HOME/.cargo/bin
@@ -32,3 +32,7 @@ uv generate-shell-completion fish | source
 uvx --generate-shell-completion fish | source
 
 eval $(opam env)
+
+if status is-interactive
+    eval (zellij setup --generate-auto-start fish | string collect)
+end

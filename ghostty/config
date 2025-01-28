@@ -12,15 +12,21 @@ adjust-cell-height = 15
 cursor-style = block
 cursor-style-blink = true
 
+shell-integration=fish
+shell-integration-features=no-cursor
+
 freetype-load-flags = no-hinting
+
+working-directory = home
 
 bold-is-bright = true
 
-window-padding-x = 10
-window-padding-y = 5
+copy-on-select = true
 
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 macos-option-as-alt = true
+
+window-padding-x = 10
 
 clipboard-read = allow
 clipboard-write = allow
