@@ -23,10 +23,10 @@ bold-is-bright = true
 
 copy-on-select = true
 
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
 macos-option-as-alt = true
 
-window-padding-x = 10
+window-padding-x = 5
 
 clipboard-read = allow
 clipboard-write = allow

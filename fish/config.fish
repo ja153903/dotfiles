@@ -33,8 +33,8 @@ uvx --generate-shell-completion fish | source
 
 eval $(opam env)
 
-if status is-interactive
-    eval (zellij setup --generate-auto-start fish | string collect)
-end
+# if status is-interactive
+#     eval (zellij setup --generate-auto-start fish | string collect)
+# end
 
 starship init fish | source

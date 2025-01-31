@@ -4,20 +4,9 @@ $directory\
 $git_branch\
 $git_status\
 $fill\
-$c\
-$elixir\
-$elm\
-$golang\
-$haskell\
-$java\
-$julia\
 $nodejs\
-$nim\
 $rust\
-$scala\
-$conda\
-$python\
-$time\n  \
+$python\n \
 [󱞪](fg:iris) \
 """
 
@@ -35,8 +24,8 @@ iris = '#c4a7e7'
 [directory]
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
 style = "bg:overlay fg:pine"
-truncation_length = 3
-truncation_symbol = "…/"
+# truncation_length = 3
+# truncation_symbol = "…/"
 
 [directory.substitutions]
 Documents = "󰈙"
