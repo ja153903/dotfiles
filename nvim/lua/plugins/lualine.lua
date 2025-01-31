@@ -43,7 +43,7 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
-          { LazyVim.lualine.pretty_path({ relative = "root" }) },
+          { LazyVim.lualine.pretty_path({ relative = "root", length = 999 }) },
         },
         lualine_x = {
           Snacks.profiler.status(),
