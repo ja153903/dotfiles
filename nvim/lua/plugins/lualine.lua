@@ -25,15 +25,16 @@ return {
         theme = "modus-vivendi",
         globalstatus = vim.o.laststatus == 3,
         section_separators = { left = "", right = "" },
-        component_separators = { left = "", right = "" },
+        component_separators = { left = "|", right = "|" },
         disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch" },
+        lualine_b = {},
 
         lualine_c = {
           -- LazyVim.lualine.root_dir(),
+          "branch",
           {
             "diagnostics",
             symbols = {
