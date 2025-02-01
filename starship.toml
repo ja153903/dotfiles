@@ -3,9 +3,7 @@ $username\
 $directory\
 $git_branch\
 $git_status\
-$fill\
 $nodejs\
-$rust\
 $python\n \
 [󱞪](fg:iris) \
 """
