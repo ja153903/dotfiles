@@ -1,10 +1,11 @@
 format = """
 $username\
 $directory\
-$git_branch\
-$git_status\
+$rust\
 $nodejs\
-$python\n \
+$python\
+$git_branch\
+$git_status\n \
 [󱞪](fg:iris) \
 """
 
@@ -95,18 +96,6 @@ format = "[](fg:overlay)[$symbol$version]($style)[](fg:overlay) "
 disabled = false
 symbol = " "
 
-[haskell]
-style = "bg:overlay fg:pine"
-format = "[](fg:overlay)[$symbol$version]($style)[](fg:overlay) "
-disabled = false
-symbol = " "
-
-[java]
-style = "bg:overlay fg:pine"
-format = "[](fg:overlay)[$symbol$version]($style)[](fg:overlay) "
-disabled = false
-symbol = " "
-
 [julia]
 style = "bg:overlay fg:pine"
 format = "[](fg:overlay)[$symbol$version]($style)[](fg:overlay) "
@@ -129,7 +118,7 @@ symbol = "󰆥 "
 style = "bg:overlay fg:pine"
 format = "[](fg:overlay)[$symbol$version]($style)[](fg:overlay) "
 disabled = false
-symbol = ""
+symbol = " "
 
 [scala]
 style = "bg:overlay fg:pine"
