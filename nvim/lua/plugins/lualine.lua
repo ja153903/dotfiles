@@ -33,7 +33,6 @@ return {
         lualine_b = {},
 
         lualine_c = {
-          -- LazyVim.lualine.root_dir(),
           "branch",
           {
             "diagnostics",
@@ -44,10 +43,6 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
-          { LazyVim.lualine.pretty_path({ relative = "root", length = 999 }) },
-        },
-        lualine_x = {
-          Snacks.profiler.status(),
           {
             "diff",
             symbols = {
@@ -66,7 +61,9 @@ return {
               end
             end,
           },
+          { LazyVim.lualine.pretty_path({ relative = "root", length = 999 }) },
         },
+        lualine_x = {},
         lualine_y = {},
         lualine_z = {},
       },
