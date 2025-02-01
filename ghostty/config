@@ -2,6 +2,8 @@ theme = rose-pine-dark
 
 font-family = TX-02
 font-size = 13.5
+# enable this for classes
+# font-feature = -calt
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
