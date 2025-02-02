@@ -118,6 +118,11 @@ return {
 
       local lsp_config = require("lspconfig")
 
+      -- lsp_config.elixirls.setup({
+      --   capabilities = capabilities,
+      --   cmd = { "/Users/jaimeabbariao/.elixir-ls/release/language_server.sh" },
+      -- })
+
       -- setup for typst
       lsp_config.tinymist.setup({
         settings = {
@@ -135,7 +140,6 @@ return {
         "marksman",
         "cssls",
         "biome",
-        "gleam",
       }
 
       for _, server in ipairs(servers_without_complex_setup) do
