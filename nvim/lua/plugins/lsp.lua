@@ -140,6 +140,7 @@ return {
         "marksman",
         "cssls",
         "biome",
+        "clangd",
       }
 
       for _, server in ipairs(servers_without_complex_setup) do

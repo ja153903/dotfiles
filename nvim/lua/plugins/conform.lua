@@ -49,6 +49,7 @@ return {
           fish = { "fish_indent" },
           sh = { "shfmt" },
           cpp = { "clang-format" },
+          c = { "clang-format" },
           typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
           typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
           javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
