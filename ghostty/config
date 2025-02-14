@@ -28,8 +28,6 @@ copy-on-select = true
 macos-titlebar-style = transparent
 macos-option-as-alt = true
 
-window-padding-x = 5
-
 clipboard-read = allow
 clipboard-write = allow
 
