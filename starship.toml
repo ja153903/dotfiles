@@ -12,7 +12,7 @@ $git_status\n \
 palette = "rose-pine-moon"
 
 [palettes.rose-pine-moon]
-overlay = '#303133'
+overlay = '#1E2027'
 love = '#eb6f92'
 gold = '#f6c177'
 rose = '#ea9a97'
