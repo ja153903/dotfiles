@@ -141,6 +141,8 @@ return {
         "cssls",
         "biome",
         "clangd",
+        "svelte",
+        "tailwindcss",
       }
 
       for _, server in ipairs(servers_without_complex_setup) do
