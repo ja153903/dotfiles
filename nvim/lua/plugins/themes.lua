@@ -120,15 +120,15 @@ return {
         --- function will be called with a ColorScheme table
         ---@param colors ColorScheme
         on_colors = function(colors)
-          local base03 = "#002b36"
-          local base02 = "#073642"
-
-          colors.bg = base03
-          colors.bg_float = base03
-          colors.bg_highlight = base03
-          colors.bg_popup = base02
-          colors.bg_sidebar = base02
-          colors.bg_statusline = base03
+          -- local base03 = "#002b36"
+          -- local base02 = "#073642"
+          --
+          -- colors.bg = base03
+          -- colors.bg_float = base03
+          -- colors.bg_highlight = base03
+          -- colors.bg_popup = base02
+          -- colors.bg_sidebar = base02
+          -- colors.bg_statusline = base03
         end,
       })
       vim.cmd([[colorscheme solarized-osaka]])

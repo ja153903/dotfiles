@@ -1,4 +1,4 @@
-theme = Builtin Solarized Dark
+theme = solarized_osaka
 
 # font-family = TX-02
 font-family = MonoLisa
@@ -11,6 +11,8 @@ font-feature = -dlig
 font-thicken = true
 
 adjust-cell-height = 10
+
+background-opacity = 0.9
 
 cursor-style = block
 cursor-style-blink = true
