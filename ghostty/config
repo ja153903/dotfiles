@@ -2,7 +2,7 @@ theme = Builtin Solarized Dark
 
 # font-family = TX-02
 font-family = MonoLisa
-font-size = 13.5
+font-size = 12
 # enable this for classes
 # font-feature = -calt
 font-feature = -calt
@@ -10,7 +10,7 @@ font-feature = -liga
 font-feature = -dlig
 font-thicken = true
 
-adjust-cell-height = 15
+adjust-cell-height = 10
 
 cursor-style = block
 cursor-style-blink = true
