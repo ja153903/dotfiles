@@ -1,16 +1,13 @@
-theme = Horizon
+theme = solarized_osaka
 
-# font-family = TX-02
-font-family = MonoLisa
-font-size = 12
-# enable this for classes
-# font-feature = -calt
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
+font-family = TX-02
+font-size = 13
+font-feature = +calt
+font-feature = +liga
+font-feature = +dlig
 font-thicken = true
 
-adjust-cell-height = 10
+adjust-cell-height = 12
 
 cursor-style = block
 cursor-style-blink = true
@@ -26,7 +23,7 @@ bold-is-bright = true
 
 copy-on-select = true
 
-macos-titlebar-style = transparent
+macos-titlebar-style = tabs
 macos-option-as-alt = true
 
 clipboard-read = allow
