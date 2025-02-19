@@ -129,6 +129,7 @@ return {
           -- colors.bg_popup = base02
           -- colors.bg_sidebar = base02
           -- colors.bg_statusline = base03
+          colors.bg_statusline = colors.base02
         end,
       })
       vim.cmd([[colorscheme solarized-osaka]])
