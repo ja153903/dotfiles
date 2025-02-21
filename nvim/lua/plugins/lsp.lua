@@ -131,7 +131,6 @@ return {
         "basedpyright",
         "ruff",
         "ocamllsp",
-        "vtsls",
         "marksman",
         "cssls",
         "biome",

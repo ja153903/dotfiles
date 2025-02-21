@@ -22,6 +22,7 @@ return {
       picker = { enabled = true },
       scope = { enabled = true },
       animate = { enabled = true },
+      images = { enabled = true },
     },
   },
 }

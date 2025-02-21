@@ -91,8 +91,9 @@ return {
   },
   {
     "craftzdog/solarized-osaka.nvim",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       require("solarized-osaka").setup({
         -- your configuration comes here
@@ -132,7 +133,15 @@ return {
           colors.bg_statusline = colors.base02
         end,
       })
-      vim.cmd([[colorscheme solarized-osaka]])
+      -- vim.cmd([[colorscheme solarized-osaka]])
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme catppuccin]])
     end,
   },
 }
