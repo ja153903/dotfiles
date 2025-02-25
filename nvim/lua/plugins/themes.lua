@@ -1,8 +1,9 @@
 return {
   {
     "craftzdog/solarized-osaka.nvim",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       require("solarized-osaka").setup({
         -- your configuration comes here
@@ -26,7 +27,15 @@ return {
         dim_inactive = false, -- dims inactive windows
         lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
       })
-      vim.cmd([[colorscheme solarized-osaka]])
+      -- vim.cmd([[colorscheme solarized-osaka]])
+    end,
+  },
+  {
+    "Mofiqul/vscode.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme vscode]])
     end,
   },
 }
