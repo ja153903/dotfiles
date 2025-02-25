@@ -32,7 +32,7 @@
   "nvim-ts-autotag": { "branch": "main", "commit": "a1d526af391f6aebb25a8795cbc05351ed3620b5" },
   "persistence.nvim": { "branch": "main", "commit": "f6aad7dde7fcf54148ccfc5f622c6d5badd0cc3d" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
-  "render-markdown.nvim": { "branch": "main", "commit": "0df6719abc3b547bc5b7111a750d8d7e035a7234" },
+  "render-markdown.nvim": { "branch": "main", "commit": "43a971e7da82e5622797b36450424ebd66cc9046" },
   "rustaceanvim": { "branch": "master", "commit": "f03035fa03ccb36cd26d0792c946fbacba1d1a39" },
   "snacks.nvim": { "branch": "main", "commit": "1b63b1811c58f661ad22f390a52aa6723703dc3d" },
   "solarized-osaka.nvim": { "branch": "main", "commit": "e96ec4bb1a622d969d77bb0b4ffd525ccc44b73a" },

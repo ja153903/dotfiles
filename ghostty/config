@@ -1,13 +1,13 @@
 theme = solarized_osaka
 
-font-family = MonoLisa Custom
+font-family = TX-02
 font-size = 12
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
 font-thicken = true
 
-adjust-cell-height = 12
+adjust-cell-height = 15
 
 cursor-style = block
 cursor-style-blink = true
