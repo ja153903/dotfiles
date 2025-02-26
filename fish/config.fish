@@ -4,10 +4,7 @@ set -gx PYENV_VIRTUALENV_DISABLE_PROMPT 1
 set -x LDFLAGS "-L$(brew --prefix)/lib"
 set -x CFLAGS "-I$(brew --prefix)/include"
 set -x SWIG_FEATURES "-I$(brew --prefix)/include"
-set -x GOPATH $HOME/go
 set -x DEV $HOME/programming
-set -x ZELLIJ_AUTO_START true
-set -x ZELLIJ_AUTO_EXIT true
 
 fish_add_path $HOME/.cargo/bin
 fish_add_path /opt/homebrew/bin
