@@ -137,6 +137,8 @@ return {
         "clangd",
         "svelte",
         "tailwindcss",
+        "roc_ls",
+        "zls",
       }
 
       for _, server in ipairs(servers_without_complex_setup) do

@@ -13,3 +13,4 @@ end
 
 set_filetype_settings("cpp", 4, 4)
 set_filetype_settings("c", 4, 4)
+set_filetype_settings("roc", 4, 4)
