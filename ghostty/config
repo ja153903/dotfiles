@@ -15,7 +15,7 @@ cursor-style-blink = true
 shell-integration=fish
 shell-integration-features=no-cursor
 
-background-opacity = 0.95
+background-opacity = 0.9
 background-blur = true
 
 freetype-load-flags = no-hinting
