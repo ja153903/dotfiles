@@ -118,8 +118,14 @@ return {
 
       local lsp_config = require("lspconfig")
 
+      -- setup for haskell
+      lsp_config.hls.setup({
+        capabilities = capabilities,
+      })
+
       -- setup for typst
       lsp_config.tinymist.setup({
+        capabilities = capabilities,
         settings = {
           formatterMode = "typstyle",
           exportPdf = "onType",
