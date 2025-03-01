@@ -1,6 +1,6 @@
-theme = solarized_osaka
+theme = tokyonight-storm
 
-font-family = TX-02
+font-family = MonoLisa Custom
 font-size = 13
 font-feature = +calt
 font-feature = +liga
