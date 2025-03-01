@@ -14,8 +14,6 @@ fish_add_path /usr/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.luarocks/bin
 fish_add_path $GOPATH/bin
-fish_add_path $HOME/.cabal/bin
-fish_add_path $HOME/.ghcup/bin
 fish_add_path $BPL/roc/roc_nightly-macos_apple_silicon-2025-02-26-578e92563ca
 fish_add_path $BPL/zig/zig-macos-aarch64-0.14.0-dev.3385+055969b10
 fish_add_path $BPL/zig/zls/zig-out/bin
@@ -36,5 +34,3 @@ uvx --generate-shell-completion fish | source
 eval $(opam env)
 
 starship init fish | source
-
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /Users/jaimeabbariao/.ghcup/bin # ghcup-env
