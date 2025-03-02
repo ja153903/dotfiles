@@ -1,6 +1,6 @@
-theme = tokyonight-storm
+theme = Monokai Pro Octagon
 
-font-family = MonoLisa Custom
+font-family = TX-02
 font-size = 13
 font-feature = +calt
 font-feature = +liga
