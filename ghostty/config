@@ -1,5 +1,4 @@
-theme = CLRS
-
+theme = iTerm2 Solarized Light
 font-family = TX-02
 font-size = 13
 font-feature = +calt
@@ -14,9 +13,6 @@ cursor-style-blink = true
 
 shell-integration=fish
 shell-integration-features=no-cursor
-
-background-opacity = 0.9
-background-blur = true
 
 freetype-load-flags = no-hinting
 
