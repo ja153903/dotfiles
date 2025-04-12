@@ -11,8 +11,8 @@ local function set_filetype_settings(lang, width, tabstop)
   })
 end
 
-set_filetype_settings("cpp", 4, 4)
-set_filetype_settings("c", 4, 4)
+set_filetype_settings("cpp", 2, 2)
+set_filetype_settings("c", 2, 2)
 set_filetype_settings("roc", 4, 4)
 
 -- make .roc files have the correct filetype

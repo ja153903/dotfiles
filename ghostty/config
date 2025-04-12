@@ -1,11 +1,14 @@
 # theme = cobalt
+# theme = dark:catppuccin-mocha,light:catppuccin-latte
+# theme = tokyonight-storm
+theme = modus_vivendi
 
-font-family = TX-02
+font-family = MonoLisa Custom
 font-size = 13
-font-feature = +calt
-font-feature = +liga
-font-feature = +dlig
-font-thicken = true
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+# font-thicken = true
 
 adjust-cell-height = 18
 
