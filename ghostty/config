@@ -2,7 +2,9 @@
 # theme = dark:catppuccin-mocha,light:catppuccin-latte
 # theme = tokyonight-storm
 # theme = modus_vivendi
-theme = rose-pine
+# theme = rose-pine
+# theme = Builtin Solarized Dark
+theme = solarized_osaka
 
 font-family = MonoLisa Custom
 font-size = 12
