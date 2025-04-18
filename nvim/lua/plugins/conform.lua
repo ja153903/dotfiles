@@ -17,6 +17,7 @@ return {
           python = { "ruff_format", stop_after_first = true, lsp_format = "fallback" },
           ocaml = { "ocamlformat" },
           rust = { "rustfmt" },
+          typst = { "prettypst" },
         },
         ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
         formatters = {
