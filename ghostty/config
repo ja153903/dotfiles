@@ -1,7 +1,8 @@
 # theme = cobalt
 # theme = dark:catppuccin-mocha,light:catppuccin-latte
-theme = tokyonight-storm
+# theme = tokyonight-storm
 # theme = modus_vivendi
+theme = rose-pine
 
 font-family = MonoLisa Custom
 font-size = 12
