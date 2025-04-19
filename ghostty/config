@@ -13,7 +13,7 @@ font-feature = +liga
 font-feature = +dlig
 font-thicken = true
 
-adjust-cell-height = 18
+# adjust-cell-height = 18
 
 cursor-style = block
 cursor-style-blink = true
