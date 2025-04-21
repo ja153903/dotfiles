@@ -29,8 +29,8 @@ bold-is-bright = true
 
 copy-on-select = true
 
-# background-opacity = 0.97
-# background-blur = true
+background-opacity = 0.97
+background-blur = true
 
 macos-titlebar-style = tabs
 macos-option-as-alt = true
