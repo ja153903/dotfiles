@@ -24,6 +24,7 @@ return {
       options = {
         theme = "auto",
         globalstatus = vim.o.laststatus == 3,
+        icons_enabled = false,
         section_separators = { left = "", right = "" },
         component_separators = { left = "|", right = "|" },
         disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
