@@ -1,11 +1,16 @@
 theme = solarized_osaka
 
-font-family = MonoLisa Custom
-font-size = 13
+font-family = TX-02
+font-size = 14
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
 font-thicken = true
+
+adjust-cell-height = 7
+adjust-cursor-height = 7
+
+alpha-blending = linear-corrected
 
 cursor-style = block
 cursor-style-blink = true
@@ -21,8 +26,8 @@ bold-is-bright = true
 
 copy-on-select = true
 
-background-opacity = 0.97
-background-blur = true
+background-opacity = 0.96
+background-blur-radius = 40
 
 macos-titlebar-style = tabs
 macos-option-as-alt = true
