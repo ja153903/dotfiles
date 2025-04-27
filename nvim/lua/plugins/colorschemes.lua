@@ -1,8 +1,9 @@
 return {
   {
     "craftzdog/solarized-osaka.nvim",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       require("solarized-osaka").setup({
         -- your configuration comes here
@@ -38,7 +39,26 @@ return {
         on_highlights = function(highlights, colors) end,
       })
 
-      vim.cmd([[colorscheme solarized-osaka]])
+      -- vim.cmd([[colorscheme solarized-osaka]])
+    end,
+  },
+
+  {
+    "Mofiqul/vscode.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("vscode").setup({
+        -- Enable this to disable setting the background color
+        transparent = false,
+        -- Enable this to disable setting the background color
+        -- transparent = true,
+        -- Enable this to disable setting the background color
+        -- transparent = true,
+        -- Enable this to disable setting the background color
+        -- transparent = true,
+      })
+      vim.cmd([[colorscheme vscode]])
     end,
   },
 }

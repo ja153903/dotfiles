@@ -34,3 +34,6 @@ uvx --generate-shell-completion fish | source
 eval $(opam env)
 
 starship init fish | source
+
+# Added by Windsurf
+fish_add_path /Users/jaimeabbariao/.codeium/windsurf/bin

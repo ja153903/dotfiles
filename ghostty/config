@@ -1,14 +1,14 @@
-theme = solarized_osaka
+# theme = solarized_osaka
 
 font-family = TX-02
-font-size = 14
+font-size = 12
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
 font-thicken = true
 
-adjust-cell-height = 7
-adjust-cursor-height = 7
+adjust-cell-height = 15
+adjust-cursor-height = 15
 
 alpha-blending = linear-corrected
 
@@ -26,7 +26,7 @@ bold-is-bright = true
 
 copy-on-select = true
 
-background-opacity = 0.96
+background-opacity = 0.92
 background-blur-radius = 40
 
 macos-titlebar-style = tabs
