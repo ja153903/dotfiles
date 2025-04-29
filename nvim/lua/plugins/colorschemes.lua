@@ -49,14 +49,7 @@ return {
     priority = 1000,
     config = function()
       require("vscode").setup({
-        -- Enable this to disable setting the background color
         transparent = false,
-        -- Enable this to disable setting the background color
-        -- transparent = true,
-        -- Enable this to disable setting the background color
-        -- transparent = true,
-        -- Enable this to disable setting the background color
-        -- transparent = true,
       })
       vim.cmd([[colorscheme vscode]])
     end,
