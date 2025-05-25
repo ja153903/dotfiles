@@ -8,6 +8,7 @@ alias vim="nvim"
 alias vi="nvim"
 
 alias lg="lazygit"
+alias e="code ."
 
 alias venv="pyenv activate"
 alias dvenv="pyenv deactivate"
