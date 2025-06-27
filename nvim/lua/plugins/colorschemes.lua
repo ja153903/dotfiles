@@ -42,17 +42,24 @@ return {
       -- vim.cmd([[colorscheme solarized-osaka]])
     end,
   },
-
   {
-    "Mofiqul/vscode.nvim",
-    -- enabled = false,
+    "AlexvZyl/nordic.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("vscode").setup({
-        transparent = false,
-      })
-      vim.cmd([[colorscheme vscode]])
+      require("nordic").load()
     end,
   },
+  -- {
+  --   "Mofiqul/vscode.nvim",
+  --   -- enabled = false,
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("vscode").setup({
+  --       transparent = false,
+  --     })
+  --     vim.cmd([[colorscheme vscode]])
+  --   end,
+  -- },
 }
