@@ -1,13 +1,15 @@
 return {
+  -- Lazy
   {
-    "Mofiqul/vscode.nvim",
+    "vague2k/vague.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("vscode").setup({
-        transparent = false,
+      -- NOTE: you do not need to call setup if you don't want to.
+      require("vague").setup({ -- optional configuration here
       })
-      vim.cmd([[colorscheme vscode]])
+
+      vim.cmd([[colorscheme vague]])
     end,
   },
 }

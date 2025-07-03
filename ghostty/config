@@ -1,5 +1,4 @@
-# theme = solarized_osaka
-theme = vscode
+theme = vague
 
 font-family = TX-02
 font-size = 12
@@ -22,6 +21,8 @@ shell-integration-features=no-cursor
 freetype-load-flags = no-hinting
 
 working-directory = home
+
+scrollback-limit = 50000
 
 bold-is-bright = true
 
@@ -57,3 +58,4 @@ keybind = ctrl+e>shift+j=resize_split:down,50
 keybind = ctrl+e>shift+k=resize_split:up,50
 
 keybind = ctrl+e>equal=equalize_splits
+keybind = shift+enter=text:\n

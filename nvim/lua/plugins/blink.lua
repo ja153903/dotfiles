@@ -2,7 +2,7 @@ return {
   "saghen/blink.cmp",
   opts = {
     keymap = {
-      preset = "default",
+      preset = "enter",
     },
     sources = {
       min_keyword_length = function(ctx)

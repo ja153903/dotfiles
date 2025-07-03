@@ -37,3 +37,6 @@ starship init fish | source
 
 # Added by Windsurf
 fish_add_path /Users/jaimeabbariao/.codeium/windsurf/bin
+
+# opencode
+fish_add_path /Users/jaimeabbariao/.opencode/bin
