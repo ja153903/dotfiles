@@ -16,7 +16,7 @@ return {
     local lualine_require = require("lualine_require")
     lualine_require.require = require
 
-    -- local icons = LazyVim.config.icons
+    local icons = LazyVim.config.icons
 
     vim.o.laststatus = vim.g.lualine_laststatus
 
@@ -37,12 +37,12 @@ return {
           "branch",
           {
             "diagnostics",
-            -- symbols = {
-            --   error = icons.diagnostics.Error,
-            --   warn = icons.diagnostics.Warn,
-            --   info = icons.diagnostics.Info,
-            --   hint = icons.diagnostics.Hint,
-            -- },
+            symbols = {
+              error = icons.diagnostics.Error,
+              warn = icons.diagnostics.Warn,
+              info = icons.diagnostics.Info,
+              hint = icons.diagnostics.Hint,
+            },
           },
           {
             "diff",
