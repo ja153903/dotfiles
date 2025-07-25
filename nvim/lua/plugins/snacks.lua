@@ -21,8 +21,8 @@ return {
       words = { enabled = true },
       picker = { enabled = false },
       scope = { enabled = true },
-      animate = { enabled = true },
-      images = { enabled = true },
+      animate = { enabled = false },
+      images = { enabled = false },
     },
   },
 }
