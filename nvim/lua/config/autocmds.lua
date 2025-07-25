@@ -21,6 +21,17 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   command = "set filetype=roc",
 })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.orig", "MERGE_*", "COMMIT_EDITMSG" },
+  callback = function()
+    vim.diagnostic.enable(false)
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    for _, client in ipairs(clients) do
+      vim.lsp.buf_detach_client(0, client.id)
+    end
+  end,
+})
+
 -- add roc tree-sitter
 local parsers = require("nvim-treesitter.parsers").get_parser_configs()
 

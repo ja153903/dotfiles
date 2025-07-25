@@ -23,6 +23,7 @@ return {
       scope = { enabled = true },
       animate = { enabled = false },
       images = { enabled = false },
+      terminal = { enabled = true },
     },
   },
 }
