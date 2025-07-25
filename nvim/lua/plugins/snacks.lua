@@ -10,7 +10,7 @@ return {
       -- refer to the configuration section below
       bigfile = { enabled = true },
       dashboard = {
-        enabled = false,
+        enabled = true,
       },
       indent = { enabled = false },
       input = { enabled = true },
@@ -19,7 +19,7 @@ return {
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
-      picker = { enabled = true },
+      picker = { enabled = false },
       scope = { enabled = true },
       animate = { enabled = true },
       images = { enabled = true },
