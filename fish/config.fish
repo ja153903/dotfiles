@@ -13,10 +13,6 @@ fish_add_path $PNPM_HOME
 fish_add_path /usr/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.luarocks/bin
-fish_add_path $GOPATH/bin
-fish_add_path $BPL/roc/roc_nightly-macos_apple_silicon-2025-02-26-578e92563ca
-fish_add_path $BPL/zig/zig-macos-aarch64-0.14.0-dev.3385+055969b10
-fish_add_path $BPL/zig/zls/zig-out/bin
 
 if set -q VIRTUAL_ENV
     echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
@@ -30,13 +26,3 @@ status --is-interactive; and rbenv init - fish | source
 
 uv generate-shell-completion fish | source
 uvx --generate-shell-completion fish | source
-
-eval $(opam env)
-
-starship init fish | source
-
-# Added by Windsurf
-fish_add_path /Users/jaimeabbariao/.codeium/windsurf/bin
-
-# opencode
-fish_add_path /Users/jaimeabbariao/.opencode/bin
