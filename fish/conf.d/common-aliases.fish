@@ -6,11 +6,13 @@ alias cls="clear"
 
 alias vim="nvim"
 alias vi="nvim"
+alias e="nvim"
 
 alias lg="lazygit"
-alias e="code ."
 
 alias venv="pyenv activate"
 alias dvenv="pyenv deactivate"
 alias present="presenterm --config-file $HOME/.config/presenterm/config.yaml --theme terminal-dark"
 alias to-pdf="presenterm --export-pdf"
+
+alias beta='NVIM_APPNAME="beta" nvim'
