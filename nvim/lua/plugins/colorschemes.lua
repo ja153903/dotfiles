@@ -1,90 +1,45 @@
 return {
   {
-    "thesimonho/kanagawa-paper.nvim",
-    -- lazy = false,
-    -- priority = 1000,
-    enabled = false,
-    config = function()
-      -- vim.cmd.colorscheme("kanagawa-paper-ink")
-      -- vim.cmd.colorscheme("kanagawa-paper")
-    end,
-  },
-  {
-    "scottmckendry/cyberdream.nvim",
+    "Mofiqul/vscode.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("cyberdream").setup({
-        -- Set light or dark variant
-        variant = "default", -- use "light" for the light variant. Also accepts "auto" to set dark or light colors based on the current value of `vim.o.background`
+      local c = require("vscode.colors").get_colors()
+      require("vscode").setup({
+        -- Alternatively set style in setup
+        -- style = 'light'
 
         -- Enable transparent background
         transparent = true,
 
-        -- Reduce the overall saturation of colours for a more muted look
-        saturation = 1, -- accepts a value between 0 and 1. 0 will be fully desaturated (greyscale) and 1 will be the full color (default)
+        -- Enable italic comment
+        italic_comments = true,
 
-        -- Enable italics comments
-        italic_comments = false,
+        -- Underline `@markup.link.*` variants
+        underline_links = true,
 
-        -- Replace all fillchars with ' ' for the ultimate clean look
-        hide_fillchars = false,
+        -- Disable nvim-tree background color
+        disable_nvimtree_bg = true,
 
-        -- Apply a modern borderless look to pickers like Telescope, Snacks Picker & Fzf-Lua
-        borderless_pickers = false,
-
-        -- Set terminal colors used in `:terminal`
+        -- Apply theme colors to terminal
         terminal_colors = true,
 
-        -- Improve start up time by caching highlights. Generate cache with :CyberdreamBuildCache and clear with :CyberdreamClearCache
-        cache = false,
-
-        -- Override highlight groups with your own colour values
-        highlights = {
-          -- Highlight groups to override, adding new groups is also possible
-          -- See `:h highlight-groups` for a list of highlight groups or run `:hi` to see all groups and their current values
-
-          -- Example:
-          Comment = { fg = "#696969", bg = "NONE", italic = true },
-
-          -- More examples can be found in `lua/cyberdream/extensions/*.lua`
+        -- Override colors (see ./lua/vscode/colors.lua)
+        color_overrides = {
+          vscLineNumber = "#FFFFFF",
         },
 
-        -- Override a highlight group entirely using the built-in colour palette
-        overrides = function(colors) -- NOTE: This function nullifies the `highlights` option
-          -- Example:
-          return {
-            Comment = { fg = colors.green, bg = "NONE", italic = true },
-            ["@property"] = { fg = colors.magenta, bold = true },
-          }
-        end,
-
-        -- Override colors
-        colors = {
-          -- For a list of colors see `lua/cyberdream/colours.lua`
-
-          -- Override colors for both light and dark variants
-          -- bg = "#000000",
-          green = "#00ff00",
-
-          -- If you want to override colors for light or dark variants only, use the following format:
-          dark = {
-            -- magenta = "#ff00ff",
-            fg = "#eeeeee",
-          },
-          light = {
-            red = "#ff5c57",
-            cyan = "#5ef1ff",
-          },
-        },
-
-        -- Disable or enable colorscheme extensions
-        extensions = {
-          notify = true,
-          mini = true,
+        -- Override highlight groups (see ./lua/vscode/theme.lua)
+        group_overrides = {
+          -- this supports the same val table as vim.api.nvim_set_hl
+          -- use colors from this colorscheme by requiring vscode.colors!
+          Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
         },
       })
-      vim.cmd("colorscheme cyberdream")
+      -- require('vscode').load()
+
+      -- load the theme without affecting devicon colors.
+      vim.cmd.colorscheme("vscode")
     end,
   },
 }
