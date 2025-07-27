@@ -8,13 +8,6 @@ return {
     config = function()
       require("fzf-lua").setup({
         winopts = { fullscreen = true },
-        files = {
-          formatter = "path.dirname_first",
-        },
-        fzf_opts = {
-          ["--delimiter"] = "/",
-          ["--with-nth"] = "-2..",
-        },
       })
     end,
   },
