@@ -1,4 +1,4 @@
-theme = kanagawa-paper-ink
+theme = cyberdream
 
 font-family = TX-02
 font-size = 12
@@ -28,8 +28,8 @@ bold-is-bright = true
 
 copy-on-select = true
 
-# background-opacity = 0.92
-# background-blur-radius = 40
+background-opacity = 0.92
+background-blur-radius = 40
 
 macos-titlebar-style = tabs
 macos-option-as-alt = true

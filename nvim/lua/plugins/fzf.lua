@@ -7,8 +7,14 @@ return {
     -- dependencies = { "echasnovski/mini.icons" },
     config = function()
       require("fzf-lua").setup({
-        defaults = { path_shorten = true },
         winopts = { fullscreen = true },
+        files = {
+          formatter = "path.dirname_first",
+        },
+        fzf_opts = {
+          ["--delimiter"] = "/",
+          ["--with-nth"] = "-2..",
+        },
       })
     end,
   },
