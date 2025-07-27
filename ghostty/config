@@ -1,14 +1,14 @@
 theme = cyberdream
 
 font-family = TX-02
-font-size = 12
+font-size = 16
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
 font-thicken = true
 
-adjust-cell-height = 15
-adjust-cursor-height = 15
+# adjust-cell-height = 15
+# adjust-cursor-height = 15
 
 alpha-blending = linear-corrected
 
