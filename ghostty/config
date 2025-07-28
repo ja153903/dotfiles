@@ -1,14 +1,14 @@
-theme = cyberdream
+theme = vague
 
-font-family = TX-02
-font-size = 16
+font-family = ProggyClean Nerd Font
+font-size = 18
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
 font-thicken = true
 
-# adjust-cell-height = 15
-# adjust-cursor-height = 15
+adjust-cell-height = 10
+adjust-cursor-height = 10
 
 alpha-blending = linear-corrected
 
@@ -28,8 +28,8 @@ bold-is-bright = true
 
 copy-on-select = true
 
-background-opacity = 0.92
-background-blur-radius = 40
+# background-opacity = 0.92
+# background-blur-radius = 40
 
 macos-titlebar-style = tabs
 macos-option-as-alt = true
