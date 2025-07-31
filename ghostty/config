@@ -1,13 +1,12 @@
-theme = vague
+theme = vscode
 
-font-family = Monaspace Krypton
-font-size = 13
+font-family = TX-02
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
 font-thicken = true
 
-adjust-cell-height = 10
+adjust-cell-height = 15
 adjust-cursor-height = 10
 
 alpha-blending = linear-corrected
