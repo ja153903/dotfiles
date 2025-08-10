@@ -1,10 +1,11 @@
-theme = catppuccin-mocha
+theme = GruvboxDarkHard
 
 font-family = TX-02
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
 font-thicken = true
+font-size = 12
 
 # adjust-cell-height = 15
 # adjust-cursor-height = 10
