@@ -1,15 +1,16 @@
 return {
   {
     "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    lazy = false,
+    enabled = false,
+    -- priority = 1000,
+    -- lazy = false,
     config = function()
       -- Default options:
       require("gruvbox").setup({
         terminal_colors = true, -- add neovim terminal colors
         undercurl = true,
         underline = true,
-        bold = true,
+        bold = false,
         italic = {
           strings = false,
           emphasis = false,
@@ -28,7 +29,7 @@ return {
         dim_inactive = false,
         transparent_mode = false,
       })
-      vim.cmd("colorscheme gruvbox")
+      -- vim.cmd("colorscheme gruvbox")
     end,
   },
   {
@@ -110,7 +111,8 @@ return {
   },
   {
     "Mofiqul/vscode.nvim",
-    enabled = false,
+    lazy = false,
+    priority = 1000,
     config = function()
       -- Lua:
       -- For dark theme (neovim's default)
@@ -151,7 +153,7 @@ return {
       -- require('vscode').load()
 
       -- load the theme without affecting devicon colors.
-      -- vim.cmd.colorscheme("vscode")
+      vim.cmd.colorscheme("vscode")
     end,
   },
 }
