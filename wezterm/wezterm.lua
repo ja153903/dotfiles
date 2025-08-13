@@ -12,7 +12,7 @@ local config = wezterm.config_builder()
 config.initial_cols = 120
 config.initial_rows = 28
 
-config.font = wezterm.font_with_fallback({ "MonaspiceKr Nerd Font", "Noto Color Emoji", "Symbols Nerd Font Mono" })
+config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Nerd Font", "Noto Color Emoji" })
 
 -- or, changing the font size and color scheme.
 config.font_size = 12
@@ -72,12 +72,9 @@ tabline.setup({
 		tabline_c = {},
 		tab_active = {
 			"index",
-			{ "parent", padding = 0 },
-			"/",
 			{ "cwd", padding = { left = 0, right = 1 } },
-			{ "zoomed", padding = 0 },
 		},
-		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
+		tab_inactive = { "index", { "cwd", padding = { left = 0, right = 1 } } },
 		tabline_x = { "ram", "cpu" },
 		tabline_y = { "battery" },
 		tabline_z = { "datetime" },
