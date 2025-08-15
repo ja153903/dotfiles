@@ -16,7 +16,8 @@ config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Ner
 
 -- or, changing the font size and color scheme.
 config.font_size = 12
-config.color_scheme = "tokyonight_moon"
+-- config.color_scheme = "tokyonight_moon"
+config.color_scheme = "carbonfox"
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
@@ -58,7 +59,7 @@ tabline.setup({
 	options = {
 		icons_enabled = true,
 		tabs_enabled = true,
-		theme_overrides = {},
+		theme = "carbonfox",
 		section_separators = "",
 		component_separators = "",
 		tab_separators = "",
