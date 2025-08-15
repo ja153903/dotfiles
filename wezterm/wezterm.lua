@@ -57,7 +57,7 @@ config.tab_bar_at_bottom = true
 tabline.setup({
 	options = {
 		icons_enabled = true,
-		theme = "GruvboxDark",
+		theme = "Modus-Vivendi",
 		tabs_enabled = true,
 		theme_overrides = {},
 		section_separators = "",
