@@ -8,6 +8,11 @@ return {
     config = function()
       require("fzf-lua").setup({
         winopts = { fullscreen = true },
+        previewers = {
+          builtin = {
+            snacks_image = { enabled = false, render_inline = false },
+          },
+        },
       })
     end,
   },
