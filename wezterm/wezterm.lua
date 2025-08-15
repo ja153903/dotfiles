@@ -16,10 +16,7 @@ config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Ner
 
 -- or, changing the font size and color scheme.
 config.font_size = 12
-config.color_scheme = "Hybrid (Gogh)"
-config.colors = {
-	background = "#1D1F21",
-}
+config.color_scheme = "Modus-Vivendi"
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{

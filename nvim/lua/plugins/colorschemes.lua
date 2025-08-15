@@ -1,25 +1,10 @@
 return {
   {
-    "HoNamDuong/hybrid.nvim",
+    "ishan9299/modus-theme-vim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("hybrid").setup({
-        terminal_colors = true,
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = false,
-          emphasis = true,
-          comments = true,
-          folds = true,
-        },
-        strikethrough = true,
-        inverse = true,
-        transparent = false,
-      })
-      vim.cmd.colorscheme("hybrid")
+      vim.cmd("colorscheme modus-vivendi")
     end,
   },
 }
