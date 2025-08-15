@@ -16,7 +16,7 @@ config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Ner
 
 -- or, changing the font size and color scheme.
 config.font_size = 12
-config.color_scheme = "Modus-Vivendi"
+config.color_scheme = "tokyonight_moon"
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
@@ -57,7 +57,6 @@ config.tab_bar_at_bottom = true
 tabline.setup({
 	options = {
 		icons_enabled = true,
-		theme = "Modus-Vivendi",
 		tabs_enabled = true,
 		theme_overrides = {},
 		section_separators = "",
@@ -81,6 +80,15 @@ tabline.setup({
 })
 
 config.window_decorations = "RESIZE"
+
+for i = 1, 8 do
+	-- CTRL+ALT + number to move to that position
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "CTRL|ALT",
+		action = wezterm.action.MoveTab(i - 1),
+	})
+end
 
 -- Finally, return the configuration to wezterm:
 return config
