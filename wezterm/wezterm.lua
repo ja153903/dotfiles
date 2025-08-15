@@ -54,7 +54,6 @@ config.keys = {
 
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.tab_max_width = 32
 
 tabline.setup({
 	options = {
@@ -81,6 +80,8 @@ tabline.setup({
 	},
 	extensions = {},
 })
+
+config.window_decorations = "RESIZE"
 
 -- Finally, return the configuration to wezterm:
 return config
