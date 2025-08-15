@@ -111,8 +111,9 @@ return {
   },
   {
     "Mofiqul/vscode.nvim",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       -- Lua:
       -- For dark theme (neovim's default)
@@ -153,7 +154,15 @@ return {
       -- require('vscode').load()
 
       -- load the theme without affecting devicon colors.
-      vim.cmd.colorscheme("vscode")
+      -- vim.cmd.colorscheme("vscode")
+    end,
+  },
+  {
+    "RRethy/base16-nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme base16-windows-95]])
     end,
   },
 }
