@@ -80,7 +80,7 @@ tabline.setup({
 	extensions = {},
 })
 
-config.window_decorations = "RESIZE"
+-- config.window_decorations = "RESIZE"
 
 for i = 1, 8 do
 	-- CTRL+ALT + number to move to that position
