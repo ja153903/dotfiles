@@ -7,7 +7,12 @@ return {
     -- dependencies = { "echasnovski/mini.icons" },
     config = function()
       require("fzf-lua").setup({
-        winopts = { fullscreen = true },
+        winopts = {
+          fullscreen = true,
+          preview = {
+            layout = "vertical",
+          },
+        },
         previewers = {
           builtin = {
             snacks_image = { enabled = false, render_inline = false },
