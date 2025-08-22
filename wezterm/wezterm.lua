@@ -15,9 +15,10 @@ config.initial_rows = 28
 config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Nerd Font", "Noto Color Emoji" })
 
 -- or, changing the font size and color scheme.
-config.font_size = 12
+config.font_size = 13
+
 -- config.color_scheme = "tokyonight_moon"
-config.color_scheme = "carbonfox"
+config.color_scheme = "nightfox"
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{

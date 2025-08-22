@@ -2,7 +2,8 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
-vim.api.nvim_create_user_command("CopyRelPath", "call setreg('+', expand('%'))", {})
+vim.api.nvim_create_user_command("CopyRelPath", "call setreg('+', fnamemodify(expand('%'), ':.'))", {})
+vim.api.nvim_create_user_command("CopyAbsPath", "call setreg('+', expand('%:p'))", {})
 
 local function set_filetype_settings(lang, width, tabstop)
   vim.api.nvim_create_autocmd("FileType", {
