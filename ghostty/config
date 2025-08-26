@@ -1,6 +1,5 @@
-theme = nightfox
+theme = modus_operandi
 
-# font-family = Monaspace Krypton
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
@@ -8,7 +7,6 @@ font-thicken = false
 font-size = 14
 
 adjust-cell-height = 6
-# adjust-cursor-height = 10
 
 alpha-blending = linear-corrected
 
@@ -27,9 +25,6 @@ scrollback-limit = 50000
 bold-is-bright = true
 
 copy-on-select = true
-
-# background-opacity = 0.92
-# background-blur-radius = 40
 
 macos-titlebar-style = tabs
 macos-option-as-alt = true
