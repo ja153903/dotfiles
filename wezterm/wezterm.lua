@@ -13,8 +13,10 @@ config.initial_cols = 120
 config.initial_rows = 28
 
 -- config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Nerd Font", "Noto Color Emoji" })
-config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
 -- config.font = wezterm.font_with_fallback({ "MonoLisa", "Noto Color Emoji" })
+config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
+
+config.freetype_load_flags = "NO_HINTING"
 
 -- or, changing the font size and color scheme.
 config.font_size = 14
