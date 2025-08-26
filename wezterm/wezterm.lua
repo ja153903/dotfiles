@@ -12,10 +12,12 @@ local config = wezterm.config_builder()
 config.initial_cols = 120
 config.initial_rows = 28
 
-config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Nerd Font", "Noto Color Emoji" })
+-- config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Nerd Font", "Noto Color Emoji" })
+config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
+-- config.font = wezterm.font_with_fallback({ "MonoLisa", "Noto Color Emoji" })
 
 -- or, changing the font size and color scheme.
-config.font_size = 13
+config.font_size = 14
 
 -- config.color_scheme = "tokyonight_moon"
 config.color_scheme = "nightfox"
