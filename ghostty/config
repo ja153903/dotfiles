@@ -1,6 +1,7 @@
 theme = modus_operandi
 
 font-family = mononoki
+font-family = Noto Color Emoji
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
