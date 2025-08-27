@@ -1,13 +1,13 @@
 theme = modus_operandi
 
-font-family = "Noto Color Emoji"
-font-feature = +calt
-font-feature = +liga
-font-feature = +dlig
-font-thicken = false
+font-family = mononoki
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+font-thicken = true
 font-size = 14
 
-adjust-cell-height = 6
+adjust-cell-height = 10
 
 alpha-blending = linear-corrected
 
