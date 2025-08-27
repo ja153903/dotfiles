@@ -14,7 +14,7 @@ config.initial_rows = 28
 
 -- config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Nerd Font", "Noto Color Emoji" })
 -- config.font = wezterm.font_with_fallback({ "MonoLisa", "Noto Color Emoji" })
-config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
+config.font = wezterm.font_with_fallback({ "mononoki", "Noto Color Emoji" })
 
 config.freetype_load_flags = "NO_HINTING"
 
@@ -22,7 +22,7 @@ config.freetype_load_flags = "NO_HINTING"
 config.font_size = 14
 
 -- config.color_scheme = "tokyonight_moon"
-config.color_scheme = "nightfox"
+config.color_scheme = "modus_operandi"
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
