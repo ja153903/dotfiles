@@ -22,7 +22,7 @@ config.freetype_load_flags = "NO_HINTING"
 config.font_size = 14
 
 -- config.color_scheme = "tokyonight_moon"
-config.color_scheme = "modus_operandi"
+config.color_scheme = "Modus-Operandi"
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
@@ -64,7 +64,7 @@ tabline.setup({
 	options = {
 		icons_enabled = true,
 		tabs_enabled = true,
-		theme = "carbonfox",
+		theme = "Modus-Operandi",
 		section_separators = "",
 		component_separators = "",
 		tab_separators = "",
