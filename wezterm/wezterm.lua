@@ -6,7 +6,8 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.font = wezterm.font_with_fallback({ "mononoki", "Noto Color Emoji" })
+-- config.font = wezterm.font_with_fallback({ "mononoki", "Noto Color Emoji" })
+config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
 
 config.freetype_load_flags = "NO_HINTING"
 
