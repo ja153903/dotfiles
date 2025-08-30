@@ -6,23 +6,14 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- This is where you actually apply your config choices.
-
--- For example, changing the initial geometry for new windows:
-config.initial_cols = 120
-config.initial_rows = 28
-
--- config.font = wezterm.font_with_fallback({ "Monaspace Krypton", "MonaspiceKr Nerd Font", "Noto Color Emoji" })
--- config.font = wezterm.font_with_fallback({ "MonoLisa", "Noto Color Emoji" })
 config.font = wezterm.font_with_fallback({ "mononoki", "Noto Color Emoji" })
 
 config.freetype_load_flags = "NO_HINTING"
 
--- or, changing the font size and color scheme.
 config.font_size = 14
 
--- config.color_scheme = "tokyonight_moon"
-config.color_scheme = "Modus-Operandi"
+config.color_scheme = "duskfox"
+
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
@@ -64,7 +55,7 @@ tabline.setup({
 	options = {
 		icons_enabled = true,
 		tabs_enabled = true,
-		theme = "Modus-Operandi",
+		theme = "duskfox",
 		section_separators = "",
 		component_separators = "",
 		tab_separators = "",
@@ -85,8 +76,6 @@ tabline.setup({
 	extensions = {},
 })
 
--- config.window_decorations = "RESIZE"
-
 for i = 1, 8 do
 	-- CTRL+ALT + number to move to that position
 	table.insert(config.keys, {
@@ -96,5 +85,4 @@ for i = 1, 8 do
 	})
 end
 
--- Finally, return the configuration to wezterm:
 return config

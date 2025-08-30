@@ -1,8 +1,9 @@
 return {
   {
     "miikanissi/modus-themes.nvim",
-    priority = 1000,
-    lazy = false,
+    enabled = false,
+    -- priority = 1000,
+    -- lazy = false,
     config = function()
       -- Default options
       require("modus-themes").setup({
@@ -37,14 +38,14 @@ return {
         ---@param colors ColorScheme
         on_highlights = function(highlights, colors) end,
       })
-      vim.cmd([[colorscheme modus_operandi]]) -- modus_operandi, modus_vivendi
+      -- vim.cmd([[colorscheme modus_operandi]]) -- modus_operandi, modus_vivendi
     end,
   },
   {
     "EdenEast/nightfox.nvim",
-    -- lazy = false,
-    -- priority = 1000,
-    enabled = false,
+    lazy = false,
+    priority = 1000,
+    -- enabled = false,
     config = function()
       -- Default options
       require("nightfox").setup({
@@ -82,9 +83,6 @@ return {
             visual = false,
             search = false,
           },
-          modules = { -- List of various plugins and additional options
-            -- ...
-          },
         },
         palettes = {},
         specs = {},
@@ -92,7 +90,7 @@ return {
       })
 
       -- setup must be called before loading
-      -- vim.cmd("colorscheme dayfox")
+      vim.cmd("colorscheme duskfox")
     end,
   },
 }
