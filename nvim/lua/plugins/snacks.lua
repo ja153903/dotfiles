@@ -10,7 +10,7 @@ return {
       -- refer to the configuration section below
       bigfile = { enabled = true },
       dashboard = {
-        enabled = true,
+        enabled = false,
       },
       indent = { enabled = false },
       input = { enabled = true },
