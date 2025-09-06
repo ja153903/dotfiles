@@ -14,7 +14,7 @@ config.freetype_load_flags = "NO_HINTING"
 config.font_size = 14
 
 -- config.color_scheme = "duskfox"
-config.color_scheme = "Gruvbox Dark (Gogh)"
+config.color_scheme = "carbonfox"
 
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
@@ -57,7 +57,7 @@ tabline.setup({
 	options = {
 		icons_enabled = true,
 		tabs_enabled = true,
-		theme = "Modus-Operandi",
+		theme = "carbonfox",
 		section_separators = "",
 		component_separators = "",
 		tab_separators = "",

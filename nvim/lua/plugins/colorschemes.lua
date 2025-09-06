@@ -1,7 +1,8 @@
 return {
   {
     "ellisonleao/gruvbox.nvim",
-    priority = 1000,
+    enabled = false,
+    -- priority = 1000,
     config = function()
       require("gruvbox").setup({
         terminal_colors = true, -- add neovim terminal colors
@@ -20,20 +21,20 @@ return {
         invert_signs = false,
         invert_tabline = false,
         inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = "", -- can be "hard", "soft" or empty string
+        contrast = "hard", -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {},
         dim_inactive = false,
         transparent_mode = false,
       })
-      vim.cmd([[colorscheme gruvbox]])
+      -- vim.cmd([[colorscheme gruvbox]])
     end,
   },
   {
     "miikanissi/modus-themes.nvim",
-    -- enabled = false,
-    priority = 1000,
-    lazy = false,
+    enabled = false,
+    -- priority = 1000,
+    -- lazy = false,
     config = function()
       -- Default options
       require("modus-themes").setup({
@@ -73,9 +74,9 @@ return {
   },
   {
     "EdenEast/nightfox.nvim",
-    -- lazy = false,
-    -- priority = 1000,
-    enabled = false,
+    lazy = false,
+    priority = 1000,
+    -- enabled = false,
     config = function()
       -- Default options
       require("nightfox").setup({
@@ -120,7 +121,7 @@ return {
       })
 
       -- setup must be called before loading
-      -- vim.cmd("colorscheme duskfox")
+      vim.cmd("colorscheme carbonfox")
     end,
   },
 }
