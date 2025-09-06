@@ -11,11 +11,8 @@ config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
 
 config.freetype_load_flags = "NO_HINTING"
 
-config.font_size = 14
-
 -- config.color_scheme = "duskfox"
-config.color_scheme = "carbonfox"
-
+config.color_scheme = "Vs Code Dark+ (Gogh)"
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
@@ -57,7 +54,7 @@ tabline.setup({
 	options = {
 		icons_enabled = true,
 		tabs_enabled = true,
-		theme = "carbonfox",
+		theme = "Vs Code Dark+ (Gogh)",
 		section_separators = "",
 		component_separators = "",
 		tab_separators = "",

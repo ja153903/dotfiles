@@ -1,82 +1,9 @@
 return {
   {
-    "ellisonleao/gruvbox.nvim",
-    enabled = false,
-    -- priority = 1000,
-    config = function()
-      require("gruvbox").setup({
-        terminal_colors = true, -- add neovim terminal colors
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = true,
-          emphasis = true,
-          comments = true,
-          operators = false,
-          folds = true,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = "hard", -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = false,
-      })
-      -- vim.cmd([[colorscheme gruvbox]])
-    end,
-  },
-  {
-    "miikanissi/modus-themes.nvim",
-    enabled = false,
-    -- priority = 1000,
-    -- lazy = false,
-    config = function()
-      -- Default options
-      require("modus-themes").setup({
-        -- Theme comes in two styles `modus_operandi` and `modus_vivendi`
-        -- `auto` will automatically set style based on background set with vim.o.background
-        style = "auto",
-        variant = "default", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
-        transparent = false, -- Transparent background (as supported by the terminal)
-        dim_inactive = false, -- "non-current" windows are dimmed
-        hide_inactive_statusline = false, -- Hide statuslines on inactive windows. Works with the standard **StatusLine**, **LuaLine** and **mini.statusline**
-        line_nr_column_background = false, -- Distinct background colors in line number column. `false` will disable background color and fallback to Normal background
-        sign_column_background = false, -- Distinct background colors in sign column. `false` will disable background color and fallback to Normal background
-        styles = {
-          -- Style to be applied to different syntax groups
-          -- Value is any valid attr-list value for `:help nvim_set_hl`
-          comments = { italic = true },
-          keywords = { italic = false },
-          functions = {},
-          variables = {},
-        },
-
-        --- You can override specific color groups to use other groups or a hex color
-        --- Function will be called with a ColorScheme table
-        --- Refer to `extras/lua/modus_operandi.lua` or `extras/lua/modus_vivendi.lua` for the ColorScheme table
-        ---@param colors ColorScheme
-        on_colors = function(colors) end,
-
-        --- You can override specific highlights to use other groups or a hex color
-        --- Function will be called with a Highlights and ColorScheme table
-        --- Refer to `extras/lua/modus_operandi.lua` or `extras/lua/modus_vivendi.lua` for the Highlights and ColorScheme table
-        ---@param highlights Highlights
-        ---@param colors ColorScheme
-        on_highlights = function(highlights, colors) end,
-      })
-      -- vim.cmd([[colorscheme modus_operandi]]) -- modus_operandi, modus_vivendi
-    end,
-  },
-  {
     "EdenEast/nightfox.nvim",
-    lazy = false,
-    priority = 1000,
-    -- enabled = false,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       -- Default options
       require("nightfox").setup({
@@ -121,7 +48,53 @@ return {
       })
 
       -- setup must be called before loading
-      vim.cmd("colorscheme carbonfox")
+      -- vim.cmd("colorscheme terafox")
+    end,
+  },
+  {
+    "Mofiqul/vscode.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      local c = require("vscode.colors").get_colors()
+      require("vscode").setup({
+        -- Alternatively set style in setup
+        -- style = 'light'
+
+        -- Enable transparent background
+        transparent = false,
+
+        -- Enable italic comment
+        italic_comments = false,
+
+        -- Enable italic inlay type hints
+        italic_inlayhints = false,
+
+        -- Underline `@markup.link.*` variants
+        underline_links = true,
+
+        -- Disable nvim-tree background color
+        disable_nvimtree_bg = true,
+
+        -- Apply theme colors to terminal
+        terminal_colors = true,
+
+        -- Override colors (see ./lua/vscode/colors.lua)
+        color_overrides = {
+          vscLineNumber = "#FFFFFF",
+        },
+
+        -- Override highlight groups (see ./lua/vscode/theme.lua)
+        group_overrides = {
+          -- this supports the same val table as vim.api.nvim_set_hl
+          -- use colors from this colorscheme by requiring vscode.colors!
+          Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+        },
+      })
+      -- require('vscode').load()
+
+      -- load the theme without affecting devicon colors.
+      vim.cmd.colorscheme("vscode")
     end,
   },
 }
