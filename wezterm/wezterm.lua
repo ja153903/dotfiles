@@ -54,7 +54,7 @@ tabline.setup({
 	options = {
 		icons_enabled = true,
 		tabs_enabled = true,
-		theme = "Vs Code Dark+ (Gogh)",
+		theme = "carbonfox",
 		section_separators = "",
 		component_separators = "",
 		tab_separators = "",
