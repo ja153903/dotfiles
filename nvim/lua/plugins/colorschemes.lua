@@ -53,8 +53,9 @@ return {
   },
   {
     "Mofiqul/vscode.nvim",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
@@ -94,7 +95,20 @@ return {
       -- require('vscode').load()
 
       -- load the theme without affecting devicon colors.
-      vim.cmd.colorscheme("vscode")
+      -- vim.cmd.colorscheme("vscode")
+    end,
+  },
+  {
+    "darianmorat/gruvdark.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = false, -- Show or hide background
+      colors = {}, -- Override default colors
+      highlights = {}, -- Override highlight groups
+    },
+    config = function()
+      vim.cmd.colorscheme("gruvdark")
     end,
   },
 }
