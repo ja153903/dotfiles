@@ -40,20 +40,18 @@ window-padding-y = 0
 window-padding-balance = true
 
 # Keybinds
-keybind = ctrl+e>n=new_split:right
-keybind = ctrl+e>shift+n=new_split:left
-keybind = ctrl+e>d=new_split:down
-keybind = ctrl+e>shift+d=new_split:up
+keybind = ctrl+3>n=new_split:right
+keybind = ctrl+3>shift+n=new_split:left
+keybind = ctrl+3>d=new_split:down
+keybind = ctrl+3>shift+d=new_split:up
+keybind = ctrl+3>l=goto_split:right
+keybind = ctrl+3>h=goto_split:left
+keybind = ctrl+3>j=goto_split:bottom
+keybind = ctrl+3>k=goto_split:top
+keybind = ctrl+3>shift+l=resize_split:right,50
+keybind = ctrl+3>shift+h=resize_split:left,50
+keybind = ctrl+3>shift+j=resize_split:down,50
+keybind = ctrl+3>shift+k=resize_split:up,50
+keybind = ctrl+3>equal=equalize_splits
 
-keybind = ctrl+e>l=goto_split:right
-keybind = ctrl+e>h=goto_split:left
-keybind = ctrl+e>j=goto_split:bottom
-keybind = ctrl+e>k=goto_split:top
-
-keybind = ctrl+e>shift+l=resize_split:right,50
-keybind = ctrl+e>shift+h=resize_split:left,50
-keybind = ctrl+e>shift+j=resize_split:down,50
-keybind = ctrl+e>shift+k=resize_split:up,50
-
-keybind = ctrl+e>equal=equalize_splits
 keybind = shift+enter=text:\n

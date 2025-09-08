@@ -30,7 +30,7 @@ return {
         },
       },
       scope = { enabled = true },
-      animate = { enabled = false },
+      animate = { enabled = true },
       images = { enabled = false },
       terminal = { enabled = true },
     },
