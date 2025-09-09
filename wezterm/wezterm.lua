@@ -10,10 +10,15 @@ config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
 config.font_size = 13
 config.line_height = 1.2
 
+config.window_padding = {
+	left = 0,
+	right = 0,
+	top = 4,
+	bottom = 0,
+}
 config.freetype_load_flags = "NO_HINTING"
 
--- config.color_scheme = "duskfox"
-config.color_scheme = "Vs Code Dark+ (Gogh)"
+config.color_scheme = "carbonfox"
 config.leader = { key = "e", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
