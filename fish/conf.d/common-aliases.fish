@@ -15,4 +15,4 @@ alias dvenv="pyenv deactivate"
 alias present="presenterm --config-file $HOME/.config/presenterm/config.yaml --theme terminal-dark"
 alias to-pdf="presenterm --export-pdf"
 
-alias beta='NVIM_APPNAME="beta" nvim'
+alias minimal='NVIM_APPNAME="minimal" nvim'
