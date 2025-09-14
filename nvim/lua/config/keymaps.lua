@@ -7,6 +7,11 @@ vim.keymap.set("n", "<leader>z", function()
   require("zen-mode").toggle()
 end, { desc = "Toggle ZenMode" })
 
+-- Open Blink.cmp Menu
+vim.keymap.set("i", "<C-space>", function()
+  require("blink.cmp").show()
+end, { desc = "Open Blink Menu" })
+
 -- Terminal Keymaps
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
