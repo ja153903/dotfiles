@@ -17,8 +17,7 @@ config.window_padding = {
 	bottom = 0,
 }
 config.freetype_load_flags = "NO_HINTING"
-config.color_scheme = "Vs Code Dark+ (Gogh)"
--- config.color_scheme = "carbonfox"
+config.color_scheme = "nordic"
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
