@@ -6,9 +6,17 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+config.window_background_opacity = 0.95
+config.macos_window_background_blur = 20
+
 config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
 config.font_size = 13
 config.line_height = 1.2
+
+-- Performance settings
+config.max_fps = 144
+config.animation_fps = 60
+config.cursor_blink_rate = 250
 
 config.window_padding = {
 	left = 0,
