@@ -1,13 +1,17 @@
+theme = cyberdream
+
 font-family = TX-02
 font-family = Noto Color Emoji
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
 font-thicken = true
-font-size = 13
 
 adjust-cell-height = 12
 adjust-cursor-height = 12
+
+background-opacity = 0.9
+background-blur-radius = 30
 
 alpha-blending = linear-corrected
 

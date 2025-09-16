@@ -6,7 +6,7 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
 
 config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
