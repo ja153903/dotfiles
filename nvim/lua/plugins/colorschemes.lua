@@ -11,7 +11,7 @@ return {
         hide_fillchars = true,
         terminal_colors = true,
         cache = true,
-        borderless_pickers = true,
+        borderless_pickers = false,
         overrides = function(c)
           return {
             CursorLine = { bg = c.bg },
