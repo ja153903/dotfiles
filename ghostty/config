@@ -37,8 +37,8 @@ macos-option-as-alt = true
 clipboard-read = allow
 clipboard-write = allow
 
-window-padding-x = 0
-window-padding-y = 0
+#window-padding-x = 0
+#window-padding-y = 0
 window-padding-balance = true
 
 # Keybinds
