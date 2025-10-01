@@ -6,6 +6,7 @@ font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
 font-thicken = true
+font-size = 12
 
 adjust-cell-height = 12
 adjust-cursor-height = 12
