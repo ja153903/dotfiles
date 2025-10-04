@@ -6,11 +6,10 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.window_background_opacity = 0.9
-config.macos_window_background_blur = 20
+-- config.window_background_opacity = 0.9
+-- config.macos_window_background_blur = 20
 
-config.font = wezterm.font_with_fallback({ "TX-02", "Noto Color Emoji" })
-config.font_size = 13
+config.font = wezterm.font_with_fallback({ "Monaspace Neon" })
 config.line_height = 1.2
 
 -- Performance settings
@@ -24,8 +23,9 @@ config.window_padding = {
 	top = 4,
 	bottom = 0,
 }
+
 config.freetype_load_flags = "NO_HINTING"
-config.color_scheme = "cyberdream"
+config.color_scheme = "Catppuccin Mocha (Gogh)"
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
