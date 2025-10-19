@@ -11,7 +11,7 @@ return {
       -- dashboard = {
       --   enabled = false,
       -- },
-      -- indent = { enabled = false },
+      indent = { enabled = false },
       -- input = { enabled = true },
       -- notifier = { enabled = true },
       -- quickfile = { enabled = true },
@@ -29,7 +29,7 @@ return {
       --   },
       -- },
       -- scope = { enabled = true },
-      -- animate = { enabled = true },
+      animate = { enabled = true },
       -- images = { enabled = false },
       -- terminal = { enabled = true },
     },

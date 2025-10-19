@@ -1,5 +1,4 @@
-theme = Catppuccin Mocha
-
+theme = cobalt
 font-family = Monaspace Neon
 font-family = Noto Color Emoji
 font-feature = -calt

@@ -13,6 +13,8 @@ fish_add_path $PNPM_HOME
 fish_add_path /usr/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.luarocks/bin
+fish_add_path $HOME/.local/share/uv/python
+fish_add_path ~/.local/share/uv/python/cpython-3.14.*/bin
 
 if set -q VIRTUAL_ENV
     echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "

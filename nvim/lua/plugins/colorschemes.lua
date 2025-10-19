@@ -1,14 +1,11 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "wurli/cobalt.nvim",
     lazy = false,
     priority = 1000,
+    opts = {},
     config = function()
-      require("catppuccin").setup({
-        auto_integrations = true,
-      })
-      vim.cmd([[colorscheme catppuccin]])
+      vim.cmd([[colorscheme cobalt]])
     end,
   },
 }
