@@ -28,6 +28,9 @@ return {
           prettier = { require_cwd = true },
           prettierd = { require_cwd = true },
           ruff_format = { require_cwd = true },
+          ["clang-format"] = {
+            command = "/opt/homebrew/bin/clang-format",
+          },
         },
       }
       return opts

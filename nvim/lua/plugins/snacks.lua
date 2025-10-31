@@ -13,7 +13,7 @@ return {
       -- },
       indent = { enabled = false },
       -- input = { enabled = true },
-      -- notifier = { enabled = true },
+      notifier = { enabled = false },
       -- quickfile = { enabled = true },
       -- scroll = { enabled = false },
       -- statuscolumn = { enabled = true },
