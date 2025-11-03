@@ -19,9 +19,6 @@ return {
       statuscolumn = { enabled = true },
       words = { enabled = true },
       picker = {
-        layout = {
-          fullscreen = true,
-        },
         sources = {
           explorer = {
             auto_close = true,
