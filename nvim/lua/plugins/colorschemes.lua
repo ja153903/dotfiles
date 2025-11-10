@@ -1,8 +1,17 @@
 return {
   {
-    "Mofiqul/vscode.nvim",
+    "wurli/cobalt.nvim",
     lazy = false,
     priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme cobalt]])
+    end,
+  },
+  {
+    "Mofiqul/vscode.nvim",
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     config = function()
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
@@ -42,7 +51,7 @@ return {
       require("vscode").load()
 
       -- load the theme without affecting devicon colors.
-      vim.cmd([[colorscheme vscode]])
+      -- vim.cmd([[colorscheme vscode]])
     end,
   },
 }
