@@ -3,14 +3,6 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        eslint = {
-          settings = {
-            workingDirectories = { mode = "auto" },
-            experimental = {
-              useFlatConfig = true,
-            },
-          },
-        },
         tinymist = {
           settings = {
             exportPdf = "onSave",
@@ -39,7 +31,6 @@ return {
           expose_as_code_action = { "add_missing_imports", "remove_unused" },
           tsserver_path = nil,
           tsserver_plugins = {},
-          tsserver_max_memory = 4096,
           tsserver_format_options = {
             allowIncompleteCompletions = false,
             allowRenameOfImportPath = false,

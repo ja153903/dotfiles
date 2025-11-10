@@ -30,4 +30,5 @@ status --is-interactive; and rbenv init - fish | source
 uv generate-shell-completion fish | source
 uvx --generate-shell-completion fish | source
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /Users/jaimeabbariao/.ghcup/bin # ghcup-env
+test -r '/Users/jaimeabbariao/.opam/opam-init/init.fish' && source '/Users/jaimeabbariao/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
+
