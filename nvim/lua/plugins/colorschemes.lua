@@ -1,10 +1,33 @@
 return {
   {
-    "wurli/cobalt.nvim",
+    "tiesen243/vercel.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme cobalt]])
+      require("vercel").setup({
+        transparent = false, -- Boolean: Sets the background to transparent (Default: false)
+        italics = {
+          comments = true, -- Boolean: Italicizes comments (Default: true)
+          keywords = false, -- Boolean: Italicizes keywords (Default: true)
+          functions = false, -- Boolean: Italicizes functions (Default: true)
+          strings = false, -- Boolean: Italicizes strings (Default: true)
+          variables = false, -- Boolean: Italicizes variables (Default: true)
+          bufferline = false, -- Boolean: Italicizes bufferline (Default: false)
+        },
+        overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
+      })
+
+      -- This must be called before setting the colorscheme, otherwise it will always default to light mode
+      vim.cmd.colorscheme("vercel")
+    end,
+  },
+  {
+    "wurli/cobalt.nvim",
+    enabled = false,
+    -- lazy = false,
+    -- priority = 1000,
+    config = function()
+      -- vim.cmd([[colorscheme cobalt]])
     end,
   },
   {
@@ -48,7 +71,7 @@ return {
           Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
         },
       })
-      require("vscode").load()
+      -- require("vscode").load()
 
       -- load the theme without affecting devicon colors.
       -- vim.cmd([[colorscheme vscode]])
