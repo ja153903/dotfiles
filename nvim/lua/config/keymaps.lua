@@ -2,16 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- Toggle ZenMode
-vim.keymap.set("n", "<leader>z", function()
-  require("zen-mode").toggle()
-end, { desc = "Toggle ZenMode" })
-
--- Open Blink.cmp Menu
--- vim.keymap.set("i", "<C-space>", function()
---   require("blink.cmp").show()
--- end, { desc = "Open Blink Menu" })
-
 -- Terminal Keymaps
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
