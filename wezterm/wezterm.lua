@@ -6,26 +6,16 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- config.window_background_opacity = 0.9
--- config.macos_window_background_blur = 20
-
-config.font = wezterm.font_with_fallback({ "Monaspace Neon" })
+config.font = wezterm.font_with_fallback({ "mononoki" })
 config.line_height = 1.2
+config.font_size = 16
 
 -- Performance settings
 config.max_fps = 144
 config.animation_fps = 60
 config.cursor_blink_rate = 250
 
-config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 4,
-	bottom = 0,
-}
-
-config.freetype_load_flags = "NO_HINTING"
-config.color_scheme = "Vs Code Dark+ (Gogh)"
+config.color_scheme = "Seoul256 (Gogh)"
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
@@ -67,7 +57,6 @@ tabline.setup({
 	options = {
 		icons_enabled = true,
 		tabs_enabled = true,
-		theme = "carbonfox",
 		section_separators = "",
 		component_separators = "",
 		tab_separators = "",
