@@ -6,16 +6,16 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.font = wezterm.font_with_fallback({ "mononoki" })
+config.font = wezterm.font_with_fallback({ "TX-02" })
 config.line_height = 1.2
-config.font_size = 16
+config.font_size = 12
 
 -- Performance settings
 config.max_fps = 144
 config.animation_fps = 60
 config.cursor_blink_rate = 250
 
-config.color_scheme = "Seoul256 (Gogh)"
+config.color_scheme = "Vs Code Light+ (Gogh)"
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
