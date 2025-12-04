@@ -130,7 +130,7 @@ draw_bold_text_with_bright_colors = false  # Default
 # Primary colors
 [colors.primary]
 foreground = "#d8d8d8"  # Default
-background = "#181818"  # Default
+background = "#151515"  # Default
 dim_foreground = "#828482"  # Default
 bright_foreground = "None"  # Default
 
