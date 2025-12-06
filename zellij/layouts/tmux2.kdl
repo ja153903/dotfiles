@@ -3,7 +3,7 @@ layout {
     children
       pane size=1 borderless=true {
         plugin location="file:~/programming/dotfiles/zellij/zjstatus-releases/zjstatus.wasm" {
-          format_left  "#[bg=green,fg=black] {command_host_os_icon} {session} {mode}"
+          format_left  "#[bg=green,fg=black] {session} {mode}"
           format_center "{tabs}"
           format_right "#[bg=green,fg=black] {swap_layout} │ {datetime} "
           format_space  "#[bg=green]"
