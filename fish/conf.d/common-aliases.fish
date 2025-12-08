@@ -16,3 +16,4 @@ alias present="presenterm --config-file $HOME/.config/presenterm/config.yaml --t
 alias to-pdf="presenterm --export-pdf"
 
 alias minimal='NVIM_APPNAME="minimal" nvim'
+alias todo="e ~/todo.txt"

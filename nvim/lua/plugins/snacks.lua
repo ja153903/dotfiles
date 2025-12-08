@@ -12,6 +12,7 @@ return {
       input = { enabled = false },
       notifier = { enabled = false },
       animate = { enabled = true },
+      dashboard = { enabled = false },
     },
   },
 }
