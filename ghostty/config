@@ -1,9 +1,9 @@
-theme = no-clown-fiesta
+theme = Tomorrow Night
 font-family = TX-02
 font-family = Noto Color Emoji
-font-feature = +calt
-font-feature = +liga
-font-feature = +dlig
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
 font-thicken = true
 font-size = 12
 
@@ -42,18 +42,23 @@ clipboard-write = allow
 window-padding-balance = true
 
 # Keybinds
-keybind = ctrl+s>n=new_split:right
-keybind = ctrl+s>shift+n=new_split:left
-keybind = ctrl+s>d=new_split:down
-keybind = ctrl+s>shift+d=new_split:up
-keybind = ctrl+s>l=goto_split:right
-keybind = ctrl+s>h=goto_split:left
-keybind = ctrl+s>j=goto_split:bottom
-keybind = ctrl+s>k=goto_split:top
-keybind = ctrl+s>shift+l=resize_split:right,50
-keybind = ctrl+s>shift+h=resize_split:left,50
-keybind = ctrl+s>shift+j=resize_split:down,50
-keybind = ctrl+s>shift+k=resize_split:up,50
-keybind = ctrl+s>equal=equalize_splits
+keybind = alt+p>n=new_split:right
+keybind = alt+p>shift+n=new_split:left
+keybind = alt+p>d=new_split:down
+keybind = alt+p>shift+d=new_split:up
+
+keybind = alt+l=goto_split:right
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:bottom
+keybind = alt+k=goto_split:top
+
+keybind = alt+r>shift+l=resize_split:right,50
+keybind = alt+r>shift+h=resize_split:left,50
+keybind = alt+r>shift+j=resize_split:down,50
+keybind = alt+r>shift+k=resize_split:up,50
+keybind = alt+r>equal=equalize_splits
+
+keybind = alt+t>l=next_tab
+keybind = alt+t>h=previous_tab
 
 keybind = shift+enter=text:\n
