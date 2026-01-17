@@ -1,4 +1,4 @@
-theme = Atom One Dark
+theme = Adwaita
 font-family = TX-02
 font-family = Noto Color Emoji
 font-feature = -calt
@@ -10,8 +10,8 @@ font-size = 12
 adjust-cell-height = 10
 adjust-cursor-height = 10
 
-#background-opacity = 0.93
-#background-blur-radius = 10
+#background-opacity = 0.75
+#background-blur-radius = 30
 
 alpha-blending = linear-corrected
 
