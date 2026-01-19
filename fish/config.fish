@@ -6,6 +6,7 @@ set -x CFLAGS "-I$(brew --prefix)/include"
 set -x SWIG_FEATURES "-I$(brew --prefix)/include"
 set -x DEV $HOME/programming
 set -x BPL $DEV/by-programming-languages
+set -x PRESENTERM_CONFIG_FILE ~/.config/presenterm/config.yaml
 
 fish_add_path $HOME/.cargo/bin
 fish_add_path /opt/homebrew/bin
