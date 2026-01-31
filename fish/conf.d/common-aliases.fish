@@ -18,3 +18,4 @@ alias to-pdf="presenterm --export-pdf"
 alias minimal='NVIM_APPNAME="minimal" nvim'
 alias todo="e ~/db/directory.md"
 alias present="presenterm"
+alias to-pdf="presenterm --export-pdf"
