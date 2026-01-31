@@ -11,13 +11,10 @@ vim.api.nvim_create_user_command("CopyRelPath", function()
 end, {})
 vim.api.nvim_create_user_command("CopyAbsPath", "call setreg('+', expand('%:p'))", {})
 
-local function set_filetype_settings(lang, width, tabstop)
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = lang,
-    command = string.format("setlocal shiftwidth=%d tabstop=%d", width, tabstop),
-  })
-end
-
-set_filetype_settings("cpp", 2, 2)
-set_filetype_settings("c", 2, 2)
-set_filetype_settings("roc", 4, 4)
+vim.api.nvim_create_user_command("CopyClaudePath", function()
+  local rel_path = vim.fn.expand("%:.")
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  local result = "@" .. rel_path .. ":" .. row
+  vim.fn.setreg("+", result)
+  print("Copied to clipboard: " .. result)
+end, {})
