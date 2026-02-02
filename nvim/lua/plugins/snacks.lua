@@ -10,6 +10,7 @@ return {
       -- refer to the configuration section below
       animate = { enabled = true },
       indent = { enabled = false },
+      dashboard = { enabled = false },
     },
   },
 }

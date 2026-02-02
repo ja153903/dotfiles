@@ -18,3 +18,18 @@ vim.api.nvim_create_user_command("CopyClaudePath", function()
   vim.fn.setreg("+", result)
   print("Copied to clipboard: " .. result)
 end, {})
+
+-- NOTE: this user command takes the class the PDF is for as an argument
+vim.api.nvim_create_user_command("Export", function(opts)
+  local class = opts.fargs[1]
+  local DST_DIR = vim.env.PERSONAL_SITE_ASSET_PATH
+  local filepath = vim.fn.expand("%:p")
+
+  local parts = vim.split(filepath, "/", { plain = true })
+  local last3 = vim.list_slice(parts, #parts - 2)
+
+  local resulting_filepath = DST_DIR .. last3[1] .. "/" .. class .. "/" .. last3[2] .. "/" .. last3[3]
+
+  -- run os.execute instead
+  vim.fn.system({ "cp", filepath, resulting_filepath })
+end, { nargs = "*" })

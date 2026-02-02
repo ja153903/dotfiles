@@ -13,3 +13,6 @@ function _G.set_terminal_keymaps()
   vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
   vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 end
+
+-- disable neotree keymap
+vim.keymap.del("n", "<leader>e")

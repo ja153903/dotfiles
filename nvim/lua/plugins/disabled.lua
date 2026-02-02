@@ -1,1 +1,3 @@
-return {}
+return {
+  { "rafamadriz/friendly-snippets", enabled = false },
+}

@@ -7,6 +7,7 @@ set -x SWIG_FEATURES "-I$(brew --prefix)/include"
 set -x DEV $HOME/programming
 set -x BPL $DEV/by-programming-languages
 set -x PRESENTERM_CONFIG_FILE ~/.config/presenterm/config.yaml
+set -x PERSONAL_SITE_ASSET_PATH ~/programming/personal-site/2025/oh-yeah/public/
 
 fish_add_path $HOME/.cargo/bin
 fish_add_path /opt/homebrew/bin
