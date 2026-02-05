@@ -1,3 +1,4 @@
+theme = Ubuntu
 font-family = TX-02
 font-family = Noto Color Emoji
 font-feature = -calt
@@ -35,10 +36,6 @@ macos-option-as-alt = true
 
 clipboard-read = allow
 clipboard-write = allow
-
-window-padding-x = 0
-window-padding-y = 0
-window-padding-balance = true
 
 # Keybinds
 keybind = alt+p>n=new_split:right

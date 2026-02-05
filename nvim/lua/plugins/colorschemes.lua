@@ -9,8 +9,8 @@ return {
         -- Theme comes in two styles `modus_operandi` and `modus_vivendi`
         -- `auto` will automatically set style based on background set with vim.o.background
         style = "auto",
-        variant = "tritanopia", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
-        transparent = false, -- Transparent background (as supported by the terminal)
+        variant = "deuteranopia", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
+        transparent = true, -- Transparent background (as supported by the terminal)
         dim_inactive = false, -- "non-current" windows are dimmed
         hide_inactive_statusline = false, -- Hide statuslines on inactive windows. Works with the standard **StatusLine**, **LuaLine** and **mini.statusline**
         line_nr_column_background = false, -- Distinct background colors in line number column. `false` will disable background color and fallback to Normal background
