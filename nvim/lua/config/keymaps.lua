@@ -15,4 +15,4 @@ function _G.set_terminal_keymaps()
 end
 
 -- disable neotree keymap
-vim.keymap.del("n", "<leader>e")
+-- vim.keymap.del("n", "<leader>e")
