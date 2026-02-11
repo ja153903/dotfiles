@@ -34,6 +34,8 @@ copy-on-select = true
 macos-titlebar-style = tabs
 macos-option-as-alt = true
 
+unfocused-split-opacity = 1
+
 clipboard-read = allow
 clipboard-write = allow
 

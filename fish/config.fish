@@ -17,8 +17,6 @@ fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.luarocks/bin
 fish_add_path $HOME/.local/share/uv/python
 fish_add_path ~/.local/share/uv/python/cpython-3.14.*/bin
-fish_add_path ~/programming/by-programming-languages/roc_nightly-macos_apple_silicon-2025-09-09-d73ea109cc2
-fish_add_path ~/.emacs.d/bin
 
 if set -q VIRTUAL_ENV
     echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "

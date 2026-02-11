@@ -11,10 +11,17 @@ vim.api.nvim_create_user_command("CopyRelPath", function()
 end, {})
 vim.api.nvim_create_user_command("CopyAbsPath", "call setreg('+', expand('%:p'))", {})
 
-vim.api.nvim_create_user_command("CopyClaudePath", function()
+vim.api.nvim_create_user_command("CopyClaudePathWithLine", function()
   local rel_path = vim.fn.expand("%:.")
   local row = vim.api.nvim_win_get_cursor(0)[1]
   local result = "@" .. rel_path .. ":" .. row
+  vim.fn.setreg("+", result)
+  print("Copied to clipboard: " .. result)
+end, {})
+
+vim.api.nvim_create_user_command("CopyClaudePath", function()
+  local rel_path = vim.fn.expand("%:.")
+  local result = "@" .. rel_path
   vim.fn.setreg("+", result)
   print("Copied to clipboard: " .. result)
 end, {})
