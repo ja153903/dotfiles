@@ -18,6 +18,7 @@ return {
           ocaml = { "ocamlformat" },
           rust = { "rustfmt" },
           typst = { "prettypst" },
+          haskell = { "ormolu" },
         },
         ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
         formatters = {

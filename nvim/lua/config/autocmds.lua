@@ -40,3 +40,5 @@ vim.api.nvim_create_user_command("Export", function(opts)
   -- run os.execute instead
   vim.fn.system({ "cp", filepath, resulting_filepath })
 end, { nargs = "*" })
+
+vim.lsp.set_log_level("off")

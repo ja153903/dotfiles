@@ -1,5 +1,5 @@
-theme = everviolet
-font-family = Monaspace Krypton
+theme = evergarden-winter-cherry
+font-family = BigBlueTerm437 Nerd Font
 font-family = Noto Color Emoji
 font-feature = -calt
 font-feature = -liga
@@ -10,8 +10,8 @@ font-size = 12
 adjust-cell-height = 10
 adjust-cursor-height = 10
 
-#background-opacity = 0.92
-#background-blur-radius = 50
+background-opacity = 0.92
+background-blur-radius = 50
 
 alpha-blending = linear-corrected
 

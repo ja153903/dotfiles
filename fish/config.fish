@@ -32,3 +32,5 @@ uv generate-shell-completion fish | source
 uvx --generate-shell-completion fish | source
 
 starship init fish | source
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /Users/jaimeabbariao/.ghcup/bin # ghcup-env
