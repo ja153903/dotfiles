@@ -1,13 +1,13 @@
-theme = modus_vivendi
-font-family = BigBlueTermPlus Nerd Font
-font-family = Noto Color Emoji
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
+theme = cobalt
+# font-family = BigBlueTermPlus Nerd Font
+font-family = TX-02
+font-feature = +calt
+font-feature = +liga
+font-feature = +dlig
 font-thicken = true
 font-size = 12
 
-adjust-cell-height = 10
+adjust-cell-height = 14
 adjust-cursor-height = 10
 
 #background-opacity = 0.92
@@ -33,6 +33,9 @@ copy-on-select = true
 
 macos-titlebar-style = tabs
 macos-option-as-alt = true
+
+#window-padding-x = 5
+#window-padding-y = 5
 
 unfocused-split-opacity = 1
 

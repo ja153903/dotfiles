@@ -15,7 +15,7 @@ config.max_fps = 144
 config.animation_fps = 60
 config.cursor_blink_rate = 250
 
-config.color_scheme = "Vs Code Light+ (Gogh)"
+config.color_scheme = "Cobalt Neon"
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{

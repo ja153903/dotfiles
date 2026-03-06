@@ -8,6 +8,7 @@ return {
             exportPdf = "onSave",
           },
         },
+        tsgo = {},
       },
       inlay_hints = {
         enabled = false,
@@ -19,10 +20,5 @@ return {
     lazy = false, -- or ft = 'typst'
     version = "1.*",
     opts = {}, -- lazy.nvim will implicitly calls `setup {}`
-  },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
   },
 }
