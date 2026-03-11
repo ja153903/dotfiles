@@ -1,19 +1,10 @@
-theme = cobalt
-# font-family = BigBlueTermPlus Nerd Font
-font-family = TX-02
-font-feature = +calt
-font-feature = +liga
-font-feature = +dlig
-font-thicken = true
-font-size = 12
+theme = carbonfox
+font-family = "PlemolJP Console NF"
 
-adjust-cell-height = 14
-adjust-cursor-height = 10
+#background-opacity = 0.95
+#background-blur-radius = 30
 
-#background-opacity = 0.92
-#background-blur-radius = 50
-
-alpha-blending = linear-corrected
+#alpha-blending = linear-corrected
 
 cursor-style = block
 cursor-style-blink = true
@@ -23,7 +14,7 @@ shell-integration-features=no-cursor
 
 freetype-load-flags = no-hinting
 
-working-directory = home
+#working-directory = home
 
 scrollback-limit = 500000
 
@@ -31,13 +22,7 @@ bold-is-bright = true
 
 copy-on-select = true
 
-macos-titlebar-style = tabs
 macos-option-as-alt = true
-
-#window-padding-x = 5
-#window-padding-y = 5
-
-unfocused-split-opacity = 1
 
 clipboard-read = allow
 clipboard-write = allow
