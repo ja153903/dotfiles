@@ -7,13 +7,13 @@ return {
   },
   {
     "craftzdog/solarized-osaka.nvim",
-    -- lazy = false,
-    -- priority = 1000,
-    enabled = false,
+    lazy = false,
+    priority = 1000,
+    -- enabled = false,
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
-      transparent = true, -- Enable this to disable setting the background color
+      transparent = false, -- Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
       styles = {
         -- Style to be applied to different syntax groups
@@ -97,9 +97,14 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
   },
   {
+    "aktersnurra/no-clown-fiesta.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "koda-glade",
+      colorscheme = "no-clown-fiesta",
     },
   },
 }

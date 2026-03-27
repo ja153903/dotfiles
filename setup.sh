@@ -23,7 +23,7 @@ install_homebrew() {
 }
 
 install_packages() {
-    local packages=(fish neovim starship ghostty)
+    local packages=(fish neovim starship ghostty tmux)
     local to_install=()
 
     for pkg in "${packages[@]}"; do
@@ -66,12 +66,25 @@ link() {
     echo "  linked: $dest -> $src"
 }
 
+install_oh_my_tmux() {
+    local omt_dir="$HOME/.local/share/tmux/oh-my-tmux"
+    if [[ -d "$omt_dir" ]]; then
+        echo "oh-my-tmux already installed."
+    else
+        echo "Cloning oh-my-tmux..."
+        mkdir -p "$(dirname "$omt_dir")"
+        git clone https://github.com/gpakosz/.tmux.git "$omt_dir"
+    fi
+}
+
 link_configs() {
     echo "Linking configs..."
     link "$DOTFILES_DIR/fish"          "$CONFIG_DIR/fish"
     link "$DOTFILES_DIR/ghostty"       "$CONFIG_DIR/ghostty"
     link "$DOTFILES_DIR/nvim"          "$CONFIG_DIR/nvim"
     link "$DOTFILES_DIR/starship.toml" "$CONFIG_DIR/starship.toml"
+    link "$HOME/.local/share/tmux/oh-my-tmux/.tmux.conf" "$CONFIG_DIR/tmux/tmux.conf"
+    link "$DOTFILES_DIR/tmux/tmux.conf.local"            "$CONFIG_DIR/tmux/tmux.conf.local"
 }
 
 # --- Set fish as default shell ---
@@ -103,6 +116,7 @@ main() {
 
     install_homebrew
     install_packages
+    install_oh_my_tmux
     echo ""
     link_configs
     echo ""
