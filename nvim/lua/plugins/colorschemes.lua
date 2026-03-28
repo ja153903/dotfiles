@@ -1,15 +1,14 @@
 return {
   {
     "wurli/cobalt.nvim",
-    -- lazy = false,
-    -- priority = 1000,
-    enabled = false,
+    lazy = false,
+    priority = 1000,
   },
   {
     "craftzdog/solarized-osaka.nvim",
-    lazy = false,
-    priority = 1000,
-    -- enabled = false,
+    -- lazy = false,
+    -- priority = 1000,
+    enabled = false,
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
@@ -92,11 +91,6 @@ return {
     },
   },
   {
-    "oskarnurm/koda.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-  },
-  {
     "aktersnurra/no-clown-fiesta.nvim",
     lazy = false,
     priority = 1000,
@@ -104,7 +98,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "no-clown-fiesta",
+      colorscheme = "cobalt",
     },
   },
 }
