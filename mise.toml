@@ -1,0 +1,17 @@
+[tools]
+ruby = "latest"
+python = "latest"
+bun = "latest"
+node = "latest"
+deno = "latest"
+usage = "latest"
+
+[env]
+EDITOR = "nvim"
+DEV = "{{env.HOME}}/programming"
+BPL = "{{env.DEV}}/by-programming-languages"
+PRESENTERM_CONFIG_FILE = "~/.config/presenterm/config.yaml"
+PERSONAL_SITE_ASSET_PATH = "~/programming/personal-site/2025/oh-yeah/public/"
+LDFLAGS = "-L/opt/homebrew/lib"
+CFLAGS = "-I/opt/homebrew/include"
+SWIG_FEATURES = "-I/opt/homebrew/include"

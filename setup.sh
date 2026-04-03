@@ -23,7 +23,7 @@ install_homebrew() {
 }
 
 install_packages() {
-    local packages=(fish neovim starship ghostty tmux)
+    local packages=(fish neovim starship ghostty tmux mise)
     local to_install=()
 
     for pkg in "${packages[@]}"; do
@@ -83,6 +83,7 @@ link_configs() {
     link "$DOTFILES_DIR/ghostty"       "$CONFIG_DIR/ghostty"
     link "$DOTFILES_DIR/nvim"          "$CONFIG_DIR/nvim"
     link "$DOTFILES_DIR/starship.toml" "$CONFIG_DIR/starship.toml"
+    link "$DOTFILES_DIR/mise.toml"    "$CONFIG_DIR/mise/config.toml"
     link "$HOME/.local/share/tmux/oh-my-tmux/.tmux.conf" "$CONFIG_DIR/tmux/tmux.conf"
     link "$DOTFILES_DIR/tmux/tmux.conf.local"            "$CONFIG_DIR/tmux/tmux.conf.local"
 }
