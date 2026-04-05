@@ -19,3 +19,5 @@ alias minimal='NVIM_APPNAME="minimal" nvim'
 alias todo="e ~/db/directory.md"
 alias present="presenterm"
 alias to-pdf="presenterm --export-pdf"
+
+alias venv="source .venv/bin/activate.fish"
