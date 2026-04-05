@@ -16,3 +16,6 @@ end
 
 -- disable neotree keymap
 -- vim.keymap.del("n", "<leader>e")
+
+-- Add a custom keybinding to toggle the colorscheme
+vim.api.nvim_set_keymap("n", "<leader>tt", ":CyberdreamToggleMode<CR>", { noremap = true, silent = true })
