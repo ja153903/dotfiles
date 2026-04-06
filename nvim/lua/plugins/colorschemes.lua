@@ -1,13 +1,14 @@
 return {
   {
-    "sainnhe/gruvbox-material",
-    lazy = false, -- load at start
-    priority = 1000, -- load first
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox-material",
+      colorscheme = "solarized-osaka",
     },
   },
 }
