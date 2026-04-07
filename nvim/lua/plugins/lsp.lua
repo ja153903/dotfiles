@@ -8,7 +8,6 @@ return {
             exportPdf = "onSave",
           },
         },
-        tsgo = {},
       },
       inlay_hints = {
         enabled = false,

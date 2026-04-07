@@ -1,11 +1,6 @@
 theme = Solarized Dark Higher Contrast
 font-family = "PlemolJP Console NF"
 
-#background-opacity = 0.95
-#background-blur-radius = 30
-
-#alpha-blending = linear-corrected
-
 cursor-style = block
 cursor-style-blink = true
 
@@ -13,8 +8,6 @@ shell-integration=fish
 shell-integration-features=no-cursor
 
 freetype-load-flags = no-hinting
-
-#working-directory = home
 
 scrollback-limit = 500000
 
