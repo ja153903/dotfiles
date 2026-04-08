@@ -1,4 +1,5 @@
-theme = Ubuntu
+theme = Breadog
+background = #FBF2EB
 font-family = "PlemolJP Console NF"
 
 cursor-style = block
