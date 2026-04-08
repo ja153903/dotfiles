@@ -63,28 +63,19 @@ return {
 
       -- Disable or enable colorscheme extensions
       extensions = {
-        telescope = true,
         notify = true,
         mini = true,
       },
-
-      -- Alternatively, you can use 'default' to set all extensions at once
-      -- cache = true, -- Use cache for fastest loads
-      -- extensions = {
-      --     default = false, -- Disable all by default
-      --     base = true, -- Enable all built-in hl groups (you probably want this)
-      --
-      --     -- Now enable only what you want to use
-      --     telescope = true,
-      --     cmp = true,
-      --     gitsigns = true,
-      -- },
     },
   },
+  -- lazy.nvim
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000, opts = {
+    transparent_background = true,
+  } },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "cyberdream",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }

@@ -8,6 +8,7 @@
   "conform.nvim": { "branch": "master", "commit": "086a40dc7ed8242c03be9f47fbcee68699cc2395" },
   "crates.nvim": { "branch": "main", "commit": "0f536967abd097d9a4275087483f15d012418740" },
   "cyberdream.nvim": { "branch": "main", "commit": "a68ffa6af98bf1fc88f33a071c51a188ec85c725" },
+  "dracula.nvim": { "branch": "main", "commit": "ae752c13e95fb7c5f58da4b5123cb804ea7568ee" },
   "flash.nvim": { "branch": "main", "commit": "fcea7ff883235d9024dc41e638f164a450c14ca2" },
   "friendly-snippets": { "branch": "main", "commit": "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
   "gitsigns.nvim": { "branch": "main", "commit": "77b813d1aa6a180d903dc744fc81d7e05b138ac2" },
