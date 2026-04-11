@@ -1,6 +1,6 @@
-theme = solarized-osaka
-background = #000
+theme = cyberdream-light
 font-family = "PlemolJP Console NF"
+font-thicken = true
 
 #background-opacity = 0.9
 #background-blur-radius = 20
