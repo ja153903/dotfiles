@@ -1,6 +1,11 @@
-theme = koda-dark
-background = #0E1415
+theme = solarized-osaka
+background = #000
 font-family = "PlemolJP Console NF"
+
+#background-opacity = 0.9
+#background-blur-radius = 20
+
+#alpha-blending = linear-corrected
 
 cursor-style = block
 cursor-style-blink = true
@@ -10,12 +15,15 @@ shell-integration-features=no-cursor
 
 freetype-load-flags = no-hinting
 
+#working-directory = home
+
 scrollback-limit = 500000
 
 bold-is-bright = true
 
-copy-on-select = true
+#copy-on-select = true
 
+macos-titlebar-style = tabs
 macos-option-as-alt = true
 
 clipboard-read = allow
