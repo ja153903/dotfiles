@@ -1,5 +1,5 @@
-theme = Breadog
-background = #FBF2EB
+theme = koda-dark
+background = #0E1415
 font-family = "PlemolJP Console NF"
 
 cursor-style = block
