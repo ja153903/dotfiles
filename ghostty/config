@@ -1,11 +1,7 @@
-theme = cyberdream-light
+theme = Tomorrow Night Eighties
+background = #1D1F21
 font-family = "PlemolJP Console NF"
 font-thicken = true
-
-#background-opacity = 0.9
-#background-blur-radius = 20
-
-#alpha-blending = linear-corrected
 
 cursor-style = block
 cursor-style-blink = true
@@ -15,15 +11,11 @@ shell-integration-features=no-cursor
 
 freetype-load-flags = no-hinting
 
-#working-directory = home
-
 scrollback-limit = 500000
 
 bold-is-bright = true
 
-#copy-on-select = true
-
-macos-titlebar-style = tabs
+macos-titlebar-style = transparent
 macos-option-as-alt = true
 
 clipboard-read = allow
