@@ -1,6 +1,6 @@
-theme = Tomorrow Night Eighties
-background = #1D1F21
-font-family = "PlemolJP Console NF"
+theme = Monokai
+#font-family = "PlemolJP Console NF"
+font-family = "TX-02"
 font-thicken = true
 
 cursor-style = block

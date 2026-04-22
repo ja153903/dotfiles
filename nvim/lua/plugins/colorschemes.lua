@@ -1,9 +1,12 @@
 return {
-  { "RRethy/base16-nvim", lazy = false, priority = 1000 },
+  { "savq/melange-nvim" },
+  {
+    "tanvirtin/monokai.nvim",
+  },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "base16-tomorrow-night",
+      colorscheme = "monokai",
     },
   },
 }
