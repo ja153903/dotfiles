@@ -15,10 +15,10 @@ scrollback-limit = 500000
 
 bold-is-bright = true
 
-macos-titlebar-style = transparent
+macos-titlebar-style = hidden
 macos-option-as-alt = true
 
-clipboard-read = allow
+clipboard-read = ask
 clipboard-write = allow
 
 # Keybinds
