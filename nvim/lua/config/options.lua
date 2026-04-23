@@ -14,19 +14,3 @@ vim.opt.guicursor = {
 -- Retrieved 2026-01-30, License - CC BY-SA 4.0
 
 vim.o.cmdheight = 4
-
--- Avoid OSC 52 read round-trips leaking clipboard contents into buffers
--- (e.g. a snacks/telescope picker reading "+ triggers a read request;
--- the terminal's reply arrives after nvim's timeout and lands as typed input).
--- Copy still works via OSC 52; paste-in is disabled — use "+p explicitly.
-vim.g.clipboard = {
-  name = "osc52-copy-only",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = function() return { { "" }, "" } end,
-    ["*"] = function() return { { "" }, "" } end,
-  },
-}
