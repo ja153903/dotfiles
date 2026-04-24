@@ -1,4 +1,4 @@
-theme = Monokai
+theme = nightfox
 font-family = "PlemolJP Console NF"
 #font-family = "TX-02"
 font-thicken = true
@@ -15,7 +15,6 @@ scrollback-limit = 500000
 
 bold-is-bright = true
 
-macos-titlebar-style = hidden
 macos-option-as-alt = true
 
 clipboard-read = ask
@@ -26,11 +25,6 @@ keybind = alt+p>n=new_split:right
 keybind = alt+p>shift+n=new_split:left
 keybind = alt+p>d=new_split:down
 keybind = alt+p>shift+d=new_split:up
-
-keybind = alt+l=goto_split:right
-keybind = alt+h=goto_split:left
-keybind = alt+j=goto_split:bottom
-keybind = alt+k=goto_split:top
 
 keybind = alt+r>shift+l=resize_split:right,50
 keybind = alt+r>shift+h=resize_split:left,50
