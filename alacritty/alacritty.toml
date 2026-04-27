@@ -1,0 +1,9 @@
+[general]
+live_config_reload = true
+
+[window]
+option_as_alt = "OnlyLeft"
+
+[font]
+normal = { family = "PlemolJP Console NF" }
+size = 13
