@@ -382,6 +382,16 @@ tmux_conf_urlscan_options="--compact --dedupe"
 
 # this is the place to override or undo settings
 
+# ghostty terminal integration: prevent terminal-query responses (XTVERSION,
+# kitty keyboard protocol) from leaking into neovim/snacks pickers as input
+set -g default-terminal "tmux-256color"
+set -ga terminal-overrides ",xterm-ghostty:Tc"
+set -as terminal-features 'xterm-ghostty:RGB:hyperlinks:ccolour:cstyle:focus:title:overline:strikethrough:usstyle:sync'
+set -s extended-keys on
+set -as terminal-features 'xterm*:extkeys'
+set -sg escape-time 10
+set -g focus-events on
+
 # increase history size
 set -g history-limit 10000
 
