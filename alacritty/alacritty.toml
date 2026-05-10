@@ -5,7 +5,7 @@ live_config_reload = true
 option_as_alt = "OnlyLeft"
 
 [font]
-normal = { family = "MonaspiceKr Nerd Font" }
+normal = { family = "PlemolJP Console NF" }
 size = 12
 
 # github Alacritty Colors

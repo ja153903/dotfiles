@@ -42,3 +42,13 @@ vim.api.nvim_create_user_command("Export", function(opts)
 end, { nargs = "*" })
 
 vim.lsp.set_log_level("off")
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    if not vim.g.lsp_enabled then
+      vim.schedule(function()
+        vim.lsp.buf_detach_client(args.buf, args.data.client_id)
+      end)
+    end
+  end,
+})

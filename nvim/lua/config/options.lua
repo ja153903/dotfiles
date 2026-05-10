@@ -14,3 +14,5 @@ vim.opt.guicursor = {
 -- Retrieved 2026-01-30, License - CC BY-SA 4.0
 
 vim.o.cmdheight = 4
+
+vim.g.lsp_enabled = false
