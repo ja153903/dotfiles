@@ -12,7 +12,7 @@ alias lg="lazygit"
 
 alias venv="pyenv activate"
 alias dvenv="pyenv deactivate"
-alias present="presenterm --config-file $HOME/.config/presenterm/config.yaml --theme terminal-dark"
+alias present="presenterm --theme catppuccin-latte"
 alias to-pdf="presenterm --export-pdf"
 
 alias minimal='NVIM_APPNAME="minimal" nvim'
