@@ -6,7 +6,7 @@ option_as_alt = "OnlyLeft"
 
 [font]
 normal = { family = "PlemolJP Console NF" }
-size = 12
+size = 13
 offset = { x = 1, y = 0 }
 
 # github Alacritty Colors
