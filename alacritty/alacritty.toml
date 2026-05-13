@@ -9,39 +9,40 @@ normal = { family = "PlemolJP Console NF" }
 size = 13
 offset = { x = 1, y = 0 }
 
-# github Alacritty Colors
+# Modus Themes for Alacritty
+# Auto generated with https://github.com/miikanissi/modus-themes.nvim/blob/master/lua/modus-themes/extras/alacritty.lua
 
 # Default colors
 [colors.primary]
-background = '#F7F7F7'
-foreground = '#24292f'
+background   = '0xffffff'
+foreground   = '0x000000'
 
 # Normal colors
 [colors.normal]
-black   = '#24292e'
-red     = '#d73a49'
-green   = '#28a745'
-yellow  = '#dbab09'
-blue    = '#0366d6'
-magenta = '#5a32a3'
-cyan    = '#0598bc'
-white   = '#6a737d'
+black     = '0x000000'
+red       = '0xa60000'
+green     = '0x006800'
+yellow    = '0x6f5500'
+blue      = '0x0031a9'
+magenta   = '0x721045'
+cyan      = '0x005e8b'
+white     = '0xa6a6a6'
 
 # Bright colors
 [colors.bright]
-black   = '#959da5'
-red     = '#cb2431'
-green   = '#22863a'
-yellow  = '#b08800'
-blue    = '#005cc5'
-magenta = '#5a32a3'
-cyan    = '#3192aa'
-white   = '#d1d5da'
+black     = '0x595959'
+red       = '0x972500'
+green     = '0x00663f'
+yellow    = '0x884900'
+blue      = '0x3548cf'
+magenta   = '0x8f0075'
+cyan      = '0x005f5f'
+white     = '0xffffff'
 
 [[colors.indexed_colors]]
-index = 16
-color = '#d18616'
+index     = 16
+color     = '0x884900'
 
 [[colors.indexed_colors]]
-index = 17
-color = '#cb2431'
+index     = 17
+color     = '0x7f0000'
