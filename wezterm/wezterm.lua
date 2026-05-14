@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 local scheme = wezterm.color.load_scheme(wezterm.config_dir .. "/colors/modus_vivendi.toml")
 
-config.font = wezterm.font("MonoLisa")
+config.font = wezterm.font("TX-02")
 config.color_scheme_dirs = { wezterm.config_dir .. "/colors" }
 config.color_scheme = "Modus Vivendi"
 
