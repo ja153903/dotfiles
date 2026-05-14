@@ -29,15 +29,15 @@ config.colors = {
 }
 
 wezterm.on("format-tab-title", function(tab, _, _, _, hover)
-	local background = config.colors.brights[1]
-	local foreground = config.colors.foreground
+	local background = scheme.brights[1]
+	local foreground = scheme.foreground
 
 	if tab.is_active then
-		background = config.colors.brights[7]
-		foreground = config.colors.background
+		background = scheme.brights[7]
+		foreground = scheme.background
 	elseif hover then
-		background = config.colors.brights[8]
-		foreground = config.colors.background
+		background = scheme.brights[8]
+		foreground = scheme.background
 	end
 
 	local title = tostring(tab.tab_index + 1)
