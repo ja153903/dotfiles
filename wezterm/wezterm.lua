@@ -1,9 +1,56 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
-
+local opacity = 1
+local transparent_bg = "rgba(22, 24, 26, " .. opacity .. ")"
 local config = wezterm.config_builder()
 
+local scheme = wezterm.color.load_scheme(wezterm.config_dir .. "/colors/modus_vivendi.toml")
+
 config.font = wezterm.font("MonoLisa")
+config.color_scheme_dirs = { wezterm.config_dir .. "/colors" }
+config.color_scheme = "Modus Vivendi"
+
+-- Performance settings
+config.max_fps = 144
+config.animation_fps = 60
+config.cursor_blink_rate = 250
+
+-- Tab bar stuff
+config.enable_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = true
+config.show_tab_index_in_tab_bar = false
+config.use_fancy_tab_bar = false
+config.colors = {
+	tab_bar = {
+		background = config.window_background_image and "rgba(0, 0, 0, 0)" or transparent_bg,
+		new_tab = { fg_color = scheme.background, bg_color = scheme.brights[6] },
+		new_tab_hover = { fg_color = scheme.background, bg_color = scheme.foreground },
+	},
+}
+
+wezterm.on("format-tab-title", function(tab, _, _, _, hover)
+	local background = config.colors.brights[1]
+	local foreground = config.colors.foreground
+
+	if tab.is_active then
+		background = config.colors.brights[7]
+		foreground = config.colors.background
+	elseif hover then
+		background = config.colors.brights[8]
+		foreground = config.colors.background
+	end
+
+	local title = tostring(tab.tab_index + 1)
+	return {
+		{ Foreground = { Color = background } },
+		{ Text = "█" },
+		{ Background = { Color = background } },
+		{ Foreground = { Color = foreground } },
+		{ Text = title },
+		{ Foreground = { Color = background } },
+		{ Text = "█" },
+	}
+end)
 
 -- Treat Option as Alt (mirrors ghostty's macos-option-as-alt = true)
 config.send_composed_key_when_left_alt_is_pressed = false
