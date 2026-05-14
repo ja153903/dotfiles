@@ -3,12 +3,7 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
-config.font = wezterm.font("PlemolJP Console NF")
-
-config.initial_cols = 120
-config.initial_rows = 28
-config.use_fancy_tab_bar = false
-config.tab_max_width = 100
+config.font = wezterm.font("MonoLisa")
 
 -- Treat Option as Alt (mirrors ghostty's macos-option-as-alt = true)
 config.send_composed_key_when_left_alt_is_pressed = false
