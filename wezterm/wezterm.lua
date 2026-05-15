@@ -9,6 +9,7 @@ local scheme = wezterm.color.load_scheme(wezterm.config_dir .. "/colors/modus_vi
 config.font = wezterm.font("TX-02")
 config.color_scheme_dirs = { wezterm.config_dir .. "/colors" }
 config.color_scheme = "Modus Vivendi"
+config.window_decorations = "RESIZE"
 
 -- Performance settings
 config.max_fps = 144
