@@ -10,6 +10,7 @@ config.font = wezterm.font("TX-02")
 config.color_scheme_dirs = { wezterm.config_dir .. "/colors" }
 config.color_scheme = "Modus Vivendi"
 config.window_decorations = "RESIZE"
+config.line_height = 1.2
 
 -- Performance settings
 config.max_fps = 144
