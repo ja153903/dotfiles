@@ -1,5 +1,5 @@
-theme = "modus_vivendi"
-font-family = "MonoLisa"
+theme = "modus_operandi"
+font-family = "PlemolJP Console NF"
 font-thicken = true
 
 cursor-style = block
