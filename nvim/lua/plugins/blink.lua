@@ -28,6 +28,7 @@ return {
         draw = {
           treesitter = { "lsp" },
         },
+        direction_priority = { "n", "s" },
       },
       documentation = {
         auto_show = true,
