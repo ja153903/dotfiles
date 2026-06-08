@@ -1,7 +1,6 @@
 theme = "TokyoNight Moon"
-font-family = "TX-02"
+font-family = "PlemolJP Console NF"
 font-thicken = true
-font-size = 12
 
 cursor-style = block
 cursor-style-blink = true
@@ -21,6 +20,9 @@ clipboard-read = ask
 clipboard-write = allow
 
 adjust-cell-height = 8
+
+background-opacity = 0.95
+background-blur-radius = 30
 
 # Keybinds
 keybind = alt+p>n=new_split:right
