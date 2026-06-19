@@ -30,6 +30,13 @@ return {
         end,
         desc = "Find files",
       },
+      {
+        "<leader>e",
+        function()
+          vscode.call("workbench.view.explorer")
+        end,
+        desc = "Open File Tree",
+      },
     },
   },
 }
