@@ -1,0 +1,10 @@
+theme = "koda_dark"
+
+[editor]
+line-number = "relative"
+mouse = true
+
+[editor.cursor-shape]
+insert = "block"
+normal = "block"
+select = "underline"

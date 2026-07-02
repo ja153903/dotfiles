@@ -1,0 +1,204 @@
+# Koda Dark for Helix
+# A port of oskarnurm/koda.nvim (dark variant) — "Code's quiet companion"
+# https://github.com/oskarnurm/koda.nvim
+
+# ---------------------------------------------------------------------------
+# Syntax highlighting
+# ---------------------------------------------------------------------------
+
+"comment"                       = "comment"
+"comment.block.documentation"   = "comment"
+
+"constant"                      = "const"
+"constant.builtin"              = "const"
+"constant.numeric"              = "const"
+"constant.character.escape"     = "special"
+
+"string"                        = "string"
+"string.regexp"                 = "string"
+"string.special"                = "fg"
+"string.special.path"           = "fg"
+"string.special.symbol"         = "fg"
+"string.special.url"            = { fg = "fg", modifiers = ["underlined"] }
+
+"character"                     = "char"
+
+"variable"                      = "fg"
+"variable.builtin"              = "const"
+"variable.parameter"            = "fg"
+"variable.other.member"         = "fg"
+
+"label"                         = "keyword"
+
+"punctuation"                   = "keyword"
+"punctuation.delimiter"         = "type"
+"punctuation.bracket"           = "fg"
+"punctuation.special"           = "fg"
+
+"keyword"                       = "keyword"
+"keyword.control"               = "keyword"
+"keyword.control.conditional"   = "keyword"
+"keyword.control.repeat"        = "keyword"
+"keyword.control.import"        = "keyword"
+"keyword.control.return"        = "emphasis"
+"keyword.control.exception"     = "keyword"
+"keyword.operator"              = "operator"
+"keyword.directive"             = "keyword"
+"keyword.function"              = "keyword"
+"keyword.storage"               = "keyword"
+"keyword.storage.type"          = "keyword"
+"keyword.storage.modifier"      = "keyword"
+
+"operator"                      = "operator"
+
+"function"                      = { fg = "func", modifiers = ["bold"] }
+"function.builtin"              = { fg = "func", modifiers = ["bold"] }
+"function.method"                = { fg = "func", modifiers = ["bold"] }
+"function.macro"                = "const"
+"function.special"              = { fg = "func", modifiers = ["bold"] }
+
+"type"                          = "type"
+"type.builtin"                  = "type"
+"type.enum.variant"             = "fg"
+
+"constructor"                   = "fg"
+
+"attribute"                     = "keyword"
+
+"tag"                           = "keyword"
+"tag.attribute"                 = "keyword"
+"tag.delimiter"                 = "keyword"
+
+"namespace"                     = "fg"
+"module"                        = "fg"
+
+"special"                       = "fg"
+
+# ---------------------------------------------------------------------------
+# Markup (markdown, comments-as-docs, etc.)
+# ---------------------------------------------------------------------------
+
+"markup.heading"                = { fg = "emphasis", modifiers = ["bold"] }
+"markup.heading.marker"         = "comment"
+"markup.list"                   = "emphasis"
+"markup.list.checked"           = "success"
+"markup.list.unchecked"         = "danger"
+"markup.bold"                   = { modifiers = ["bold"] }
+"markup.italic"                 = { modifiers = ["italic"] }
+"markup.strikethrough"          = { fg = "danger", modifiers = ["crossed_out"] }
+"markup.link.url"               = { fg = "info", modifiers = ["underlined"] }
+"markup.link.text"              = "emphasis"
+"markup.link.label"             = "emphasis"
+"markup.quote"                  = "comment"
+"markup.raw"                    = "const"
+"markup.raw.inline"             = "const"
+
+# ---------------------------------------------------------------------------
+# Diff
+# ---------------------------------------------------------------------------
+
+"diff.plus"                     = "success"
+"diff.minus"                    = "danger"
+"diff.delta"                    = "warning"
+
+# ---------------------------------------------------------------------------
+# Diagnostics
+# ---------------------------------------------------------------------------
+
+"warning"                       = "warning"
+"error"                         = "danger"
+"info"                          = "info"
+"hint"                          = "info"
+
+"diagnostic.error"              = { underline = { color = "danger", style = "curl" } }
+"diagnostic.warning"            = { underline = { color = "warning", style = "curl" } }
+"diagnostic.info"               = { underline = { color = "info", style = "curl" } }
+"diagnostic.hint"               = { underline = { color = "info", style = "dotted" } }
+
+# ---------------------------------------------------------------------------
+# UI
+# ---------------------------------------------------------------------------
+
+# "ui.background"                 = { fg = "fg", bg = "bg" }
+"ui.background"                 = {}
+"ui.background.separator"       = "dim"
+
+"ui.text"                       = "fg"
+"ui.text.focus"                 = "emphasis"
+"ui.text.inactive"              = "comment"
+
+"ui.cursor"                     = { fg = "bg", bg = "fg" }
+"ui.cursor.primary"             = { fg = "bg", bg = "fg" }
+"ui.cursor.insert"              = { fg = "bg", bg = "fg" }
+"ui.cursor.select"              = { fg = "bg", bg = "fg" }
+"ui.cursor.match"               = { fg = "special", modifiers = ["bold"] }
+
+"ui.cursorline.primary"         = { bg = "line" }
+"ui.cursorline.secondary"       = { bg = "line" }
+
+"ui.linenr"                     = "comment"
+"ui.linenr.selected"            = { fg = "special", modifiers = ["bold"] }
+
+"ui.statusline"                 = { fg = "fg", bg = "line" }
+"ui.statusline.inactive"        = { fg = "comment", bg = "line" }
+"ui.statusline.normal"          = { fg = "fg", bg = "line" }
+"ui.statusline.insert"          = { fg = "success", bg = "line" }
+"ui.statusline.select"          = { fg = "info", bg = "line" }
+
+"ui.popup"                      = { fg = "fg", bg = "bg" }
+"ui.popup.info"                 = { fg = "fg", bg = "bg" }
+"ui.window"                     = { fg = "border" }
+"ui.help"                       = { fg = "fg", bg = "line" }
+
+"ui.menu"                       = { fg = "fg", bg = "bg" }
+"ui.menu.selected"              = { fg = "fg", bg = "line", modifiers = ["bold"] }
+"ui.menu.scroll"                = { fg = "fg", bg = "line" }
+
+"ui.selection"                  = { bg = "line" }
+"ui.selection.primary"          = { bg = "line" }
+"ui.highlight"                  = { bg = "line" }
+
+"ui.virtual.ruler"              = { bg = "line" }
+"ui.virtual.whitespace"         = "dim"
+"ui.virtual.indent-guide"       = "dim"
+"ui.virtual.inlay-hint"         = "comment"
+"ui.virtual.jump-label"         = { fg = "bg", bg = "highlight", modifiers = ["bold"] }
+"ui.virtual.wrap"               = "dim"
+
+"ui.gutter"                     = { bg = "bg" }
+"ui.gutter.selected"            = { bg = "line" }
+
+"ui.bufferline"                 = { fg = "comment", bg = "line" }
+"ui.bufferline.active"          = { fg = "emphasis", bg = "bg", modifiers = ["bold"] }
+"ui.bufferline.background"      = { bg = "line" }
+
+# ---------------------------------------------------------------------------
+# Palette — matches lua/koda/palette/dark.lua
+# ---------------------------------------------------------------------------
+
+[palette]
+bg        = "#101010"
+fg        = "#b0b0b0"
+dim       = "#474747"
+line      = "#272727"
+keyword   = "#777777"
+type      = "#777777"
+operator  = "#777777"
+comment   = "#50585d"
+border    = "#ffffff"
+emphasis  = "#ffffff"
+func      = "#ffffff"
+string    = "#ffffff"
+char      = "#ffffff"
+special   = "#ffffff"
+const     = "#d9ba73"
+highlight = "#458ee6"
+info      = "#8ebeec"
+success   = "#86cd82"
+warning   = "#d9ba73"
+danger    = "#ff7676"
+green     = "#14ba19"
+orange    = "#ff5733"
+red       = "#701516"
+pink      = "#f2a4db"
+cyan      = "#5abfb5"
