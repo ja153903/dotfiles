@@ -18,6 +18,8 @@ bold-is-bright = true
 
 macos-option-as-alt = true
 
+adjust-cell-height = +15%
+
 clipboard-read = ask
 clipboard-write = allow
 
