@@ -403,12 +403,12 @@ set -g mouse on
 set -g status-keys vi
 set -g mode-keys vi
 
-# replace C-b by C-a instead of using both prefixes
-set -gu prefix2
-unbind C-a
-# unbind C-b
-set -g prefix C-b
-bind C-b send-prefix
+# # replace C-b by C-a instead of using both prefixes
+# set -gu prefix2
+# unbind C-a
+# # unbind C-b
+# set -g prefix C-b
+# bind C-b send-prefix
 
 # if you don't want Oh my tmux! to alter a binding or a setting, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
@@ -440,6 +440,7 @@ bind -n M-7 select-window -t :7
 bind -n M-8 select-window -t :8
 bind -n M-9 select-window -t :9
 
+set -g @plugin 'hiroppy/tmux-agent-sidebar'
 set -g @plugin 'niksingh710/minimal-tmux-status'
 
 # These are the default values used inside the plugin to achieve the preview shown above.
