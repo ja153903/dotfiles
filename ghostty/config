@@ -1,4 +1,5 @@
 theme = "koda-dark"
+background = #1E1C31
 font-family = "Monaspace Krypton"
 font-thicken = true
 
