@@ -440,7 +440,7 @@ bind -n M-7 select-window -t :7
 bind -n M-8 select-window -t :8
 bind -n M-9 select-window -t :9
 
-set -g @plugin 'hiroppy/tmux-agent-sidebar'
+set -g @plugin 'craftzdog/tmux-claude-session-manager'
 set -g @plugin 'niksingh710/minimal-tmux-status'
 
 # These are the default values used inside the plugin to achieve the preview shown above.
