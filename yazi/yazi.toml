@@ -1,4 +1,0 @@
-[opener]
-edit = [
-    { run = 'hx "%s"', block = true, desc = "Helix", for = "unix" }
-]
