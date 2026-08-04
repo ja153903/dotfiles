@@ -6,11 +6,12 @@ local config = wezterm.config_builder()
 
 local scheme = wezterm.color.load_scheme(wezterm.config_dir .. "/colors/modus_vivendi.toml")
 
-config.font = wezterm.font("Monaspace Krypton")
-config.color_scheme_dirs = { wezterm.config_dir .. "/colors" }
-config.color_scheme = "embark"
-config.window_decorations = "RESIZE"
+config.font_dirs = { wezterm.home_dir .. "/Library/Fonts" }
+config.font = wezterm.font("PlemolJP Console NF")
 config.line_height = 1.4
+config.color_scheme_dirs = { wezterm.config_dir .. "/colors" }
+config.color_scheme = "Solarized Dark (Gogh)"
+config.window_decorations = "RESIZE"
 
 -- Performance settings
 config.max_fps = 144

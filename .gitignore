@@ -10,3 +10,10 @@ nvim/data
 zellij/zjstatus-releases
 
 .DS_Store
+
+herdr/herdr-client.log
+herdr/herdr-client.sock
+herdr/herdr-server.log
+herdr/herdr.sock
+herdr/release-notes.json
+herdr/session.json
