@@ -7,42 +7,32 @@ option_as_alt = "OnlyLeft"
 [font]
 normal = { family = "PlemolJP Console NF" }
 size = 13
-offset = { x = 1, y = 0 }
+offset = { x = 0, y = 0 }
 
-# Modus Themes for Alacritty
-# Auto generated with https://github.com/miikanissi/modus-themes.nvim/blob/master/lua/modus-themes/extras/alacritty.lua
-
-# Default colors
-[colors.primary]
-background   = '0x000000'
-foreground   = '0xffffff'
-
-# Normal colors
-[colors.normal]
-black     = '0x000000'
-red       = '0xff5f59'
-green     = '0x44bc44'
-yellow    = '0xd0bc00'
-blue      = '0x2fafff'
-magenta   = '0xfeacd0'
-cyan      = '0x00d3d0'
-white     = '0xa6a6a6'
-
-# Bright colors
 [colors.bright]
-black     = '0x595959'
-red       = '0xff6b55'
-green     = '0x00c06f'
-yellow    = '0xfec43f'
-blue      = '0x79a8ff'
-magenta   = '0xf78fe7'
-cyan      = '0x6ae4b9'
-white     = '0xffffff'
+black = "#585273"
+blue = "#78a8ff"
+cyan = "#63f2f1"
+green = "#7fe9c3"
+magenta = "#7676ff"
+red = "#f02e6e"
+white = "#8a889d"
+yellow = "#f2b482"
 
-[[colors.indexed_colors]]
-index     = 16
-color     = '0xfec43f'
+[colors.cursor]
+cursor = "#a1efd3"
+text = "#1e1c31"
 
-[[colors.indexed_colors]]
-index     = 17
-color     = '0xff9580'
+[colors.normal]
+black = "#1e1c31"
+blue = "#91ddff"
+cyan = "#abf8f7"
+green = "#a1efd3"
+magenta = "#d4bfff"
+red = "#f48fb1"
+white = "#cbe3e7"
+yellow = "#ffe6b3"
+
+[colors.primary]
+background = "#1e1c31"
+foreground = "#cbe3e7"
