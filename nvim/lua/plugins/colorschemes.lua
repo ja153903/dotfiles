@@ -1,8 +1,6 @@
 return {
   {
-    "ja153903/embark-theme-vim",
-    dir = vim.fn.expand("~/programming/oss/embark-theme-vim"),
-    dev = true,
+    "embark-theme/vim",
     lazy = false,
     priority = 1000,
     name = "embark",
@@ -22,7 +20,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "cobalt",
+      colorscheme = "embark",
     },
   },
 }
