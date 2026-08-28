@@ -8,6 +8,7 @@ local scheme = wezterm.color.load_scheme(wezterm.config_dir .. "/colors/modus_vi
 
 config.font_dirs = { wezterm.home_dir .. "/Library/Fonts" }
 config.font = wezterm.font("PlemolJP Console NF")
+config.font_size = 15
 config.color_scheme_dirs = { wezterm.config_dir .. "/colors" }
 config.color_scheme = "embark"
 config.window_decorations = "RESIZE"
