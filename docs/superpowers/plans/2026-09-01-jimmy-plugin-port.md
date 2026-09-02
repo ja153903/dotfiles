@@ -960,8 +960,8 @@ grep -rIn 'cursor-team-kit|/deslop|control-ui|control-cli' claude/plugins/jimmy/
 Expected: about 15 hits across `poteto-mode/SKILL.md`, `multi-phase-plan.md`, `opening-a-pr.md`, `shipping.md`, `autopilot-full.md`, `autopilot-stack.md`, `orchestrate.md`, and `docs/guide/05-build-and-clean.md`.
 
 Retarget each to what this plugin actually ships:
-- `/deslop` → this plugin's own `unslop` skill. Upstream's guide draws a distinction between `/deslop` (cleans code) and `/unslop` (cleans prose); with `deslop` unavailable, `unslop` carries both jobs — say so plainly in `docs/guide/05-build-and-clean.md` rather than describing a division that no longer exists.
-- `control-ui` / `control-cli` → this plugin's `create-verification-skill`, which generates a project-local skill for driving the real app, plus Claude Code's bundled `/run` and `/verify`.
+- `/deslop` → split it. The prose half goes to this plugin's `unslop` skill; the code half goes to this plugin's `no-comments` skill plus a plain-words ask. Do NOT claim `unslop` cleans code — as shipped it is 31 prose patterns with nothing about code, so the upstream division survives in a different shape rather than collapsing.
+- `control-ui` / `control-cli` → this plugin's `create-verification-skill`, which generates a project-local skill for driving the real app, plus Claude Code's bundled `/run`. There is no bundled `/verify` — do not name one.
 
 - [ ] **Step 4: Verify every file this task owns is clean**
 
