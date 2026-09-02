@@ -169,6 +169,8 @@ check "no pstack-models.mdc"       'pstack-models\.mdc'
 check "no Cursor model slugs"      'grok-[0-9]|gpt-[0-9]+\.[0-9]+-sol|claude-fable-5-1-thinking|claude-opus-5-thinking'
 check "no Bugbot"                  '[Bb]ugbot'
 check "no Cursor mentions"         '\bCursor\b'
+check "no cloud tier"              '\bcloud\b'
+check "no cursor-team-kit"         'cursor-team-kit|/deslop|control-ui|control-cli'
 check "no /add-plugin"             '/add-plugin'
 
 if [[ "$WITH_RENAME" == "1" ]]; then
@@ -863,9 +865,9 @@ git commit -m "feat(jimmy): translate playbooks and retarget review-bot triage"
 
 ---
 
-### Task 8: Translate the remaining skills and the guide's constructs
+### Task 8: Consolidated remaining translation
 
-Twelve files whose only Cursor coupling is a host path or an install instruction. The three `docs/guide/` files are here rather than in Task 12 because the audit scans `docs/`, so leaving them until the docs task would make this task's "everything passes" milestone false. Mechanical, but they are the difference between an audit that passes and one that nearly passes. `worktree-audit.sh` is included here rather than in Task 9 because its `.cursor/` path is the last audit-visible translation hit; Task 9 handles the script changes the audit cannot see.
+The catch-all. Host paths, install instructions, and two residues that only became visible once the audit grew its later checks: prose describing a cloud execution tier, and references to Cursor-internal tooling. The three `docs/guide/` files are here rather than in Task 12 because the audit scans `docs/`, so leaving them until the docs task would make this task's "everything passes" milestone false. Mechanical, but they are the difference between an audit that passes and one that nearly passes. `worktree-audit.sh` is included here rather than in Task 9 because its `.cursor/` path is the last audit-visible translation hit; Task 9 handles the script changes the audit cannot see.
 
 **Files:**
 - Modify: `claude/plugins/jimmy/skills/recall/SKILL.md`
@@ -934,6 +936,32 @@ Apply the Task 5 substitution table to each. `/add-plugin pstack` in `01-setup.m
 ```
 
 (Task 11 renames `pstack@` to `jimmy@` with everything else.)
+
+- [ ] **Step 3b: Remove the cloud-tier prose**
+
+This port has NO cloud execution tier. `isolation: "remote"` exists in Claude Code but is access-gated, so every subagent is local, worktree-isolated, and dies with the session. Tasks 5-7 translated the cloud *constructs* but left prose describing the tier, across files those tasks already own — consolidate the cleanup here rather than reopening them.
+
+```bash
+grep -rIn '\bcloud\b' claude/plugins/jimmy/skills claude/plugins/jimmy/docs
+```
+
+Expected: about 10 hits across `swarm/SKILL.md` (2 — "cloud workers", "cloud concurrency limit"), `poteto-mode/SKILL.md`, and the playbooks `multi-phase-plan.md` (including a "cloud VM" at line 72), `session-pickup.md`, `autopilot-full.md`, `autopilot-stack.md`, `babysit.md`.
+
+Reconcile each to the single local/worktree tier. Where a passage's advice depended on work outliving the session, rewrite the advice — do not just drop the word. Where remote isolation is genuinely the escape hatch, you may say so, but never as this plugin's default.
+
+- [ ] **Step 3c: Retarget Cursor-internal tooling**
+
+The playbooks reference skills from `cursor-team-kit`, a Cursor-internal plugin this user does not have. Shipped guidance must not point at unavailable tooling.
+
+```bash
+grep -rIn 'cursor-team-kit|/deslop|control-ui|control-cli' claude/plugins/jimmy/skills claude/plugins/jimmy/docs
+```
+
+Expected: about 15 hits across `poteto-mode/SKILL.md`, `multi-phase-plan.md`, `opening-a-pr.md`, `shipping.md`, `autopilot-full.md`, `autopilot-stack.md`, `orchestrate.md`, and `docs/guide/05-build-and-clean.md`.
+
+Retarget each to what this plugin actually ships:
+- `/deslop` → this plugin's own `unslop` skill. Upstream's guide draws a distinction between `/deslop` (cleans code) and `/unslop` (cleans prose); with `deslop` unavailable, `unslop` carries both jobs — say so plainly in `docs/guide/05-build-and-clean.md` rather than describing a division that no longer exists.
+- `control-ui` / `control-cli` → this plugin's `create-verification-skill`, which generates a project-local skill for driving the real app, plus Claude Code's bundled `/run` and `/verify`.
 
 - [ ] **Step 4: Verify every translation check now passes**
 
