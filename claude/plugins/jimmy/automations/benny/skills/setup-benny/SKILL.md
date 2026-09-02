@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Set up Benny
 
-Benny ships as a dormant pack inside pstack. The plugin manifest exposes only pstack's normal skill root; this file and the two operational files are not slash skills of this plugin.
+Benny ships as a dormant pack inside jimmy. The plugin manifest exposes only jimmy's normal skill root; this file and the two operational files are not slash skills of this plugin.
 
 The human enters setup by pointing Claude Code at the pack's `FOR_AGENTS.md`. The bootstrap flow copies the whole pack into the target repository, then reads this file directly at `.claude/benny/skills/setup-benny/SKILL.md`.
 
@@ -14,7 +14,7 @@ Benny needs external configuration and its two workflow skills installed in the 
 
 Never put a secret value in plugin files or committed configuration.
 
-## 1. Copy the pack and install shared pstack skills
+## 1. Copy the pack and install shared jimmy skills
 
 Do this before asking for Benny configuration.
 
@@ -33,13 +33,13 @@ If this file is already being read from the target destination, treat the copy a
 
 Then install the three skills so the user can invoke them. Copy `skills/setup-benny/`, `skills/triage-issue-reports/`, and `skills/reproduce-and-fix-issues/` — each with its `references/` directory — into `<target-repository>/.claude/skills/`, under the same merge rules as the pack itself.
 
-Install pstack in the target repository for Benny's shared dependencies:
+Install jimmy in the target repository for Benny's shared dependencies:
 
 ```
-/plugin install pstack@jaime-plugins
+/plugin install jimmy@jaime-plugins
 ```
 
-Start a fresh agent rooted in the target repository. Verify that these shared pstack skills resolve there:
+Start a fresh agent rooted in the target repository. Verify that these shared jimmy skills resolve there:
 
 - `how`
 - `why`
@@ -99,7 +99,7 @@ Ask for or confirm:
 - Polling and effort budgets
 - Model slug for triage, repro, code work, and media review
 
-Use only model identifiers the user's Claude Code install actually offers, or `inherit` to take the parent session's model. `~/.claude/pstack-models.md` shows what they already configured. Do not guess an identifier and do not carry over a private default.
+Use only model identifiers the user's Claude Code install actually offers, or `inherit` to take the parent session's model. `~/.claude/jimmy-models.md` shows what they already configured. Do not guess an identifier and do not carry over a private default.
 
 The source channel, triage identity, repository, tracker adapter, control skill, and feature map must be explicit. Fail setup if any required value stays ambiguous.
 

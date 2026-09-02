@@ -1,15 +1,15 @@
 ---
-name: Poteto Mode
-description: An agent style for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for /poteto-mode or requests to work in this style.
+name: mode
+description: An agent style for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for /jimmy:mode or requests to work in this style.
 disable-model-invocation: true
 hooks:
   UserPromptSubmit:
     - hooks:
         - type: command
-          command: "${CLAUDE_PLUGIN_ROOT}/skills/poteto-mode/scripts/mode-reminder.sh"
+          command: "${CLAUDE_PLUGIN_ROOT}/skills/mode/scripts/mode-reminder.sh"
 ---
 
-# Poteto mode
+# Jimmy mode
 
 ## Non-negotiables
 
@@ -93,9 +93,9 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 ## Subagents
 
-**Use `subagent_type: "poteto-agent"` for any subagent you spawn inside a playbook step** (code-writing delegates, ad-hoc helpers). `/poteto-mode` and `poteto-agent` route through the same wrapper. Routed workflow skills (`how`, `why`, `interrogate`, `reflect`, `swarm`) set their own `subagent_type` for diverse-model review; respect what the skill prescribes, don't override to `poteto-agent`.
+**Use `subagent_type: "jimmy-agent"` for any subagent you spawn inside a playbook step** (code-writing delegates, ad-hoc helpers). `/jimmy:mode` and `jimmy-agent` route through the same wrapper. Routed workflow skills (`how`, `why`, `interrogate`, `reflect`, `swarm`) set their own `subagent_type` for diverse-model review; respect what the skill prescribes, don't override to `jimmy-agent`.
 
-**Defaults for every `Agent` call.** Spawn in the background, file pointers not inlined context, explicit model per role (configurable via `/setup-pstack`; defaults `jimmy:worker-fast` for code, `jimmy:worker-deep` for prose and judgment). Code delegates tier by difficulty. The hardest changes (cross-cutting design, gnarly concurrency, subtle algorithms) go to your strongest judgment model (`jimmy:worker-deep`) when the task needs judgment or the intent is vague, and to your strongest instruction-following model (`jimmy:worker-deep`) when the work is a precisely specified sequence of steps to execute to the letter; trivial mechanical edits go to your fast code model (`jimmy:worker-fast`). Per-role lines in the `/setup-pstack` rule override these defaults and the model choices in the routed skills (`how`, `why`, `arena`, `swarm`, `architect`, `interrogate`, `reflect`); a role with no line keeps its default, and a role line of `inherit` runs that role on the parent chat model (omit Agent `model`).
+**Defaults for every `Agent` call.** Spawn in the background, file pointers not inlined context, explicit model per role (configurable via `/setup-jimmy`; defaults `jimmy:worker-fast` for code, `jimmy:worker-deep` for prose and judgment). Code delegates tier by difficulty. The hardest changes (cross-cutting design, gnarly concurrency, subtle algorithms) go to your strongest judgment model (`jimmy:worker-deep`) when the task needs judgment or the intent is vague, and to your strongest instruction-following model (`jimmy:worker-deep`) when the work is a precisely specified sequence of steps to execute to the letter; trivial mechanical edits go to your fast code model (`jimmy:worker-fast`). Per-role lines in the `/setup-jimmy` rule override these defaults and the model choices in the routed skills (`how`, `why`, `arena`, `swarm`, `architect`, `interrogate`, `reflect`); a role with no line keeps its default, and a role line of `inherit` runs that role on the parent chat model (omit Agent `model`).
 
 You own every subagent's work. Review the diff and write your own summary, don't pass through what it said. Interrupt-chained resumes silently drop directives, so fire a fresh subagent with consolidated scope rather than trusting a "done" summary. A second opinion is the same prompt against a different model. Agreement is high-signal.
 

@@ -10,11 +10,11 @@ the files in this directory are dormant setup sources. they do not appear as sla
 
 ## set it up
 
-0. Install pstack in the target repository — benny depends on its `how`, `why`,
+0. Install jimmy in the target repository — benny depends on its `how`, `why`,
    `tdd`, `unslop`, and principle skills:
 
    ```
-   /plugin install pstack@jaime-plugins
+   /plugin install jimmy@jaime-plugins
    ```
 
 1. Point Claude Code at `FOR_AGENTS.md` and name the target repository.

@@ -29,7 +29,7 @@ i want two workflows that work together on one slack issue channel. i invoke eac
 - i treat utility and debug bots as evidence, not delegation or fix ownership.
 - i allow subagents to help, but they cannot post to slack or receive slack credentials.
 - i want this entire pack committed at `.claude/benny/` in the target repository, and its three skills installed into the target's `.claude/skills/`.
-- i want pstack installed in the target repository only for shared dependencies such as `how`, `why`, `tdd`, `unslop`, and the required principle skills.
+- i want jimmy installed in the target repository only for shared dependencies such as `how`, `why`, `tdd`, `unslop`, and the required principle skills.
 - i keep user-owned configuration, feature maps, routing maps, and secrets in `.claude/benny-config/`. a pack refresh replaces `.claude/benny/` wholesale and never touches `.claude/benny-config/`, so it cannot overwrite them.
 - i want both workflows to fail closed when channel coordinates, tracker access, the control adapter, or the feature map are missing or uncertain.
 - i want draft pull requests only. do not merge or deploy.
@@ -63,13 +63,13 @@ the human enters setup by pointing claude code at this file. do not look for or 
 6. verify that the copied `FOR_AGENTS.md` and `skills/setup-benny/SKILL.md` exist in the target repository.
 7. read and follow `.claude/benny/skills/setup-benny/SKILL.md` directly from the target repository.
 
-i want pstack installed in the target repository for shared dependencies:
+i want jimmy installed in the target repository for shared dependencies:
 
 ```
-/plugin install pstack@jaime-plugins
+/plugin install jimmy@jaime-plugins
 ```
 
-i want verification from a fresh agent rooted in the target repository. confirm that pstack's `how`, `why`, `tdd`, `unslop`, and the principle skills used by benny resolve there. do not count skills loaded from the current session.
+i want verification from a fresh agent rooted in the target repository. confirm that jimmy's `how`, `why`, `tdd`, `unslop`, and the principle skills used by benny resolve there. do not count skills loaded from the current session.
 
 if any shared dependency does not resolve, stop and explain what failed. do not add `.claude/benny/skills/` to a plugin manifest — the installed copies under the target's `.claude/skills/` are what make the two workflows invocable.
 

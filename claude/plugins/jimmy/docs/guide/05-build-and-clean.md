@@ -7,30 +7,30 @@ The build playbooks share one discipline. Say what you observed, let the playboo
 A bug prompt states the symptom and asks for a reproduction first:
 
 ```text
-/poteto-mode this command emits two records after a retry. repro first, then fix and verify.
+/jimmy:mode this command emits two records after a retry. repro first, then fix and verify.
 ```
 
 A feature prompt states the behavior and what must not change:
 
 ```text
-/poteto-mode add a --json flag. text output stays byte-identical. verify both forms.
+/jimmy:mode add a --json flag. text output stays byte-identical. verify both forms.
 ```
 
 A refactoring prompt pins behavior before structure moves:
 
 ```text
-/poteto-mode move parsing into one module, zero behavior change. record the current output first and prove it's unchanged after.
+/jimmy:mode move parsing into one module, zero behavior change. record the current output first and prove it's unchanged after.
 ```
 
 A perf prompt states the measurement, not a vibe:
 
 ```text
-/poteto-mode startup takes 1.8s on this fixture. trace it, fix the measured cause, show me before and after.
+/jimmy:mode startup takes 1.8s on this fixture. trace it, fix the measured cause, show me before and after.
 ```
 
-Each of these routes to its playbook ([Bug fix](../../skills/poteto-mode/playbooks/bug-fix.md), [Feature](../../skills/poteto-mode/playbooks/feature.md), [Refactoring](../../skills/poteto-mode/playbooks/refactoring.md), [Perf issue](../../skills/poteto-mode/playbooks/perf-issue.md)), and the playbook supplies the steps you didn't type: reproduce before fixing, name the data shape before implementing, pin behavior before restructuring, profile before optimizing.
+Each of these routes to its playbook ([Bug fix](../../skills/mode/playbooks/bug-fix.md), [Feature](../../skills/mode/playbooks/feature.md), [Refactoring](../../skills/mode/playbooks/refactoring.md), [Perf issue](../../skills/mode/playbooks/perf-issue.md)), and the playbook supplies the steps you didn't type: reproduce before fixing, name the data shape before implementing, pin behavior before restructuring, profile before optimizing.
 
-For sustained improvement of one number, there's the [Hillclimb playbook](../../skills/poteto-mode/playbooks/hillclimb.md). Give it the metric, a target, and a floor on attempts, and it loops one hypothesis at a time with a frozen measurement harness. It keeps wins and reverts everything else.
+For sustained improvement of one number, there's the [Hillclimb playbook](../../skills/mode/playbooks/hillclimb.md). Give it the metric, a target, and a floor on attempts, and it loops one hypothesis at a time with a frozen measurement harness. It keeps wins and reverts everything else.
 
 ## Write the failing test first with `/tdd`
 
@@ -48,7 +48,7 @@ In context, that's enough. [`/tdd`](../../skills/tdd/SKILL.md) writes the smalle
 
 ## Clean before you commit
 
-The [Opening a PR playbook](../../skills/poteto-mode/playbooks/opening-a-pr.md) runs [`/unslop`](../../skills/unslop/SKILL.md) on the PR description and commit bodies, and [`/no-comments`](../../skills/no-comments/SKILL.md) on the diff before each commit. Upstream splits the work into two skills, `/deslop` for code and `/unslop` for prose. `/deslop` isn't part of this plugin, and `/unslop` doesn't replace it: `/unslop` is 31 patterns about writing, with nothing about code. `/no-comments` covers the largest piece of the code job, the narrating comments. For the rest, ask in plain words: remove unsupported guards, dead compatibility paths, and unrelated edits.
+The [Opening a PR playbook](../../skills/mode/playbooks/opening-a-pr.md) runs [`/unslop`](../../skills/unslop/SKILL.md) on the PR description and commit bodies, and [`/no-comments`](../../skills/no-comments/SKILL.md) on the diff before each commit. Upstream splits the work into two skills, `/deslop` for code and `/unslop` for prose. `/deslop` isn't part of this plugin, and `/unslop` doesn't replace it: `/unslop` is 31 patterns about writing, with nothing about code. `/no-comments` covers the largest piece of the code job, the narrating comments. For the rest, ask in plain words: remove unsupported guards, dead compatibility paths, and unrelated edits.
 
 For prose, `/unslop` takes a target and any extra rules you have:
 

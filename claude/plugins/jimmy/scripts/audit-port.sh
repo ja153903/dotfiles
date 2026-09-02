@@ -53,7 +53,9 @@ check "no bare script paths"       '(`|^[[:space:]]*[$]?[[:space:]]*)(bun |node 
 if [[ "$WITH_RENAME" == "1" ]]; then
   echo
   echo "== rename checks =="
-  check "no pstack identifiers"    'pstack'
+  # \b is required: "upstack" is stacked-PR vocabulary, not the vendor name, and a
+  # bare 'pstack' substring match demands breaking it. "poteto" needs no boundary.
+  check "no pstack identifiers"    '\bpstack\b'
   check "no poteto identifiers"    'poteto'
 fi
 
@@ -61,7 +63,11 @@ echo
 echo "== structure checks =="
 skills=$(find "$ROOT/skills" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
 plays=$(find "$ROOT/skills" -path '*/playbooks/*.md' 2>/dev/null | wc -l | tr -d ' ')
-for pair in "45:$skills:skill directories" "23:$plays:playbooks"; do
+# .claude/benny-config/ is the user-owned half of Task 10's two-directory split; the
+# pack-owned .claude/benny/ is replaced wholesale on refresh. Both literals are load-bearing
+# across benny's setup instructions. scan prints whole lines, so count files, not hits.
+bennycfg=$(scan '\.claude/benny-config/' | cut -d: -f1 | sort -u | wc -l | tr -d ' ')
+for pair in "45:$skills:skill directories" "23:$plays:playbooks" "7:$bennycfg:files naming .claude/benny-config/"; do
   want="${pair%%:*}"; rest="${pair#*:}"; got="${rest%%:*}"; what="${rest#*:}"
   if [[ "$got" == "$want" ]]; then
     printf 'ok    %s (%s)\n' "$what" "$got"

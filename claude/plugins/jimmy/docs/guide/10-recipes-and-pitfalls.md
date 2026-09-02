@@ -39,7 +39,7 @@ The qualifiers do real work. "don't change anything yet" keeps it read-only, and
 ## Fix a bug through a failing test
 
 ```text
-/poteto-mode repro the duplicate write first. if there's a cheap test path, /tdd it. then fix and rerun.
+/jimmy:mode repro the duplicate write first. if there's a cheap test path, /tdd it. then fix and rerun.
 ```
 
 "if there's a cheap test path" matters. Forcing a test through brittle mocks proves less than running the real command, and the playbook is allowed to say so.
@@ -87,7 +87,7 @@ That's the whole prompt. [`/bro`](../../skills/bro/SKILL.md) restates the last m
 - **Accepting every review comment.** Bots and humans both file real catches and noise in one list. `/interrogate` sorts findings into act-on and dismissed buckets with reasons, and you can override either way.
 - **Treating `inherit` as a fixed model choice.** `inherit` means "omit the model field so the subagent runs on whatever model this session is currently on." It isn't pinned: switch your session's model mid-conversation and every `inherit` role spawned from then on follows, panels included, since a panel's list length still sets its size. Subagents already running keep the model they started with. [Setup](./01-setup.md) covers the roles.
 - **Reporting success off a green build.** A build proves it compiles. Ask for the real command, flow, stored value, or profile, and expect the evidence in the reply.
-- **Writing a `SKILL.md` freehand.** Route it through the [Authoring or modifying a skill playbook](../../skills/poteto-mode/playbooks/authoring-a-skill.md) so validation and review happen.
+- **Writing a `SKILL.md` freehand.** Route it through the [Authoring or modifying a skill playbook](../../skills/mode/playbooks/authoring-a-skill.md) so validation and review happen.
 
 That's the guide. If you skipped ahead, go back to [setup](./01-setup.md) and run one real task. The habits stick from use, not from reading.
 
