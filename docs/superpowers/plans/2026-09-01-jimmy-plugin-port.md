@@ -22,6 +22,7 @@
 - **Only `README.md` may contain the strings `pstack` or `poteto`** after Task 11, in the fork credit. (`LICENSE` is exempt from edits entirely but happens to contain neither — standard MIT text names the copyright holder, not the project.) Everywhere else is a rename failure.
 - **Prose voice:** neutral third person. No first-person authorial voice, borrowed or invented.
 - **Commit style:** conventional commits, one commit per task minimum.
+- **Verifying which file the audit blames:** the audit prints whole matched lines, so grepping its raw output for a name also matches that name appearing inside another file's hit text. Always pipe through `cut -d: -f1` first to reduce each hit to its filename before grepping. `audit-port.sh 2>&1 | cut -d: -f1 | grep -c '<name>'` is the reliable form.
 
 ## File Structure
 
@@ -502,7 +503,7 @@ Replaces the `~/.cursor/rules/pstack-models.mdc` always-applied rule with a read
 
 - [ ] **Step 1: Confirm the current failures for this file**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -n 'setup-pstack'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -n 'setup-pstack'`
 Expected: hits under `no AskQuestion`, `no .cursor paths`, `no Cursor model slugs`, and `no inherit-parent alias`.
 
 - [ ] **Step 2: Rewrite the setup skill**
@@ -614,7 +615,7 @@ Note `arena runners` deliberately uses writing worker roles, not critics — are
 
 - [ ] **Step 3: Run the audit to verify this file is clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -c 'setup-pstack'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -c 'setup-pstack'`
 Expected: `0`
 
 - [ ] **Step 4: Commit**
@@ -661,7 +662,7 @@ The eight skills that spawn subagents. Each currently names raw model slugs, `ge
 
 - [ ] **Step 1: Confirm the failures**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -E 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -E 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/'`
 Expected: roughly 30 hit lines across the eight files. Save this list; it is the checklist for Step 2.
 
 - [ ] **Step 2: Apply the substitutions file by file**
@@ -690,7 +691,7 @@ evidence.
 
 - [ ] **Step 3: Verify all eight files are clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -cE 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -cE 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/'`
 Expected: `0`
 
 - [ ] **Step 4: Verify no role agent name was invented**
@@ -788,7 +789,7 @@ Pause Safely playbook runs. Add `.claude/jimmy-mode.state` to the project's
 
 - [ ] **Step 6: Verify the file is clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -c 'poteto-mode/SKILL.md'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -c 'poteto-mode/SKILL.md'`
 Expected: `0`
 
 - [ ] **Step 7: Commit**
@@ -817,7 +818,7 @@ git commit -m "feat(jimmy): translate mode skill and add sticky-mode hook"
 
 Run:
 ```bash
-claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -oE 'playbooks/[a-z-]+\.md' | sort -u
+claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -oE 'playbooks/[a-z-]+\.md' | sort -u
 ```
 Expected: exactly the 14 filenames listed above. Any playbook not in that list must end this task byte-identical to its vendored state.
 
@@ -849,7 +850,7 @@ Expected: `14`
 
 - [ ] **Step 6: Verify the playbooks are clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -c 'playbooks/'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -c 'playbooks/'`
 Expected: `0`
 
 - [ ] **Step 7: Commit**
@@ -885,7 +886,7 @@ Twelve files whose only Cursor coupling is a host path or an install instruction
 
 - [ ] **Step 1: Confirm the failures**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -E 'recall|show-me-your-work|automate-me|verification-skill|reviewer\.md|worktree-audit'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -E 'recall|show-me-your-work|automate-me|verification-skill|reviewer\.md|worktree-audit'`
 Expected: hits under `no .cursor paths` only.
 
 - [ ] **Step 2: Apply the path substitutions**
@@ -1142,7 +1143,7 @@ nothing fires on its own.
 
 - [ ] **Step 5: Verify benny is clean and still dormant**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -c 'automations/'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -c 'automations/'`
 Expected: `0`
 
 Run: `python3 -c "import json;d=json.load(open('claude/plugins/jimmy/.claude-plugin/plugin.json'));print('automations' in json.dumps(d))"`
