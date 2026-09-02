@@ -1003,6 +1003,24 @@ The Bun/TypeScript CLIs are harness-agnostic and need no redesign. What they nee
 
 **Do not touch** the local variables named `cursor` in `check-plan.mjs:90-94` and `github.ts:565-569`. Those are pagination cursors, not the vendor. A blind find-and-replace here breaks GraphQL pagination silently — the tests in Step 4 are what catch it.
 
+- [ ] **Step 0: Make every script invocation plugin-relative**
+
+The task preamble promises `${CLAUDE_PLUGIN_ROOT}`-relative invocation but no later step delivers it. Only `multi-phase-plan.md:10` uses the variable today. These address scripts by bare relative path, which resolves against the *user's* cwd rather than the plugin, so each is a guaranteed file-not-found once the plugin is installed anywhere:
+
+- `playbooks/shipping.md:14` — `scripts/watch-pr/watch-pr`
+- `playbooks/babysit.md:14` — `scripts/watch-pr/watch-pr`
+- `playbooks/worktree-cleanup.md:5` — `scripts/worktree-audit.sh`
+- `playbooks/orchestrate.md:17` — `scripts/orch/orch.ts`
+- `playbooks/orchestrate.md:25` — `bun scripts/orch/orch.ts`
+
+Rewrite each to `${CLAUDE_PLUGIN_ROOT}/skills/poteto-mode/scripts/...`, matching the shape already used in `multi-phase-plan.md:10`. Keep any short alias a playbook establishes for readability (orchestrate.md abbreviates the CLI to `orch` after first use) — fix the definition site, not every mention.
+
+Re-grep for bare `scripts/` references afterwards; the list above is what I found, not a guarantee of completeness.
+
+While here: `playbooks/orchestrate.md:25` still says the agent's store path is "in the system prompt". That was true in Cursor. Under Claude Code the system prompt names cwd, and the store lives under `~/.claude/projects/<slug-of-cwd>/` — the same correction Task 8's fix round applied to `reflect/SKILL.md` and `show-me-your-work/SKILL.md`. Match how those now read.
+
+Add an audit check for this to `scripts/audit-port.sh` so it cannot regress: a bare `scripts/` invocation in a shipped playbook should fail.
+
 - [ ] **Step 1: Add bun to the toolchain**
 
 ```bash
