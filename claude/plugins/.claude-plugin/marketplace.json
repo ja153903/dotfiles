@@ -1,0 +1,13 @@
+{
+  "name": "jaime-plugins",
+  "owner": {
+    "name": "Jaime Abbariao"
+  },
+  "plugins": [
+    {
+      "name": "jimmy",
+      "source": "./jimmy",
+      "description": "Rigorous agent workflows: playbook routing, multi-lens review panels, and verification-first engineering principles."
+    }
+  ]
+}
