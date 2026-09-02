@@ -1,23 +1,22 @@
 # benny
 
-benny gives you two cursor automations for slack issue reports. one triages each report. the other reproduces confirmed bugs and may prepare a small draft fix.
+benny gives you two workflows for slack issue reports. one triages each report. the other reproduces confirmed bugs and may prepare a small draft fix.
 
-the files in this directory are dormant setup and automation sources. they do not appear as slash skills.
+benny's two workflows run on request — invoke `/triage-issue-reports` or
+`/reproduce-and-fix-issues` in the target repository. There is no trigger layer;
+nothing fires on its own.
+
+the files in this directory are dormant setup sources. they do not appear as slash skills in this plugin.
 
 ## set it up
 
-1. point cursor at [`FOR_AGENTS.md`](./FOR_AGENTS.md) and name the target repository.
-2. let setup merge this whole directory into the target at `.cursor/automations/benny/`. it must preserve destination-only files and review conflicts instead of overwriting local edits.
-3. let setup enable pstack in the target repository's `.cursor/settings.json` for shared dependencies:
-
-```json
-{
-	"plugins": {
-		"pstack": { "enabled": true }
-	}
-}
-```
-
-4. keep user-owned configuration outside the copied pack, for example in `.cursor/benny/`. adapt [`configuration.example.yaml`](./templates/configuration.example.yaml) and [`feature-map.example.md`](./skills/reproduce-and-fix-issues/references/feature-map.example.md).
-5. commit `.cursor/settings.json`, `.cursor/automations/benny/`, and any secret-free configuration before enabling either automation.
-6. review each new automation draft or update existing automations in their editors. then send a harmless test report and verify every source-channel post stays in the original thread.
+1. Point Claude Code at `FOR_AGENTS.md` and name the target repository.
+2. Let setup merge this directory into the target at `.claude/benny/`, and its
+   three skills into the target's `.claude/skills/`. It must preserve
+   destination-only files and surface conflicts instead of overwriting local
+   edits.
+3. Keep user-owned configuration in `.claude/benny/`. Adapt
+   [`configuration.example.yaml`](./templates/configuration.example.yaml) and
+   [`feature-map.example.md`](./skills/reproduce-and-fix-issues/references/feature-map.example.md).
+4. Commit `.claude/benny/` and the installed skills before using either
+   workflow. Send a harmless test report and verify the triage output.
