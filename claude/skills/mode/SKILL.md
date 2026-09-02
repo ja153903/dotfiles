@@ -6,7 +6,7 @@ hooks:
   UserPromptSubmit:
     - hooks:
         - type: command
-          command: "${CLAUDE_PLUGIN_ROOT}/skills/mode/scripts/mode-reminder.sh"
+          command: "$HOME/.claude/skills/mode/scripts/mode-reminder.sh"
 ---
 
 # Jimmy mode

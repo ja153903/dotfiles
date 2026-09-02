@@ -1,22 +1,28 @@
 #!/usr/bin/env bash
-# Verifies the jimmy plugin contains no untranslated Cursor constructs.
-# Usage: audit-port.sh [--with-rename]
+# Verifies the ported jimmy skills contain no untranslated Cursor constructs.
+# Usage: audit-jimmy.sh [--with-rename]
 set -uo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WITH_RENAME=0
 [[ "${1:-}" == "--with-rename" ]] && WITH_RENAME=1
 
 fail=0
 
-# Scans shipped content only. LICENSE and README carry upstream provenance by design.
-# -I skips binary files (the guide's .jpg images). Every text file is scanned regardless
-# of extension: an --include allowlist silently misses package.json, bun.lock,
-# configuration.example.yaml, and the extensionless watch-pr script.
+# Scans shipped content only. LICENSE-pstack carries upstream provenance by design.
+# -I skips binary files. Every text file is scanned regardless of extension: an --include
+# allowlist silently misses package.json, bun.lock, and the extensionless watch-pr script.
+# The ported skills sit alongside pre-existing personal ones, so scanning $ROOT/skills
+# wholesale would flag files this port never touched. .jimmy-manifest names the 45 that
+# came from upstream; it is also what makes the skill-count structure check meaningful.
+jimmy_dirs() {
+  while read -r name; do
+    [[ -n "$name" ]] && printf '%s\0' "$ROOT/skills/$name"
+  done < "$ROOT/skills/.jimmy-manifest"
+  printf '%s\0' "$ROOT/agents"
+}
 scan() {
-  grep -rIEn --exclude-dir=node_modules "$1" \
-    "$ROOT/skills" "$ROOT/agents" "$ROOT/automations" "$ROOT/docs" \
-    2>/dev/null
+  jimmy_dirs | xargs -0 grep -rIEn --exclude-dir=node_modules "$1" 2>/dev/null
 }
 
 check() {
@@ -49,6 +55,7 @@ check "no /add-plugin"             '/add-plugin'
 check "no create-skill"            'create-skill'
 check "no agent-transcripts"       'agent-transcripts'
 check "no bare script paths"       '(`|^[[:space:]]*[$]?[[:space:]]*)(bun |node |sh |bash )?scripts/[a-z]'
+check "no plugin-root variable"    'CLAUDE_PLUGIN_ROOT'
 
 if [[ "$WITH_RENAME" == "1" ]]; then
   echo
@@ -61,13 +68,18 @@ fi
 
 echo
 echo "== structure checks =="
-skills=$(find "$ROOT/skills" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+# The ported skills now live alongside personal ones, so a total skill count would conflate
+# the two. Count what is unambiguously jimmy's: its playbooks, its role agents, and the
+# principle skills the playbooks cross-reference by name.
+listed=$(grep -c . "$ROOT/skills/.jimmy-manifest")
+missing=0
+while read -r name; do
+  [[ -n "$name" && ! -f "$ROOT/skills/$name/SKILL.md" ]] && missing=$((missing + 1))
+done < "$ROOT/skills/.jimmy-manifest"
 plays=$(find "$ROOT/skills" -path '*/playbooks/*.md' 2>/dev/null | wc -l | tr -d ' ')
-# .claude/benny-config/ is the user-owned half of Task 10's two-directory split; the
-# pack-owned .claude/benny/ is replaced wholesale on refresh. Both literals are load-bearing
-# across benny's setup instructions. scan prints whole lines, so count files, not hits.
-bennycfg=$(scan '\.claude/benny-config/' | cut -d: -f1 | sort -u | wc -l | tr -d ' ')
-for pair in "45:$skills:skill directories" "23:$plays:playbooks" "7:$bennycfg:files naming .claude/benny-config/"; do
+roles=$(find "$ROOT/agents" -maxdepth 1 -name '*.md' 2>/dev/null | wc -l | tr -d ' ')
+princ=$(find "$ROOT/skills" -maxdepth 1 -type d -name 'principle-*' 2>/dev/null | wc -l | tr -d ' ')
+for pair in "45:$listed:manifest skills" "0:$missing:manifest skills missing SKILL.md" "23:$plays:playbooks" "9:$roles:agents" "21:$princ:principle skills"; do
   want="${pair%%:*}"; rest="${pair#*:}"; got="${rest%%:*}"; what="${rest#*:}"
   if [[ "$got" == "$want" ]]; then
     printf 'ok    %s (%s)\n' "$what" "$got"
