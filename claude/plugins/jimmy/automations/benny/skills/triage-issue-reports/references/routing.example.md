@@ -1,6 +1,6 @@
 # Routing map example
 
-Copy this file to a user-owned path the pack does not manage, for example `.claude/benny/routing.md`, and replace every placeholder. Point `routing.map_path` at the copy. Pack refreshes must not overwrite it.
+Copy this file to `.claude/benny-config/routing.md` and replace every placeholder. Point `routing.map_path` at the copy. A pack refresh replaces `.claude/benny/` wholesale and never touches `.claude/benny-config/`.
 
 The triage skill treats this as data. A route needs evidence from the report or cause trace. A keyword match alone is not enough.
 

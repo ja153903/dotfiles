@@ -30,7 +30,7 @@ i want two workflows that work together on one slack issue channel. i invoke eac
 - i allow subagents to help, but they cannot post to slack or receive slack credentials.
 - i want this entire pack committed at `.claude/benny/` in the target repository, and its three skills installed into the target's `.claude/skills/`.
 - i want pstack installed in the target repository only for shared dependencies such as `how`, `why`, `tdd`, `unslop`, and the required principle skills.
-- i keep user-owned configuration, feature maps, routing maps, and secrets in `.claude/benny/` at paths the pack does not manage, so pack refreshes cannot overwrite them.
+- i keep user-owned configuration, feature maps, routing maps, and secrets in `.claude/benny-config/`. a pack refresh replaces `.claude/benny/` wholesale and never touches `.claude/benny-config/`, so it cannot overwrite them.
 - i want both workflows to fail closed when channel coordinates, tracker access, the control adapter, or the feature map are missing or uncertain.
 - i want draft pull requests only. do not merge or deploy.
 
@@ -43,13 +43,13 @@ i want two workflows that work together on one slack issue channel. i invoke eac
 - routing map: `<path or none>`
 - triage identity: `<slack identity>`
 - control skill: `<configured skill or adapter>`
-- feature map: `<committed same-repo path outside the copied pack, or behavior to paraphrase>`
+- feature map: `<committed same-repo path under .claude/benny-config/, or behavior to paraphrase>`
 - models: `<triage, reproduce, code, media review>`
 - status emoji strings: `<seen, reproducing, reproduced, blocked, fixing, failed, pull request opened>`
 - budgets: `<polling, verdict wait, follow-up, repro, rejection, fix>`
 - optional bot token capability: `<none, file download, or editable operations status>`
 
-start from [`configuration.example.yaml`](./templates/configuration.example.yaml) and [`feature-map.example.md`](./skills/reproduce-and-fix-issues/references/feature-map.example.md). copy and fill them outside this pack, for example under `.claude/benny/`. keep secret values in a secret manager or environment.
+start from [`configuration.example.yaml`](./templates/configuration.example.yaml) and [`feature-map.example.md`](./skills/reproduce-and-fix-issues/references/feature-map.example.md). copy and fill them outside this pack, under `.claude/benny-config/`. keep secret values in a secret manager or environment.
 
 ## for the agent
 
@@ -58,8 +58,8 @@ the human enters setup by pointing claude code at this file. do not look for or 
 1. ask which repository will run the workflows.
 2. treat the directory containing this `FOR_AGENTS.md` as the source pack.
 3. merge the entire source pack into `<target-repository>/.claude/benny/`, and install its three skills into `<target-repository>/.claude/skills/`.
-4. preserve every destination-only file. never delete unrelated files or overwrite user-owned configuration, feature maps, or routing maps.
-5. when an existing destination file at a source-managed path differs, review the diff and merge without discarding local edits. if ownership is ambiguous, stop and ask before replacing it.
+4. preserve every destination-only file. never delete unrelated files, and never write into `<target-repository>/.claude/benny-config/` — that directory is the user's.
+5. a refresh replaces `.claude/benny/` wholesale — nothing hand-edited belongs there. if you find local edits to a pack file, stop and ask before replacing it, and move anything worth keeping into `.claude/benny-config/`.
 6. verify that the copied `FOR_AGENTS.md` and `skills/setup-benny/SKILL.md` exist in the target repository.
 7. read and follow `.claude/benny/skills/setup-benny/SKILL.md` directly from the target repository.
 
@@ -73,4 +73,4 @@ i want verification from a fresh agent rooted in the target repository. confirm 
 
 if any shared dependency does not resolve, stop and explain what failed. do not add `.claude/benny/skills/` to a plugin manifest — the installed copies under the target's `.claude/skills/` are what make the two workflows invocable.
 
-tell me that `.claude/benny/` and the installed skills must be committed before either workflow is used.
+tell me that `.claude/benny/`, `.claude/benny-config/`, and the installed skills must be committed before either workflow is used.

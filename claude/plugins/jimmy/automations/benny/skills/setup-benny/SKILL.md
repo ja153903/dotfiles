@@ -25,8 +25,8 @@ Merge the entire source pack into the destination:
 1. Create the destination when it is absent.
 2. Copy every source file to the same relative path.
 3. Preserve destination-only files. Never delete unrelated files during install or refresh.
-4. Never overwrite user-owned configuration, feature maps, or routing maps. Those live in `.claude/benny/` at paths the pack does not manage.
-5. When an existing source-managed file differs, inspect the diff and merge without discarding local edits. If ownership is ambiguous, stop and ask before replacing it.
+4. Never write into `<target-repository>/.claude/benny-config/`. User-owned configuration, feature maps, and routing maps live there, and a refresh replaces `.claude/benny/` wholesale without reaching them.
+5. A refresh replaces `.claude/benny/` wholesale — nothing hand-edited belongs there. If a pack file carries local edits, stop and ask before replacing it, and move anything worth keeping into `.claude/benny-config/`.
 6. Verify that the destination contains `FOR_AGENTS.md`, this setup file, both operational files, their references, and the templates.
 
 If this file is already being read from the target destination, treat the copy as complete and run the same verification before continuing.
@@ -58,7 +58,7 @@ If any shared dependency does not resolve, stop and explain the failure.
 
 The Benny pack under `.claude/benny/` is reference material, not a skill root. Do not add it to a plugin manifest. The installed copies under `.claude/skills/` are what make `/triage-issue-reports` and `/reproduce-and-fix-issues` invocable.
 
-Tell the user that `.claude/benny/`, the installed skills, and any referenced secret-free configuration must be committed before either workflow is used. Do not commit them unless the user asks.
+Tell the user that `.claude/benny/`, `.claude/benny-config/`, the installed skills, and any referenced secret-free configuration must be committed before either workflow is used. Do not commit them unless the user asks.
 
 ## 2. Adapt the configuration
 
@@ -67,17 +67,17 @@ Open these copied examples:
 - `../../templates/configuration.example.yaml`
 - `../reproduce-and-fix-issues/references/feature-map.example.md`
 
-Create user-owned copies at paths the pack does not manage. These are configuration files, not pack files. Example locations:
+Create user-owned copies under `.claude/benny-config/`. These are configuration files, not pack files. Example locations:
 
-- Project config, such as `.claude/benny/configuration.yaml`
-- Project feature map, such as `.claude/benny/feature-map.md`
-- Project routing map, such as `.claude/benny/routing.md`
+- Project config, `.claude/benny-config/configuration.yaml`
+- Project feature map, `.claude/benny-config/feature-map.md`
+- Project routing map, `.claude/benny-config/routing.md`
 - User config, such as `~/.config/benny/configuration.yaml`
 - User feature map, such as `~/.config/benny/feature-map.md`
 
 Fill one feature-map section for every user-facing feature Benny may reproduce. Keep it at the user point of view. Do not freeze implementation details or current code paths in the map.
 
-Do not edit the copied examples. Pack refreshes may update source-managed files after conflict review, but they must never touch the user-owned copies.
+Do not edit the copied examples. A pack refresh replaces `.claude/benny/` wholesale, so nothing under `.claude/benny-config/` can be touched by one.
 
 Keep these files committed and secret-free so a fresh checkout of the target repository can read them. Reference them by stable repository-relative paths. Never reference the plugin source directory or a plugin cache path.
 
@@ -129,7 +129,7 @@ Do not use undocumented integration endpoints.
 
 If the user wants reroutes or owner pings:
 
-1. Copy `../triage-issue-reports/references/routing.example.md` to a user-owned path the pack does not manage, such as `.claude/benny/routing.md`.
+1. Copy `../triage-issue-reports/references/routing.example.md` to `.claude/benny-config/routing.md`.
 2. Replace every placeholder with public or organization-local values.
 3. Keep owner pings off by default.
 4. Allow a ping only for a configured feature owner or a confirmed likely regression author.
@@ -169,7 +169,7 @@ Both skills read their own operational file. Do not paraphrase their contents in
 
 Use a test channel or a harmless test report.
 
-Before testing, confirm that `.claude/benny/`, the installed skills, and every referenced secret-free configuration file are committed on the branch the workflows run from. If any check fails, stop and tell the user the workflows are not ready.
+Before testing, confirm that `.claude/benny/`, `.claude/benny-config/`, the installed skills, and every referenced secret-free configuration file are committed on the branch the workflows run from. If any check fails, stop and tell the user the workflows are not ready.
 
 Verify:
 
