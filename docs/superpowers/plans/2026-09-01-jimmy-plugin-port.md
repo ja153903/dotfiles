@@ -133,10 +133,12 @@ WITH_RENAME=0
 fail=0
 
 # Scans shipped content only. LICENSE and README carry upstream provenance by design.
+# -I skips binary files (the guide's .jpg images). Every text file is scanned regardless
+# of extension: an --include allowlist silently misses package.json, bun.lock,
+# configuration.example.yaml, and the extensionless watch-pr script.
 scan() {
-  grep -rEn "$1" \
+  grep -rIEn "$1" \
     "$ROOT/skills" "$ROOT/agents" "$ROOT/automations" "$ROOT/docs" \
-    --include='*.md' --include='*.ts' --include='*.mjs' --include='*.sh' \
     2>/dev/null
 }
 
@@ -955,6 +957,7 @@ The Bun/TypeScript CLIs are harness-agnostic and need no redesign. What they nee
 
 **Files:**
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/package.json`
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/bun.lock` (regenerated, not hand-edited)
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/github.ts:337-345`
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/github.test.ts:227`
 - Modify: `mise.toml`
@@ -999,8 +1002,11 @@ d = json.loads(p.read_text())
 d["name"] = "@pstack/poteto-mode-tools"
 p.write_text(json.dumps(d, indent=2) + "\n")
 EOF
+bun install
 cd -
 ```
+
+`bun install` re-runs so `bun.lock`'s embedded workspace name follows `package.json`. The lockfile carries the same `@cursor-skill/poteto-mode-tools` string, and a stale lock leaves a second copy of the old identifier for the rename pass to trip over.
 
 - [ ] **Step 4: Generalize the review-bot detector**
 
@@ -1083,6 +1089,7 @@ benny stays dormant. Its files are setup sources merged into a *target* reposito
 - Modify: `claude/plugins/jimmy/automations/benny/skills/reproduce-and-fix-issues/references/control-adapter.md`
 - Modify: `claude/plugins/jimmy/automations/benny/skills/reproduce-and-fix-issues/references/feature-map.example.md`
 - Modify: `claude/plugins/jimmy/automations/benny/skills/triage-issue-reports/references/routing.example.md`
+- Modify: `claude/plugins/jimmy/automations/benny/templates/configuration.example.yaml` (two `.cursor/benny/` paths)
 - Delete: `claude/plugins/jimmy/automations/benny/templates/triage-automation-prompt.md`
 - Delete: `claude/plugins/jimmy/automations/benny/templates/reproduce-automation-prompt.md`
 
@@ -1099,7 +1106,7 @@ rm claude/plugins/jimmy/automations/benny/templates/triage-automation-prompt.md 
    claude/plugins/jimmy/automations/benny/templates/reproduce-automation-prompt.md
 ```
 
-`templates/configuration.example.yaml` stays — it is user configuration, not trigger plumbing.
+`templates/configuration.example.yaml` stays — it is user configuration, not trigger plumbing — but it is not inert: its `map_path` and `feature_map_path` keys hold `.cursor/benny/` paths that Step 4 must translate.
 
 - [ ] **Step 2: Rewrite the setup instructions for a Claude Code target**
 
@@ -1131,7 +1138,7 @@ nothing fires on its own.
 
 - [ ] **Step 4: Translate the remaining paths**
 
-`.cursor/automations/benny/` → `.claude/benny/`, `.cursor/benny/` → `.claude/benny/`, `.cursor/skills/` → `.claude/skills/` across all seven modified files.
+`.cursor/automations/benny/` → `.claude/benny/`, `.cursor/benny/` → `.claude/benny/`, `.cursor/skills/` → `.claude/skills/` across all eight modified files, `configuration.example.yaml` included. Leave its `prefer_cursor_actions` key alone — that is a benny config key name, not a host path, and renaming it would break the example against benny's own reader.
 
 - [ ] **Step 5: Verify benny is clean and still dormant**
 
