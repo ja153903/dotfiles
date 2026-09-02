@@ -804,10 +804,10 @@ git commit -m "feat(jimmy): translate mode skill and add sticky-mode hook"
 
 ### Task 7: Translate the playbooks
 
-17 of the 23 playbooks carry Cursor constructs or bare "Cursor" prose. The other 6 are already clean and must not be edited.
+18 of the 23 playbooks carry Cursor constructs or bare "Cursor" prose. The other 5 are already clean and must not be edited.
 
 **Files:**
-- Modify: `claude/plugins/jimmy/skills/poteto-mode/playbooks/` — `orchestrate.md`, `multi-phase-plan.md`, `autonomous-run.md`, `session-pickup.md`, `eval.md`, `worktree-cleanup.md`, `bug-fix.md`, `hillclimb.md`, `feature.md`, `perf-issue.md`, `refactoring.md`, `autopilot-full.md`, `autopilot-stack.md`, `babysit.md`, `shipping.md`, `pause-safely.md`, `authoring-a-skill.md`
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/playbooks/` — `orchestrate.md`, `multi-phase-plan.md`, `autonomous-run.md`, `session-pickup.md`, `eval.md`, `worktree-cleanup.md`, `bug-fix.md`, `hillclimb.md`, `feature.md`, `perf-issue.md`, `refactoring.md`, `autopilot-full.md`, `autopilot-stack.md`, `babysit.md`, `shipping.md`, `pause-safely.md`, `authoring-a-skill.md`, `opening-a-pr.md`
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/references/bugbot-triage.md` (renamed)
 - Modify: `claude/plugins/jimmy/skills/reflect/references/synthesizer.md` (Bugbot reference only)
 
@@ -821,7 +821,7 @@ Run:
 ```bash
 claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -oE 'playbooks/[a-z-]+\.md' | sort -u
 ```
-Expected: exactly the 17 filenames listed above. Any playbook not in that list must end this task byte-identical to its vendored state. `shipping.md`, `pause-safely.md`, and `authoring-a-skill.md` appear only because of a bare "Cursor" prose mention each — they carry no other construct.
+Expected: exactly the 18 filenames listed above. Any playbook not in that list must end this task byte-identical to its vendored state. `shipping.md`, `pause-safely.md`, and `authoring-a-skill.md` appear only because of a bare "Cursor" prose mention each — they carry no other construct.
 
 - [ ] **Step 2: Apply the Task 5 substitution table to the model and subagent hits**
 
@@ -841,13 +841,13 @@ Rename `references/bugbot-triage.md` to `references/review-bot-triage.md` and re
 - `autonomous-run.md`: `AskQuestion` → `AskUserQuestion`.
 - `multi-phase-plan.md`: `node pstack/skills/poteto-mode/scripts/check-plan.mjs` → `node "${CLAUDE_PLUGIN_ROOT}/skills/poteto-mode/scripts/check-plan.mjs"`.
 
-- [ ] **Step 5: Verify the 6 clean playbooks were not touched**
+- [ ] **Step 5: Verify the 5 clean playbooks were not touched**
 
 Run:
 ```bash
 git diff --name-only HEAD -- claude/plugins/jimmy/skills/poteto-mode/playbooks | wc -l
 ```
-Expected: `17`
+Expected: `18`
 
 - [ ] **Step 6: Verify the playbooks are clean**
 
@@ -881,6 +881,8 @@ Twelve files whose only Cursor coupling is a host path or an install instruction
 - Modify: `claude/plugins/jimmy/docs/guide/06-verify-and-ship.md` (1 hit)
 - Modify: `claude/plugins/jimmy/docs/guide/07-overnight.md` (1 hit)
 - Modify: `claude/plugins/jimmy/docs/guide/09-make-it-yours.md` (1 hit)
+- Modify: `claude/plugins/jimmy/docs/guide/10-recipes-and-pitfalls.md` (`auto` / `inherit-parent` aliases)
+- Modify: `claude/plugins/jimmy/agents/poteto-agent.md` (`generalPurpose` in its description)
 
 **Interfaces:**
 - Consumes: nothing.
@@ -963,6 +965,10 @@ The Bun/TypeScript CLIs are harness-agnostic and need no redesign. What they nee
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/bun.lock` (regenerated, not hand-edited)
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/github.ts:337-345`
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/github.test.ts:227`
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/types.ts:68-69` (`isBugbot`, `bugbotReviewPasses` fields)
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/policy.ts:50` (the `"bugbot"` string literal)
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/render.ts:62-63` (output labels)
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/check-plan.mjs:7` (a `grok-4.6-fast-xhigh` slug inside a string constant)
 - Modify: `mise.toml`
 - Test: the vendored suites — `scripts/orch/orch.test.ts`, `scripts/watch-pr/{cli,github,policy}.test.ts`
 
@@ -1052,6 +1058,18 @@ export function isReviewBotComment(
 ```
 
 Replace the original `author === "cursor" && …` condition with a call to it, preserving the surrounding `cursor_automation_id` marker check as an additional signal rather than a requirement.
+
+- [ ] **Step 5b: Carry the generalization through the type, policy, and render layers**
+
+The Bugbot concept is threaded through more than `github.ts`. Rename the fields so the type layer reflects what the code now means, letting the compiler find every use:
+
+- `types.ts:68-69`: `isBugbot` → `isReviewBot`, `bugbotReviewPasses` → `reviewBotPasses`
+- `policy.ts:50`: the `"bugbot"` string literal becomes a reference to `DEFAULT_REVIEW_BOTS` rather than a hardcoded name
+- `render.ts:62-63`: output labels follow the renamed fields
+
+Also fix `check-plan.mjs:7`, where a `grok-4.6-fast-xhigh` slug sits inside the `LANES` string constant. That string is illustrative prose in a plan-shape checker, not a model selection — replace the slug with a role agent name so the example matches this plugin.
+
+Run `bun x tsc --project watch-pr/tsconfig.json --noEmit --strict` after the renames: a missed use is a compile error, not a silent bug. That is why the fields are renamed rather than aliased.
 
 - [ ] **Step 6: Run the full suite**
 
