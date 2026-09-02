@@ -44,6 +44,7 @@ check "no .cursor paths"           '\.cursor/'
 check "no pstack-models.mdc"       'pstack-models\.mdc'
 check "no Cursor model slugs"      'grok-[0-9]|gpt-[0-9]+\.[0-9]+-sol|claude-fable-5-1-thinking|claude-opus-5-thinking'
 check "no Bugbot"                  '[Bb]ugbot'
+check "no Cursor mentions"         '\bCursor\b'
 check "no /add-plugin"             '/add-plugin'
 
 if [[ "$WITH_RENAME" == "1" ]]; then
