@@ -160,6 +160,9 @@ Agent frontmatter gains `model` and `effort` per Decision 1.
 | `environment: "cloud"` + `run_in_background: true` | background `Agent` with `isolation: "worktree"`; note that `isolation: "remote"` exists but is access-gated |
 | `environment: "local"` | plain `Agent` (the default) |
 | `cloud_base_branch` | explicit worktree/branch setup in the brief |
+| `readonly: true` (6 skills) | a read-only role agent (`disallowedTools: Write, Edit, NotebookEdit`) — preserves MCP access, which upstream explicitly wants and Cursor's readonly mode strips |
+| `readonly: false` + "readonly strips MCP" rationale | drop the flag; the rationale is obsolete under Claude Code and the prose is rewritten |
+| `inherit-parent`, `auto` (3 skills) | `inherit` |
 | `~/.cursor/rules/pstack-models.mdc` | `~/.claude/jimmy-models.md` |
 | `.cursor/skills/` | `.claude/skills/` |
 | `.cursor/settings.json` | `.claude/settings.json` |
