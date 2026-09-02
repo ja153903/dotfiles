@@ -1,8 +1,4 @@
-import {
-  DEFAULT_REVIEW_BOTS,
-  WatcherQueryError,
-  resolveChecks,
-} from "./github.ts";
+import { WatcherQueryError, resolveChecks } from "./github.ts";
 import type * as T from "./types.ts";
 import { nonEmpty } from "./types.ts";
 export function assessGitHubMerge(args: {
@@ -50,8 +46,12 @@ async function mergeAssessment(
     }),
   };
 }
+// Substrings of CI *check names*, deliberately kept separate from
+// DEFAULT_REVIEW_BOTS: that list is matched as exact comment-author logins,
+// this one as substrings. Do not merge them.
 const AUTOMATION_TOKENS = [
-  ...DEFAULT_REVIEW_BOTS,
+  "cursor",
+  "claude",
   "security review",
   "pr review automation",
   "review automation",
@@ -61,13 +61,17 @@ export async function readSnapshot(args: {
   readonly context: T.PrContext;
   readonly pendingHistory: "include" | "omit";
   readonly allowDraft: boolean;
+  readonly reviewBots?: readonly string[];
 }): Promise<T.PrSnapshot> {
   const facts = await args.reader.pullRequest(args.context);
   if (facts.state === "MERGED" || facts.mergedAt !== null)
     return { kind: "merged", context: args.context, facts };
   if (facts.state === "CLOSED")
     return { kind: "closed", context: args.context, facts };
-  const threads = await args.reader.reviewThreads(args.context);
+  const threads = await args.reader.reviewThreads(
+    args.context,
+    args.reviewBots
+  );
   const checks = await resolveChecks(args.reader, args.context);
   const failed = nonEmpty(
     checks.checks.filter(
@@ -431,6 +435,7 @@ export async function runSimple(args: {
           context,
           pendingHistory: "include",
           allowDraft: args.options.allowDraft,
+          reviewBots: args.options.reviewBots,
         })
       );
     const complete = nonEmpty(rows);
@@ -744,6 +749,7 @@ export async function runQueued(args: {
       context,
       pendingHistory: "omit",
       allowDraft: args.options.allowDraft,
+      reviewBots: args.options.reviewBots,
     });
     const applied = applyQueueSnapshot(
       state,

@@ -48,7 +48,7 @@ check "no Cursor mentions"         '\bCursor\b'
 check "no /add-plugin"             '/add-plugin'
 check "no create-skill"            'create-skill'
 check "no agent-transcripts"       'agent-transcripts'
-check "no bare script paths"       '`(bun |node |sh |bash )?scripts/[a-z]'
+check "no bare script paths"       '(`|^[[:space:]]*[$]?[[:space:]]*)(bun |node |sh |bash )?scripts/[a-z]'
 
 if [[ "$WITH_RENAME" == "1" ]]; then
   echo

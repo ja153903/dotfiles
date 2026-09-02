@@ -332,12 +332,22 @@ function parseComment(value: unknown): T.ReviewComment {
 }
 export const DEFAULT_REVIEW_BOTS = ["cursor", "claude"] as const;
 export function isReviewBotComment(
-  comment: { readonly authorLogin?: string | null } | null,
+  comment: {
+    readonly authorLogin?: string | null;
+    readonly body?: string;
+  } | null,
   bots: readonly string[] = DEFAULT_REVIEW_BOTS
 ): boolean {
-  const login = (comment?.authorLogin ?? "").toLowerCase();
-  if (login === "") return false;
-  return bots.some((bot) => login === bot || login === `${bot}[bot]`);
+  if (comment === null) return false;
+  const login = (comment.authorLogin ?? "").toLowerCase();
+  // Either signal is sufficient: a known bot login, or the automation marker a
+  // review bot stamps into its comment body (which identifies a bot posting
+  // under a login this repo has not configured).
+  return (
+    (login !== "" &&
+      bots.some((bot) => login === bot || login === `${bot}[bot]`)) ||
+    /CURSOR_AUTOMATION_ID:/i.test(comment.body ?? "")
+  );
 }
 function passKey(comment: T.ReviewComment | null): string | null {
   if (comment === null) return null;
@@ -350,7 +360,10 @@ function passKey(comment: T.ReviewComment | null): string | null {
   }
   return null;
 }
-export function parseReviewThreads(value: unknown): readonly T.ReviewThread[] {
+export function parseReviewThreads(
+  value: unknown,
+  bots: readonly string[] = DEFAULT_REVIEW_BOTS
+): readonly T.ReviewThread[] {
   const nodes = list(
     at(value, ["data", "repository", "pullRequest", "reviewThreads", "nodes"]),
     "reviewThreads.nodes"
@@ -377,7 +390,7 @@ export function parseReviewThreads(value: unknown): readonly T.ReviewThread[] {
   const keys = new Set<string>();
   let keyless = false;
   for (const thread of threads) {
-    if (!isReviewBotComment(thread.firstComment)) continue;
+    if (!isReviewBotComment(thread.firstComment, bots)) continue;
     const key = passKey(thread.firstComment);
     if (key === null) keyless = true;
     else keys.add(key);
@@ -388,7 +401,7 @@ export function parseReviewThreads(value: unknown): readonly T.ReviewThread[] {
     .map(({ id, firstComment }) => ({
       id,
       firstComment,
-      isReviewBot: isReviewBotComment(firstComment),
+      isReviewBot: isReviewBotComment(firstComment, bots),
       reviewBotPasses: passes,
     }));
 }
@@ -562,10 +575,12 @@ export class GhGitHubReader implements T.GitHubReader {
     return { checks, endCursor: page.hasNextPage && cursor ? cursor : null };
   }
   async reviewThreads(
-    context: T.PrContext
+    context: T.PrContext,
+    bots?: readonly string[]
   ): Promise<readonly T.ReviewThread[]> {
     return parseReviewThreads(
-      await runJson(graphqlArgs(REVIEW_THREADS_QUERY, context))
+      await runJson(graphqlArgs(REVIEW_THREADS_QUERY, context)),
+      bots
     );
   }
   async commitRollups(

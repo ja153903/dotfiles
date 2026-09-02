@@ -1,6 +1,7 @@
 import { describe, expect, it } from "bun:test";
 import { type CliRuntime, main, parseArgs } from "./cli.ts";
 import { fakeReader, passingCheck } from "./fakes.test-helper.ts";
+import { parseReviewThreads } from "./github.ts";
 import { renderJson, renderPretty } from "./render.ts";
 import type { GitHubReader, WatcherVerdict } from "./types.ts";
 import { parsePrNumber } from "./types.ts";
@@ -48,6 +49,7 @@ describe("parseArgs", () => {
         timeout: 0,
         maxQueryErrors: 5,
         allowDraft: false,
+        reviewBots: ["cursor", "claude"],
       },
     });
   });
@@ -79,6 +81,7 @@ describe("parseArgs", () => {
       timeout: 0,
       maxQueryErrors: 3,
       allowDraft: true,
+      reviewBots: ["cursor", "claude"],
     });
     expect(parsed.pretty).toBe(true);
   });
@@ -161,6 +164,64 @@ describe("main", () => {
     expect(harness.stderr.join("")).toContain(
       "option '--interval <seconds>' argument '0' is invalid"
     );
+  });
+
+  it("passes --review-bots through to the review-thread detector", async () => {
+    const seen: (readonly string[] | undefined)[] = [];
+    const base = fakeReader();
+    const reader: GitHubReader = {
+      ...base,
+      async reviewThreads(_context, bots) {
+        seen.push(bots);
+        return parseReviewThreads(
+          {
+            data: {
+              repository: {
+                pullRequest: {
+                  reviewThreads: {
+                    nodes: [
+                      {
+                        id: "one",
+                        isResolved: false,
+                        comments: {
+                          nodes: [
+                            {
+                              body: "found a bug",
+                              createdAt: "now",
+                              path: null,
+                              line: null,
+                              author: { login: "hubot" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+            },
+          },
+          bots
+        );
+      },
+    };
+    const harness = testRuntime(reader);
+    await main(
+      [
+        "--owner",
+        "owner",
+        "--repo",
+        "repo",
+        "--pr",
+        "1",
+        "--status-only",
+        "--review-bots",
+        "hubot",
+      ],
+      harness.runtime
+    );
+    expect(seen).toEqual([["hubot"]]);
+    expect(harness.stdout[0]).toContain('"isReviewBot":true');
   });
 
   it("bypasses the queue machine for queued-stack status-only", async () => {

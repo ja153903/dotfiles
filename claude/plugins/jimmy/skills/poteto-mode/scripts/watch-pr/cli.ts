@@ -6,6 +6,7 @@ import {
   Option,
 } from "commander";
 import {
+  DEFAULT_REVIEW_BOTS,
   GhGitHubReader,
   WatcherQueryError,
   discoverStack,
@@ -49,6 +50,14 @@ function positiveInteger(value: string): number {
     throw new InvalidArgumentError("must be a positive integer");
   return parsed;
 }
+function botList(value: string): readonly string[] {
+  const bots = value
+    .split(",")
+    .map((part) => part.trim().toLowerCase())
+    .filter((part) => part !== "");
+  if (bots.length === 0) throw new InvalidArgumentError("cannot be empty");
+  return bots;
+}
 function prNumber(value: string): T.PrNumber {
   try {
     return parsePrNumber(Number(value.replace(/^#/, "")));
@@ -78,6 +87,7 @@ interface RawOptions {
   readonly statusOnly: boolean;
   readonly allowDraft: boolean;
   readonly pretty: boolean;
+  readonly reviewBots: readonly string[];
 }
 export function parseArgs(
   argv: readonly string[],
@@ -128,6 +138,12 @@ export function parseArgs(
     )
     .option("--status-only", "print one status table and exit 0", false)
     .option("--allow-draft", "do not treat a draft as a merge gate", false)
+    .option(
+      "--review-bots <login,...>",
+      "comma-separated review-bot logins",
+      botList,
+      DEFAULT_REVIEW_BOTS
+    )
     .option("--pretty", "render human text instead of JSON", false);
   program.parse(argv, { from: "user" });
   const raw = program.opts<RawOptions>();
@@ -147,6 +163,7 @@ export function parseArgs(
       timeout: raw.timeout,
       maxQueryErrors: raw.maxQueryErrors,
       allowDraft: raw.allowDraft,
+      reviewBots: raw.reviewBots,
     },
   };
 }

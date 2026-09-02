@@ -269,6 +269,59 @@ it("does not treat a human comment as bot review", () => {
   );
 });
 
+it("does not treat a login merely containing a bot name as a bot", () => {
+  expect(isReviewBotComment({ authorLogin: "cursorfan" }, ["cursor"])).toBe(
+    false
+  );
+});
+
+it("recognizes a GitHub App account posting under a [bot] suffix", () => {
+  expect(isReviewBotComment({ authorLogin: "claude[bot]" }, ["claude"])).toBe(
+    true
+  );
+});
+
+it("recognizes an automation marker under an unconfigured login", () => {
+  expect(
+    isReviewBotComment(
+      { authorLogin: "some-app", body: "CURSOR_AUTOMATION_ID: run-9" },
+      ["claude"]
+    )
+  ).toBe(true);
+});
+
+it("threads a custom bot list through parseReviewThreads", () => {
+  const response = {
+    data: {
+      repository: {
+        pullRequest: {
+          reviewThreads: {
+            nodes: [
+              {
+                id: "one",
+                isResolved: false,
+                comments: {
+                  nodes: [
+                    {
+                      body: "no marker here",
+                      createdAt: "now",
+                      path: null,
+                      line: null,
+                      author: { login: "hubot" },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      },
+    },
+  };
+  expect(parseReviewThreads(response)[0]?.isReviewBot).toBe(false);
+  expect(parseReviewThreads(response, ["hubot"])[0]?.isReviewBot).toBe(true);
+});
+
 describe("context and stack discovery", () => {
   it("returns a fully explicit context without any reader call", async () => {
     const reader = fakeReader();
