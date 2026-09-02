@@ -469,7 +469,7 @@ Run:
 ```bash
 grep -h '^model:\|^effort:' claude/plugins/jimmy/agents/roles/*.md | sort | uniq -c
 ```
-Expected: only `model:` values from `sonnet|opus|fable` and only `effort:` values from `high|xhigh|max` — seven of each in total, distributed as `3 fable`, `2 opus`, `2 sonnet` and `3 max`, `1 xhigh`, `3 high`. Any other string violates the Global Constraints model/effort sets.
+Expected: only `model:` values from `sonnet|opus|fable` and only `effort:` values from `high|xhigh|max` — seven of each in total, distributed as `3 fable`, `2 opus`, `2 sonnet` and `4 max`, `1 xhigh`, `2 high`. Any other string violates the Global Constraints model/effort sets.
 
 - [ ] **Step 4: Verify the audit still reports the same translation failures**
 
@@ -804,7 +804,8 @@ git commit -m "feat(jimmy): translate mode skill and add sticky-mode hook"
 
 **Files:**
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/playbooks/` — `orchestrate.md`, `multi-phase-plan.md`, `autonomous-run.md`, `session-pickup.md`, `eval.md`, `worktree-cleanup.md`, `bug-fix.md`, `hillclimb.md`, `feature.md`, `perf-issue.md`, `refactoring.md`, `autopilot-full.md`, `autopilot-stack.md`, `babysit.md`
-- Modify: `claude/plugins/jimmy/skills/poteto-mode/references/bugbot-triage.md`
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/references/bugbot-triage.md` (renamed)
+- Modify: `claude/plugins/jimmy/skills/reflect/references/synthesizer.md` (Bugbot reference only)
 
 **Interfaces:**
 - Consumes: role agents (Task 3), the substitution table from Task 5.
@@ -858,9 +859,9 @@ git commit -m "feat(jimmy): translate playbooks and retarget review-bot triage"
 
 ---
 
-### Task 8: Translate the remaining skills
+### Task 8: Translate the remaining skills and the guide's constructs
 
-Nine files whose only Cursor coupling is a host path. Mechanical, but they are the difference between an audit that passes and one that nearly passes. `worktree-audit.sh` is included here rather than in Task 9 because its `.cursor/` path is the last audit-visible translation hit; Task 9 handles the script changes the audit cannot see.
+Twelve files whose only Cursor coupling is a host path or an install instruction. The three `docs/guide/` files are here rather than in Task 12 because the audit scans `docs/`, so leaving them until the docs task would make this task's "everything passes" milestone false. Mechanical, but they are the difference between an audit that passes and one that nearly passes. `worktree-audit.sh` is included here rather than in Task 9 because its `.cursor/` path is the last audit-visible translation hit; Task 9 handles the script changes the audit cannot see.
 
 **Files:**
 - Modify: `claude/plugins/jimmy/skills/recall/SKILL.md`
@@ -872,6 +873,9 @@ Nine files whose only Cursor coupling is a host path. Mechanical, but they are t
 - Modify: `claude/plugins/jimmy/skills/reflect/references/tooling-reviewer.md`
 - Modify: `claude/plugins/jimmy/skills/reflect/references/divergent-reviewer.md`
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/worktree-audit.sh` (line 25 comment, line 27 path)
+- Modify: `claude/plugins/jimmy/docs/guide/01-setup.md` (3 hits)
+- Modify: `claude/plugins/jimmy/docs/guide/06-verify-and-ship.md` (1 hit)
+- Modify: `claude/plugins/jimmy/docs/guide/09-make-it-yours.md` (1 hit)
 
 **Interfaces:**
 - Consumes: nothing.
@@ -906,23 +910,41 @@ ls -d "$HOME/.claude/projects/$(pwd | tr / -)" && echo "slug format confirmed"
 ```
 Expected: the directory path prints, followed by `slug format confirmed`. If it does not, read `~/.claude/projects/` and match the actual convention rather than assuming.
 
-- [ ] **Step 3: Verify every translation check now passes**
+- [ ] **Step 3: Translate the guide's Cursor constructs**
+
+Only the banned constructs here — prose voice and the wider Cursor framing belong to Task 12. Find them first:
+
+```bash
+grep -rnE '\.cursor/|[Bb]ugbot|/add-plugin|grok-[0-9]|gpt-[0-9]+\.[0-9]+-sol|claude-fable-5-1-thinking|claude-opus-5-thinking|generalPurpose|AskQuestion' claude/plugins/jimmy/docs/guide/
+```
+Expected: 5 hits across `01-setup.md` (3), `06-verify-and-ship.md` (1), `09-make-it-yours.md` (1).
+
+Apply the Task 5 substitution table to each. `/add-plugin pstack` in `01-setup.md` becomes the two-command install:
+
+```
+/plugin marketplace add ~/programming/dotfiles/claude/plugins
+/plugin install pstack@jaime-plugins
+```
+
+(Task 11 renames `pstack@` to `jimmy@` with everything else.)
+
+- [ ] **Step 4: Verify every translation check now passes**
 
 Run: `claude/plugins/jimmy/scripts/audit-port.sh`
 Expected: every line under `== translation checks ==` prints `ok`. Structure checks print `ok`. Final line `AUDIT PASS`, exit code `0`.
 
 This is the milestone the whole translation pass was aiming at. If any check still fails, the failing file belongs to an earlier task — go back rather than patching it here.
 
-- [ ] **Step 4: Confirm the rename work is still outstanding**
+- [ ] **Step 5: Confirm the rename work is still outstanding**
 
 Run: `claude/plugins/jimmy/scripts/audit-port.sh --with-rename`
 Expected: translation and structure checks `ok`; both rename checks `FAIL` with many hits; final line `AUDIT FAIL`. Task 11 clears these.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
-git add claude/plugins/jimmy/skills
-git commit -m "feat(jimmy): translate remaining host paths; translation pass complete"
+git add claude/plugins/jimmy/skills claude/plugins/jimmy/docs
+git commit -m "feat(jimmy): translate remaining host paths and guide constructs"
 ```
 
 ---
@@ -1306,9 +1328,8 @@ EOF
 
 - [ ] **Step 2: Rewrite the guide's Cursor framing**
 
-Each of the 11 guide files describes Cursor's UI and workflow. Apply the same substitutions the skills got, plus:
+Task 8 already removed the banned constructs; what remains is prose framing. Each of the 11 guide files describes Cursor's UI and workflow:
 
-- `/add-plugin pstack` → the two install commands from the README
 - Cursor cloud agents → background subagents and worktree isolation
 - Cursor's plan mode → Claude Code's plan mode
 - `/loop` stays as-is
