@@ -5,6 +5,7 @@ import {
   mapRollupNode,
   orderStack,
   parsePullRequest,
+  isReviewBotComment,
   parseReviewThreads,
   resolveChecks,
   resolveContext,
@@ -192,7 +193,7 @@ describe("closed enum parsing", () => {
   });
 });
 
-it("annotates Bugbot threads with distinct review-pass counts", () => {
+it("annotates review-bot threads with distinct review-pass counts", () => {
   const response = {
     data: {
       repository: {
@@ -209,7 +210,7 @@ it("annotates Bugbot threads with distinct review-pass counts", () => {
                       createdAt: "now",
                       path: "a.ts",
                       line: 1,
-                      author: { login: "bugbot" },
+                      author: { login: "claude" },
                     },
                   ],
                 },
@@ -239,7 +240,7 @@ it("annotates Bugbot threads with distinct review-pass counts", () => {
                       createdAt: "now",
                       path: null,
                       line: null,
-                      author: { login: "bugbot" },
+                      author: { login: "claude" },
                     },
                   ],
                 },
@@ -252,8 +253,20 @@ it("annotates Bugbot threads with distinct review-pass counts", () => {
   };
   const threads = parseReviewThreads(response);
   expect(threads).toHaveLength(2);
-  expect(threads.map((thread) => thread.isBugbot)).toEqual([true, true]);
-  expect(threads.map((thread) => thread.bugbotReviewPasses)).toEqual([3, 3]);
+  expect(threads.map((thread) => thread.isReviewBot)).toEqual([true, true]);
+  expect(threads.map((thread) => thread.reviewBotPasses)).toEqual([3, 3]);
+});
+
+it("recognizes a configured review bot other than cursor", () => {
+  expect(isReviewBotComment({ authorLogin: "claude" }, ["claude", "cursor"])).toBe(
+    true
+  );
+});
+
+it("does not treat a human comment as bot review", () => {
+  expect(isReviewBotComment({ authorLogin: "someone" }, ["claude", "cursor"])).toBe(
+    false
+  );
 });
 
 describe("context and stack discovery", () => {

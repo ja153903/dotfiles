@@ -14,7 +14,7 @@ fail=0
 # of extension: an --include allowlist silently misses package.json, bun.lock,
 # configuration.example.yaml, and the extensionless watch-pr script.
 scan() {
-  grep -rIEn "$1" \
+  grep -rIEn --exclude-dir=node_modules "$1" \
     "$ROOT/skills" "$ROOT/agents" "$ROOT/automations" "$ROOT/docs" \
     2>/dev/null
 }
@@ -48,6 +48,7 @@ check "no Cursor mentions"         '\bCursor\b'
 check "no /add-plugin"             '/add-plugin'
 check "no create-skill"            'create-skill'
 check "no agent-transcripts"       'agent-transcripts'
+check "no bare script paths"       '`(bun |node |sh |bash )?scripts/[a-z]'
 
 if [[ "$WITH_RENAME" == "1" ]]; then
   echo

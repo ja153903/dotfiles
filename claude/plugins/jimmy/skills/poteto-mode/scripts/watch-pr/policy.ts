@@ -1,4 +1,8 @@
-import { WatcherQueryError, resolveChecks } from "./github.ts";
+import {
+  DEFAULT_REVIEW_BOTS,
+  WatcherQueryError,
+  resolveChecks,
+} from "./github.ts";
 import type * as T from "./types.ts";
 import { nonEmpty } from "./types.ts";
 export function assessGitHubMerge(args: {
@@ -47,7 +51,7 @@ async function mergeAssessment(
   };
 }
 const AUTOMATION_TOKENS = [
-  "bugbot",
+  ...DEFAULT_REVIEW_BOTS,
   "security review",
   "pr review automation",
   "review automation",
