@@ -663,8 +663,8 @@ The eight skills that spawn subagents. Each currently names raw model slugs, `ge
 
 - [ ] **Step 1: Confirm the failures**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -E 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/'`
-Expected: roughly 30 hit lines across the eight files. Save this list; it is the checklist for Step 2.
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -E 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/SKILL\.md'`
+Expected: roughly 30 hit lines across the eight files. Save this list; it is the checklist for Step 2. The pattern ends in `SKILL.md` deliberately: a bare directory prefix like `skills/reflect/` would also match `skills/reflect/references/*.md`, which belong to Tasks 7 and 8, not this task.
 
 - [ ] **Step 2: Apply the substitutions file by file**
 
@@ -692,7 +692,7 @@ evidence.
 
 - [ ] **Step 3: Verify all eight files are clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -cE 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -cE 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/SKILL\.md'`
 Expected: `0`
 
 - [ ] **Step 4: Verify no role agent name was invented**
