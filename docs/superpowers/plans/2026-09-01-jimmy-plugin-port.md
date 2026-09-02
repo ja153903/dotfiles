@@ -963,19 +963,16 @@ Retarget each to what this plugin actually ships:
 - `/deslop` → this plugin's own `unslop` skill. Upstream's guide draws a distinction between `/deslop` (cleans code) and `/unslop` (cleans prose); with `deslop` unavailable, `unslop` carries both jobs — say so plainly in `docs/guide/05-build-and-clean.md` rather than describing a division that no longer exists.
 - `control-ui` / `control-cli` → this plugin's `create-verification-skill`, which generates a project-local skill for driving the real app, plus Claude Code's bundled `/run` and `/verify`.
 
-- [ ] **Step 4: Verify every translation check now passes**
+- [ ] **Step 4: Verify every file this task owns is clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh`
-Expected: every line under `== translation checks ==` prints `ok`. Structure checks print `ok`. Final line `AUDIT PASS`, exit code `0`.
+The audit will still exit `1` here, and that is correct: Tasks 9 and 10 have not run, so `poteto-mode/scripts/**` and `automations/benny/**` still carry violations they own. Do not touch those files to force green. Assert only that nothing under this task's scope still fails:
 
-This is the milestone the whole translation pass was aiming at. If any check still fails, the failing file belongs to an earlier task — go back rather than patching it here.
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -v 'automations/\|poteto-mode/scripts/\|check-plan.mjs' | grep -c 'claude/plugins/jimmy'`
+Expected: `0` — every remaining hit belongs to Task 9 or Task 10.
 
-- [ ] **Step 5: Confirm the rename work is still outstanding**
+The whole-plugin `AUDIT PASS` milestone lands at the end of Task 10, once the last translation task has run.
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh --with-rename`
-Expected: translation and structure checks `ok`; both rename checks `FAIL` with many hits; final line `AUDIT FAIL`. Task 11 clears these.
-
-- [ ] **Step 6: Commit**
+- [ ] **Step 5: Commit**
 
 ```bash
 git add claude/plugins/jimmy/skills claude/plugins/jimmy/docs
@@ -1196,6 +1193,20 @@ Expected: `0`
 
 Run: `python3 -c "import json;d=json.load(open('claude/plugins/jimmy/.claude-plugin/plugin.json'));print('automations' in json.dumps(d))"`
 Expected: `False` — benny must not be reachable as a skills path.
+
+- [ ] **Step 5b: The translation milestone**
+
+Task 10 is the last translation task, so the whole-plugin audit must go green here.
+
+Run: `claude/plugins/jimmy/scripts/audit-port.sh`
+Expected: every line under `== translation checks ==` prints `ok`. Structure checks print `ok`. Final line `AUDIT PASS`, exit code `0`.
+
+This is the milestone the whole translation pass was aiming at. If any check still fails, the failing file belongs to an earlier task — go back to that task rather than patching it here.
+
+- [ ] **Step 5c: Confirm the rename work is still outstanding**
+
+Run: `claude/plugins/jimmy/scripts/audit-port.sh --with-rename`
+Expected: translation and structure checks `ok`; both rename checks `FAIL` with many hits; final line `AUDIT FAIL`. Task 11 clears these.
 
 - [ ] **Step 6: Commit**
 
