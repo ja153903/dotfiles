@@ -10,10 +10,12 @@ WITH_RENAME=0
 fail=0
 
 # Scans shipped content only. LICENSE and README carry upstream provenance by design.
+# -I skips binary files (the guide's .jpg images). Every text file is scanned regardless
+# of extension: an --include allowlist silently misses package.json, bun.lock,
+# configuration.example.yaml, and the extensionless watch-pr script.
 scan() {
-  grep -rEn "$1" \
+  grep -rIEn "$1" \
     "$ROOT/skills" "$ROOT/agents" "$ROOT/automations" "$ROOT/docs" \
-    --include='*.md' --include='*.ts' --include='*.mjs' --include='*.sh' \
     2>/dev/null
 }
 
