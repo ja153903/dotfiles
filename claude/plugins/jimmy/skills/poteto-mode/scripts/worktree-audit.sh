@@ -22,9 +22,13 @@ prs=$(mktemp)
 gh pr list --author "@me" --state all --limit 1000 \
 	--json number,state,headRefName 2>/dev/null > "$prs" || echo "[]" > "$prs"
 
-# Transcripts dir: ~/.claude/projects/<slugified-repo-path>/, one .jsonl per session.
-slug=$(printf '%s' "$main_wt" | sed 's#/#-#g')
-transcripts="$HOME/.claude/projects/$slug"
+# Transcripts dir: ~/.claude/projects/<slugified-cwd>/, one .jsonl per session.
+# Claude Code keys the directory on the session's cwd, not on the repo, so a
+# session run inside a worktree lands in that worktree's own directory and is
+# invisible to a scan of the main worktree's. Check both. Slug rule verified
+# against live directories: every "/" and "." in the absolute path becomes "-".
+slug() { printf '%s' "$1" | sed 's#[/.]#-#g'; }
+transcripts="$HOME/.claude/projects/$(slug "$main_wt")"
 now=$(date +%s)
 
 printf "SIZE\tAGE\tMERGED\tDIRTY\tREMOTE\tPR\tLAST_CHAT\tBUCKET\tWORKTREE\n"
@@ -63,12 +67,15 @@ git worktree list --porcelain | awk '/^worktree /{print $2}' | while read -r wt;
 	# Most recent chat whose transcript operated in this worktree. Match path
 	# followed by "/" or a quote so glint-482 does not match glint-482-r37.
 	last="-"; last_ts=0
-	if [ -d "$transcripts" ]; then
-		f=$(rg -l -e "${wt}/" -e "${wt}\"" "$transcripts" 2>/dev/null \
-			| xargs stat -f '%m %N' 2>/dev/null | sort -rn | head -1)
-		if [ -n "$f" ]; then last_ts=$(echo "$f" | awk '{print $1}')
-			last=$(date -r "$last_ts" '+%Y-%m-%d' 2>/dev/null); fi
-	fi
+	wt_transcripts="$HOME/.claude/projects/$(slug "$wt")"
+	# Mentions of this worktree from sessions run elsewhere.
+	f=""
+	[ -d "$transcripts" ] && f=$(rg -l -e "${wt}/" -e "${wt}\"" "$transcripts" 2>/dev/null)
+	# Sessions run *inside* this worktree: every transcript in its own dir counts.
+	[ -d "$wt_transcripts" ] && f=$(printf '%s\n%s\n' "$f" "$(ls "$wt_transcripts"/*.jsonl 2>/dev/null)")
+	f=$(printf '%s\n' "$f" | grep -v '^$' | xargs stat -f '%m %N' 2>/dev/null | sort -rn | head -1)
+	if [ -n "$f" ]; then last_ts=$(echo "$f" | awk '{print $1}')
+		last=$(date -r "$last_ts" '+%Y-%m-%d' 2>/dev/null); fi
 	recent=$([ "$last_ts" -gt 0 ] 2>/dev/null && [ $(( (now - last_ts) / 86400 )) -le 4 ] && echo yes || echo no)
 
 	case "$dirty" in wip:*) bucket=hold-wip ;; *)

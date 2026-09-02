@@ -53,7 +53,7 @@ Commit it only when the work is ambitious enough that a reviewer needs the trail
 
 ## Audit the log against the transcript
 
-At the end of the run, before handing back, check the log told the truth. Read this run's transcript, the `.jsonl` file for this session under `~/.claude/projects/<slug>/` (the system prompt names the path). Don't glob across `~/.claude/projects/*/`; that reads unrelated private chats. Walk the log against what actually happened:
+At the end of the run, before handing back, check the log told the truth. Read this run's transcript, the `.jsonl` file for this session under `~/.claude/projects/<slug>/`, where the slug is the session's working directory with every `/` and `.` replaced by `-`. Don't glob across `~/.claude/projects/*/`; that reads unrelated private chats. Walk the log against what actually happened:
 
 - Every row maps to a real action. Cut invented or aspirational entries.
 - Each row's evidence resolves and shows what the row claims.

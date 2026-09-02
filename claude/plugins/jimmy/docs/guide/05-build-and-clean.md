@@ -48,7 +48,7 @@ In context, that's enough. [`/tdd`](../../skills/tdd/SKILL.md) writes the smalle
 
 ## Clean before you commit
 
-The [Opening a PR playbook](../../skills/poteto-mode/playbooks/opening-a-pr.md) runs [`/unslop`](../../skills/unslop/SKILL.md) on the diff before each commit, and again on the PR description and commit bodies. Upstream splits this into two skills, `/deslop` for code and `/unslop` for prose; that split's other half, `/deslop`, isn't part of this plugin, so `/unslop` carries both jobs here. Point it at the diff and ask for the same outcome in plain words: remove narrating comments, unsupported guards, dead compatibility paths, and unrelated edits.
+The [Opening a PR playbook](../../skills/poteto-mode/playbooks/opening-a-pr.md) runs [`/unslop`](../../skills/unslop/SKILL.md) on the PR description and commit bodies, and [`/no-comments`](../../skills/no-comments/SKILL.md) on the diff before each commit. Upstream splits the work into two skills, `/deslop` for code and `/unslop` for prose. `/deslop` isn't part of this plugin, and `/unslop` doesn't replace it: `/unslop` is 31 patterns about writing, with nothing about code. `/no-comments` covers the largest piece of the code job, the narrating comments. For the rest, ask in plain words: remove unsupported guards, dead compatibility paths, and unrelated edits.
 
 For prose, `/unslop` takes a target and any extra rules you have:
 
@@ -68,8 +68,8 @@ Comments need their own pass, and not from the agent that wrote them. An author 
 
 [`/no-comments`](../../skills/no-comments/SKILL.md) spawns [Comment Sicko](../../agents/comment-sicko.md), a read-only reviewer with a short keep list: license headers, doc comments on a public API, links that explain what code can't, behavior forced by an external dependency you can't reshape. Everything else goes. A surprise in your own code gets no such pass. The comment comes back as a refactor flag, and `/no-comments` fixes the flags it accepts at the root cause. When a comment claims a constraint, "do not remove", the skill offers to encode the claim as a type, test, or lint. Either way, the comment comes out.
 
-With `/deslop` unavailable, there's no split to keep straight: `/unslop` cleans slop out of both code and prose, and `/no-comments` hands the comments to a reviewer who didn't write them.
+The division of labor is worth keeping straight: `/unslop` cleans prose, `/no-comments` hands the comments to a reviewer who didn't write them, and the rest of the code cleanup is a plain-words ask, because the skill upstream used for it doesn't ship here.
 
-**Pitfall:** cleanup is not optional polish. A diff with narrating comments and defensive dead weight reads as unfinished to reviewers, and the extra code is where the next bug hides. If the diff feels padded, say `unslop it` before you commit, not after review calls it out.
+**Pitfall:** cleanup is not optional polish. A diff with narrating comments and defensive dead weight reads as unfinished to reviewers, and the extra code is where the next bug hides. If the diff feels padded, say `no-comments the diff, and strip the dead guards` before you commit, not after review calls it out.
 
 Next: [Verify and ship](./06-verify-and-ship.md).

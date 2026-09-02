@@ -46,6 +46,8 @@ check "no Cursor model slugs"      'grok-[0-9]|gpt-[0-9]+\.[0-9]+-sol|claude-fab
 check "no Bugbot"                  '[Bb]ugbot'
 check "no Cursor mentions"         '\bCursor\b'
 check "no /add-plugin"             '/add-plugin'
+check "no create-skill"            'create-skill'
+check "no agent-transcripts"       'agent-transcripts'
 
 if [[ "$WITH_RENAME" == "1" ]]; then
   echo
