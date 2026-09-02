@@ -22,6 +22,7 @@
 - **Only `README.md` may contain the strings `pstack` or `poteto`** after Task 11, in the fork credit. (`LICENSE` is exempt from edits entirely but happens to contain neither — standard MIT text names the copyright holder, not the project.) Everywhere else is a rename failure.
 - **Prose voice:** neutral third person. No first-person authorial voice, borrowed or invented.
 - **Commit style:** conventional commits, one commit per task minimum.
+- **Verifying which file the audit blames:** the audit prints whole matched lines, so grepping its raw output for a name also matches that name appearing inside another file's hit text. Always pipe through `cut -d: -f1` first to reduce each hit to its filename before grepping. `audit-port.sh 2>&1 | cut -d: -f1 | grep -c '<name>'` is the reliable form.
 
 ## File Structure
 
@@ -133,10 +134,12 @@ WITH_RENAME=0
 fail=0
 
 # Scans shipped content only. LICENSE and README carry upstream provenance by design.
+# -I skips binary files (the guide's .jpg images). Every text file is scanned regardless
+# of extension: an --include allowlist silently misses package.json, bun.lock,
+# configuration.example.yaml, and the extensionless watch-pr script.
 scan() {
-  grep -rEn "$1" \
+  grep -rIEn "$1" \
     "$ROOT/skills" "$ROOT/agents" "$ROOT/automations" "$ROOT/docs" \
-    --include='*.md' --include='*.ts' --include='*.mjs' --include='*.sh' \
     2>/dev/null
 }
 
@@ -165,6 +168,9 @@ check "no .cursor paths"           '\.cursor/'
 check "no pstack-models.mdc"       'pstack-models\.mdc'
 check "no Cursor model slugs"      'grok-[0-9]|gpt-[0-9]+\.[0-9]+-sol|claude-fable-5-1-thinking|claude-opus-5-thinking'
 check "no Bugbot"                  '[Bb]ugbot'
+check "no Cursor mentions"         '\bCursor\b'
+check "no cloud tier"              '\bcloud\b'
+check "no cursor-team-kit"         'cursor-team-kit|/deslop|control-ui|control-cli'
 check "no /add-plugin"             '/add-plugin'
 
 if [[ "$WITH_RENAME" == "1" ]]; then
@@ -469,7 +475,7 @@ Run:
 ```bash
 grep -h '^model:\|^effort:' claude/plugins/jimmy/agents/roles/*.md | sort | uniq -c
 ```
-Expected: only `model:` values from `sonnet|opus|fable` and only `effort:` values from `high|xhigh|max` — seven of each in total, distributed as `3 fable`, `2 opus`, `2 sonnet` and `3 max`, `1 xhigh`, `3 high`. Any other string violates the Global Constraints model/effort sets.
+Expected: only `model:` values from `sonnet|opus|fable` and only `effort:` values from `high|xhigh|max` — seven of each in total, distributed as `3 fable`, `2 opus`, `2 sonnet` and `4 max`, `1 xhigh`, `2 high`. Any other string violates the Global Constraints model/effort sets.
 
 - [ ] **Step 4: Verify the audit still reports the same translation failures**
 
@@ -500,7 +506,7 @@ Replaces the `~/.cursor/rules/pstack-models.mdc` always-applied rule with a read
 
 - [ ] **Step 1: Confirm the current failures for this file**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -n 'setup-pstack'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -n 'setup-pstack'`
 Expected: hits under `no AskQuestion`, `no .cursor paths`, `no Cursor model slugs`, and `no inherit-parent alias`.
 
 - [ ] **Step 2: Rewrite the setup skill**
@@ -612,7 +618,7 @@ Note `arena runners` deliberately uses writing worker roles, not critics — are
 
 - [ ] **Step 3: Run the audit to verify this file is clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -c 'setup-pstack'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -c 'setup-pstack'`
 Expected: `0`
 
 - [ ] **Step 4: Commit**
@@ -659,8 +665,8 @@ The eight skills that spawn subagents. Each currently names raw model slugs, `ge
 
 - [ ] **Step 1: Confirm the failures**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -E 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/'`
-Expected: roughly 30 hit lines across the eight files. Save this list; it is the checklist for Step 2.
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -E 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/SKILL\.md'`
+Expected: roughly 30 hit lines across the eight files. Save this list; it is the checklist for Step 2. The pattern ends in `SKILL.md` deliberately: a bare directory prefix like `skills/reflect/` would also match `skills/reflect/references/*.md`, which belong to Tasks 7 and 8, not this task.
 
 - [ ] **Step 2: Apply the substitutions file by file**
 
@@ -688,7 +694,7 @@ evidence.
 
 - [ ] **Step 3: Verify all eight files are clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -cE 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -cE 'skills/(how|why|arena|swarm|architect|interrogate|reflect|no-comments)/SKILL\.md'`
 Expected: `0`
 
 - [ ] **Step 4: Verify no role agent name was invented**
@@ -786,7 +792,7 @@ Pause Safely playbook runs. Add `.claude/jimmy-mode.state` to the project's
 
 - [ ] **Step 6: Verify the file is clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -c 'poteto-mode/SKILL.md'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -c 'poteto-mode/SKILL.md'`
 Expected: `0`
 
 - [ ] **Step 7: Commit**
@@ -800,11 +806,12 @@ git commit -m "feat(jimmy): translate mode skill and add sticky-mode hook"
 
 ### Task 7: Translate the playbooks
 
-14 of the 23 playbooks carry Cursor constructs. The other 9 are already clean and must not be edited.
+18 of the 23 playbooks carry Cursor constructs or bare "Cursor" prose. The other 5 are already clean and must not be edited.
 
 **Files:**
-- Modify: `claude/plugins/jimmy/skills/poteto-mode/playbooks/` — `orchestrate.md`, `multi-phase-plan.md`, `autonomous-run.md`, `session-pickup.md`, `eval.md`, `worktree-cleanup.md`, `bug-fix.md`, `hillclimb.md`, `feature.md`, `perf-issue.md`, `refactoring.md`, `autopilot-full.md`, `autopilot-stack.md`, `babysit.md`
-- Modify: `claude/plugins/jimmy/skills/poteto-mode/references/bugbot-triage.md`
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/playbooks/` — `orchestrate.md`, `multi-phase-plan.md`, `autonomous-run.md`, `session-pickup.md`, `eval.md`, `worktree-cleanup.md`, `bug-fix.md`, `hillclimb.md`, `feature.md`, `perf-issue.md`, `refactoring.md`, `autopilot-full.md`, `autopilot-stack.md`, `babysit.md`, `shipping.md`, `pause-safely.md`, `authoring-a-skill.md`, `opening-a-pr.md`
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/references/bugbot-triage.md` (renamed)
+- Modify: `claude/plugins/jimmy/skills/reflect/references/synthesizer.md` (Bugbot reference only)
 
 **Interfaces:**
 - Consumes: role agents (Task 3), the substitution table from Task 5.
@@ -814,9 +821,9 @@ git commit -m "feat(jimmy): translate mode skill and add sticky-mode hook"
 
 Run:
 ```bash
-claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -oE 'playbooks/[a-z-]+\.md' | sort -u
+claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -oE 'playbooks/[a-z-]+\.md' | sort -u
 ```
-Expected: exactly the 14 filenames listed above. Any playbook not in that list must end this task byte-identical to its vendored state.
+Expected: exactly the 18 filenames listed above. Any playbook not in that list must end this task byte-identical to its vendored state. `shipping.md`, `pause-safely.md`, and `authoring-a-skill.md` appear only because of a bare "Cursor" prose mention each — they carry no other construct.
 
 - [ ] **Step 2: Apply the Task 5 substitution table to the model and subagent hits**
 
@@ -836,17 +843,17 @@ Rename `references/bugbot-triage.md` to `references/review-bot-triage.md` and re
 - `autonomous-run.md`: `AskQuestion` → `AskUserQuestion`.
 - `multi-phase-plan.md`: `node pstack/skills/poteto-mode/scripts/check-plan.mjs` → `node "${CLAUDE_PLUGIN_ROOT}/skills/poteto-mode/scripts/check-plan.mjs"`.
 
-- [ ] **Step 5: Verify the 9 clean playbooks were not touched**
+- [ ] **Step 5: Verify the 5 clean playbooks were not touched**
 
 Run:
 ```bash
 git diff --name-only HEAD -- claude/plugins/jimmy/skills/poteto-mode/playbooks | wc -l
 ```
-Expected: `14`
+Expected: `18`
 
 - [ ] **Step 6: Verify the playbooks are clean**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -c 'playbooks/'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -c 'playbooks/'`
 Expected: `0`
 
 - [ ] **Step 7: Commit**
@@ -858,9 +865,9 @@ git commit -m "feat(jimmy): translate playbooks and retarget review-bot triage"
 
 ---
 
-### Task 8: Translate the remaining skills
+### Task 8: Consolidated remaining translation
 
-Nine files whose only Cursor coupling is a host path. Mechanical, but they are the difference between an audit that passes and one that nearly passes. `worktree-audit.sh` is included here rather than in Task 9 because its `.cursor/` path is the last audit-visible translation hit; Task 9 handles the script changes the audit cannot see.
+The catch-all. Host paths, install instructions, and two residues that only became visible once the audit grew its later checks: prose describing a cloud execution tier, and references to Cursor-internal tooling. The three `docs/guide/` files are here rather than in Task 12 because the audit scans `docs/`, so leaving them until the docs task would make this task's "everything passes" milestone false. Mechanical, but they are the difference between an audit that passes and one that nearly passes. `worktree-audit.sh` is included here rather than in Task 9 because its `.cursor/` path is the last audit-visible translation hit; Task 9 handles the script changes the audit cannot see.
 
 **Files:**
 - Modify: `claude/plugins/jimmy/skills/recall/SKILL.md`
@@ -872,6 +879,12 @@ Nine files whose only Cursor coupling is a host path. Mechanical, but they are t
 - Modify: `claude/plugins/jimmy/skills/reflect/references/tooling-reviewer.md`
 - Modify: `claude/plugins/jimmy/skills/reflect/references/divergent-reviewer.md`
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/worktree-audit.sh` (line 25 comment, line 27 path)
+- Modify: `claude/plugins/jimmy/docs/guide/01-setup.md` (3 hits)
+- Modify: `claude/plugins/jimmy/docs/guide/06-verify-and-ship.md` (1 hit)
+- Modify: `claude/plugins/jimmy/docs/guide/07-overnight.md` (1 hit)
+- Modify: `claude/plugins/jimmy/docs/guide/09-make-it-yours.md` (1 hit)
+- Modify: `claude/plugins/jimmy/docs/guide/10-recipes-and-pitfalls.md` (`auto` / `inherit-parent` aliases)
+- Modify: `claude/plugins/jimmy/agents/poteto-agent.md` (`generalPurpose` in its description)
 
 **Interfaces:**
 - Consumes: nothing.
@@ -879,7 +892,7 @@ Nine files whose only Cursor coupling is a host path. Mechanical, but they are t
 
 - [ ] **Step 1: Confirm the failures**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -E 'recall|show-me-your-work|automate-me|verification-skill|reviewer\.md|worktree-audit'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -E 'recall|show-me-your-work|automate-me|verification-skill|reviewer\.md|worktree-audit'`
 Expected: hits under `no .cursor paths` only.
 
 - [ ] **Step 2: Apply the path substitutions**
@@ -906,23 +919,64 @@ ls -d "$HOME/.claude/projects/$(pwd | tr / -)" && echo "slug format confirmed"
 ```
 Expected: the directory path prints, followed by `slug format confirmed`. If it does not, read `~/.claude/projects/` and match the actual convention rather than assuming.
 
-- [ ] **Step 3: Verify every translation check now passes**
+- [ ] **Step 3: Translate the guide's Cursor constructs**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh`
-Expected: every line under `== translation checks ==` prints `ok`. Structure checks print `ok`. Final line `AUDIT PASS`, exit code `0`.
+Only the banned constructs here — prose voice and the wider Cursor framing belong to Task 12. Find them first:
 
-This is the milestone the whole translation pass was aiming at. If any check still fails, the failing file belongs to an earlier task — go back rather than patching it here.
+```bash
+grep -rnE '\.cursor/|[Bb]ugbot|/add-plugin|grok-[0-9]|gpt-[0-9]+\.[0-9]+-sol|claude-fable-5-1-thinking|claude-opus-5-thinking|generalPurpose|AskQuestion' claude/plugins/jimmy/docs/guide/
+```
+Expected: hits across `01-setup.md`, `06-verify-and-ship.md`, `07-overnight.md`, and `09-make-it-yours.md` — including bare "Cursor" prose mentions, which the `no Cursor mentions` audit check flags.
 
-- [ ] **Step 4: Confirm the rename work is still outstanding**
+Apply the Task 5 substitution table to each. `/add-plugin pstack` in `01-setup.md` becomes the two-command install:
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh --with-rename`
-Expected: translation and structure checks `ok`; both rename checks `FAIL` with many hits; final line `AUDIT FAIL`. Task 11 clears these.
+```
+/plugin marketplace add ~/programming/dotfiles/claude/plugins
+/plugin install pstack@jaime-plugins
+```
+
+(Task 11 renames `pstack@` to `jimmy@` with everything else.)
+
+- [ ] **Step 3b: Remove the cloud-tier prose**
+
+This port has NO cloud execution tier. `isolation: "remote"` exists in Claude Code but is access-gated, so every subagent is local, worktree-isolated, and dies with the session. Tasks 5-7 translated the cloud *constructs* but left prose describing the tier, across files those tasks already own — consolidate the cleanup here rather than reopening them.
+
+```bash
+grep -rIn '\bcloud\b' claude/plugins/jimmy/skills claude/plugins/jimmy/docs
+```
+
+Expected: about 10 hits across `swarm/SKILL.md` (2 — "cloud workers", "cloud concurrency limit"), `poteto-mode/SKILL.md`, and the playbooks `multi-phase-plan.md` (including a "cloud VM" at line 72), `session-pickup.md`, `autopilot-full.md`, `autopilot-stack.md`, `babysit.md`.
+
+Reconcile each to the single local/worktree tier. Where a passage's advice depended on work outliving the session, rewrite the advice — do not just drop the word. Where remote isolation is genuinely the escape hatch, you may say so, but never as this plugin's default.
+
+- [ ] **Step 3c: Retarget Cursor-internal tooling**
+
+The playbooks reference skills from `cursor-team-kit`, a Cursor-internal plugin this user does not have. Shipped guidance must not point at unavailable tooling.
+
+```bash
+grep -rIn 'cursor-team-kit|/deslop|control-ui|control-cli' claude/plugins/jimmy/skills claude/plugins/jimmy/docs
+```
+
+Expected: about 15 hits across `poteto-mode/SKILL.md`, `multi-phase-plan.md`, `opening-a-pr.md`, `shipping.md`, `autopilot-full.md`, `autopilot-stack.md`, `orchestrate.md`, and `docs/guide/05-build-and-clean.md`.
+
+Retarget each to what this plugin actually ships:
+- `/deslop` → split it. The prose half goes to this plugin's `unslop` skill; the code half goes to this plugin's `no-comments` skill plus a plain-words ask. Do NOT claim `unslop` cleans code — as shipped it is 31 prose patterns with nothing about code, so the upstream division survives in a different shape rather than collapsing.
+- `control-ui` / `control-cli` → this plugin's `create-verification-skill`, which generates a project-local skill for driving the real app, plus Claude Code's bundled `/run`. There is no bundled `/verify` — do not name one.
+
+- [ ] **Step 4: Verify every file this task owns is clean**
+
+The audit will still exit `1` here, and that is correct: Tasks 9 and 10 have not run, so `poteto-mode/scripts/**` and `automations/benny/**` still carry violations they own. Do not touch those files to force green. Assert only that nothing under this task's scope still fails:
+
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -v 'automations/\|poteto-mode/scripts/\|check-plan.mjs' | grep -c 'claude/plugins/jimmy'`
+Expected: `0` — every remaining hit belongs to Task 9 or Task 10.
+
+The whole-plugin `AUDIT PASS` milestone lands at the end of Task 10, once the last translation task has run.
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add claude/plugins/jimmy/skills
-git commit -m "feat(jimmy): translate remaining host paths; translation pass complete"
+git add claude/plugins/jimmy/skills claude/plugins/jimmy/docs
+git commit -m "feat(jimmy): translate remaining host paths and guide constructs"
 ```
 
 ---
@@ -933,8 +987,13 @@ The Bun/TypeScript CLIs are harness-agnostic and need no redesign. What they nee
 
 **Files:**
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/package.json`
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/bun.lock` (regenerated, not hand-edited)
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/github.ts:337-345`
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/github.test.ts:227`
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/types.ts:68-69` (`isBugbot`, `bugbotReviewPasses` fields)
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/policy.ts:50` (the `"bugbot"` string literal)
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/watch-pr/render.ts:62-63` (output labels)
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/check-plan.mjs:7` (a `grok-4.6-fast-xhigh` slug inside a string constant)
 - Modify: `mise.toml`
 - Test: the vendored suites — `scripts/orch/orch.test.ts`, `scripts/watch-pr/{cli,github,policy}.test.ts`
 
@@ -943,6 +1002,24 @@ The Bun/TypeScript CLIs are harness-agnostic and need no redesign. What they nee
 - Produces: nothing later tasks depend on.
 
 **Do not touch** the local variables named `cursor` in `check-plan.mjs:90-94` and `github.ts:565-569`. Those are pagination cursors, not the vendor. A blind find-and-replace here breaks GraphQL pagination silently — the tests in Step 4 are what catch it.
+
+- [ ] **Step 0: Make every script invocation plugin-relative**
+
+The task preamble promises `${CLAUDE_PLUGIN_ROOT}`-relative invocation but no later step delivers it. Only `multi-phase-plan.md:10` uses the variable today. These address scripts by bare relative path, which resolves against the *user's* cwd rather than the plugin, so each is a guaranteed file-not-found once the plugin is installed anywhere:
+
+- `playbooks/shipping.md:14` — `scripts/watch-pr/watch-pr`
+- `playbooks/babysit.md:14` — `scripts/watch-pr/watch-pr`
+- `playbooks/worktree-cleanup.md:5` — `scripts/worktree-audit.sh`
+- `playbooks/orchestrate.md:17` — `scripts/orch/orch.ts`
+- `playbooks/orchestrate.md:25` — `bun scripts/orch/orch.ts`
+
+Rewrite each to `${CLAUDE_PLUGIN_ROOT}/skills/poteto-mode/scripts/...`, matching the shape already used in `multi-phase-plan.md:10`. Keep any short alias a playbook establishes for readability (orchestrate.md abbreviates the CLI to `orch` after first use) — fix the definition site, not every mention.
+
+Re-grep for bare `scripts/` references afterwards; the list above is what I found, not a guarantee of completeness.
+
+While here: `playbooks/orchestrate.md:25` still says the agent's store path is "in the system prompt". That was true in Cursor. Under Claude Code the system prompt names cwd, and the store lives under `~/.claude/projects/<slug-of-cwd>/` — the same correction Task 8's fix round applied to `reflect/SKILL.md` and `show-me-your-work/SKILL.md`. Match how those now read.
+
+Add an audit check for this to `scripts/audit-port.sh` so it cannot regress: a bare `scripts/` invocation in a shipped playbook should fail.
 
 - [ ] **Step 1: Add bun to the toolchain**
 
@@ -977,8 +1054,11 @@ d = json.loads(p.read_text())
 d["name"] = "@pstack/poteto-mode-tools"
 p.write_text(json.dumps(d, indent=2) + "\n")
 EOF
+bun install
 cd -
 ```
+
+`bun install` re-runs so `bun.lock`'s embedded workspace name follows `package.json`. The lockfile carries the same `@cursor-skill/poteto-mode-tools` string, and a stale lock leaves a second copy of the old identifier for the rename pass to trip over.
 
 - [ ] **Step 4: Generalize the review-bot detector**
 
@@ -1022,6 +1102,18 @@ export function isReviewBotComment(
 
 Replace the original `author === "cursor" && …` condition with a call to it, preserving the surrounding `cursor_automation_id` marker check as an additional signal rather than a requirement.
 
+- [ ] **Step 5b: Carry the generalization through the type, policy, and render layers**
+
+The Bugbot concept is threaded through more than `github.ts`. Rename the fields so the type layer reflects what the code now means, letting the compiler find every use:
+
+- `types.ts:68-69`: `isBugbot` → `isReviewBot`, `bugbotReviewPasses` → `reviewBotPasses`
+- `policy.ts:50`: the `"bugbot"` string literal becomes a reference to `DEFAULT_REVIEW_BOTS` rather than a hardcoded name
+- `render.ts:62-63`: output labels follow the renamed fields
+
+Also fix `check-plan.mjs:7`, where a `grok-4.6-fast-xhigh` slug sits inside the `LANES` string constant. That string is illustrative prose in a plan-shape checker, not a model selection — replace the slug with a role agent name so the example matches this plugin.
+
+Run `bun x tsc --project watch-pr/tsconfig.json --noEmit --strict` after the renames: a missed use is a compile error, not a silent bug. That is why the fields are renamed rather than aliased.
+
 - [ ] **Step 6: Run the full suite**
 
 ```bash
@@ -1061,6 +1153,7 @@ benny stays dormant. Its files are setup sources merged into a *target* reposito
 - Modify: `claude/plugins/jimmy/automations/benny/skills/reproduce-and-fix-issues/references/control-adapter.md`
 - Modify: `claude/plugins/jimmy/automations/benny/skills/reproduce-and-fix-issues/references/feature-map.example.md`
 - Modify: `claude/plugins/jimmy/automations/benny/skills/triage-issue-reports/references/routing.example.md`
+- Modify: `claude/plugins/jimmy/automations/benny/templates/configuration.example.yaml` (two `.cursor/benny/` paths)
 - Delete: `claude/plugins/jimmy/automations/benny/templates/triage-automation-prompt.md`
 - Delete: `claude/plugins/jimmy/automations/benny/templates/reproduce-automation-prompt.md`
 
@@ -1077,7 +1170,7 @@ rm claude/plugins/jimmy/automations/benny/templates/triage-automation-prompt.md 
    claude/plugins/jimmy/automations/benny/templates/reproduce-automation-prompt.md
 ```
 
-`templates/configuration.example.yaml` stays — it is user configuration, not trigger plumbing.
+`templates/configuration.example.yaml` stays — it is user configuration, not trigger plumbing — but it is not inert: its `map_path` and `feature_map_path` keys hold `.cursor/benny/` paths that Step 4 must translate.
 
 - [ ] **Step 2: Rewrite the setup instructions for a Claude Code target**
 
@@ -1109,15 +1202,29 @@ nothing fires on its own.
 
 - [ ] **Step 4: Translate the remaining paths**
 
-`.cursor/automations/benny/` → `.claude/benny/`, `.cursor/benny/` → `.claude/benny/`, `.cursor/skills/` → `.claude/skills/` across all seven modified files.
+`.cursor/automations/benny/` → `.claude/benny/`, `.cursor/benny/` → `.claude/benny/`, `.cursor/skills/` → `.claude/skills/` across all eight modified files, `configuration.example.yaml` included. Leave its `prefer_cursor_actions` key alone — that is a benny config key name, not a host path, and renaming it would break the example against benny's own reader.
 
 - [ ] **Step 5: Verify benny is clean and still dormant**
 
-Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | grep -c 'automations/'`
+Run: `claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -c 'automations/'`
 Expected: `0`
 
 Run: `python3 -c "import json;d=json.load(open('claude/plugins/jimmy/.claude-plugin/plugin.json'));print('automations' in json.dumps(d))"`
 Expected: `False` — benny must not be reachable as a skills path.
+
+- [ ] **Step 5b: The translation milestone**
+
+Task 10 is the last translation task, so the whole-plugin audit must go green here.
+
+Run: `claude/plugins/jimmy/scripts/audit-port.sh`
+Expected: every line under `== translation checks ==` prints `ok`. Structure checks print `ok`. Final line `AUDIT PASS`, exit code `0`.
+
+This is the milestone the whole translation pass was aiming at. If any check still fails, the failing file belongs to an earlier task — go back to that task rather than patching it here.
+
+- [ ] **Step 5c: Confirm the rename work is still outstanding**
+
+Run: `claude/plugins/jimmy/scripts/audit-port.sh --with-rename`
+Expected: translation and structure checks `ok`; both rename checks `FAIL` with many hits; final line `AUDIT FAIL`. Task 11 clears these.
 
 - [ ] **Step 6: Commit**
 
@@ -1306,9 +1413,8 @@ EOF
 
 - [ ] **Step 2: Rewrite the guide's Cursor framing**
 
-Each of the 11 guide files describes Cursor's UI and workflow. Apply the same substitutions the skills got, plus:
+Task 8 already removed the banned constructs; what remains is prose framing. Each of the 11 guide files describes Cursor's UI and workflow:
 
-- `/add-plugin pstack` → the two install commands from the README
 - Cursor cloud agents → background subagents and worktree isolation
 - Cursor's plan mode → Claude Code's plan mode
 - `/loop` stays as-is
