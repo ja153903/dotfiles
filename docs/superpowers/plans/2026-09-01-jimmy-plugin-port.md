@@ -168,6 +168,7 @@ check "no .cursor paths"           '\.cursor/'
 check "no pstack-models.mdc"       'pstack-models\.mdc'
 check "no Cursor model slugs"      'grok-[0-9]|gpt-[0-9]+\.[0-9]+-sol|claude-fable-5-1-thinking|claude-opus-5-thinking'
 check "no Bugbot"                  '[Bb]ugbot'
+check "no Cursor mentions"         '\bCursor\b'
 check "no /add-plugin"             '/add-plugin'
 
 if [[ "$WITH_RENAME" == "1" ]]; then
@@ -803,10 +804,10 @@ git commit -m "feat(jimmy): translate mode skill and add sticky-mode hook"
 
 ### Task 7: Translate the playbooks
 
-14 of the 23 playbooks carry Cursor constructs. The other 9 are already clean and must not be edited.
+17 of the 23 playbooks carry Cursor constructs or bare "Cursor" prose. The other 6 are already clean and must not be edited.
 
 **Files:**
-- Modify: `claude/plugins/jimmy/skills/poteto-mode/playbooks/` — `orchestrate.md`, `multi-phase-plan.md`, `autonomous-run.md`, `session-pickup.md`, `eval.md`, `worktree-cleanup.md`, `bug-fix.md`, `hillclimb.md`, `feature.md`, `perf-issue.md`, `refactoring.md`, `autopilot-full.md`, `autopilot-stack.md`, `babysit.md`
+- Modify: `claude/plugins/jimmy/skills/poteto-mode/playbooks/` — `orchestrate.md`, `multi-phase-plan.md`, `autonomous-run.md`, `session-pickup.md`, `eval.md`, `worktree-cleanup.md`, `bug-fix.md`, `hillclimb.md`, `feature.md`, `perf-issue.md`, `refactoring.md`, `autopilot-full.md`, `autopilot-stack.md`, `babysit.md`, `shipping.md`, `pause-safely.md`, `authoring-a-skill.md`
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/references/bugbot-triage.md` (renamed)
 - Modify: `claude/plugins/jimmy/skills/reflect/references/synthesizer.md` (Bugbot reference only)
 
@@ -820,7 +821,7 @@ Run:
 ```bash
 claude/plugins/jimmy/scripts/audit-port.sh 2>&1 | cut -d: -f1 | grep -oE 'playbooks/[a-z-]+\.md' | sort -u
 ```
-Expected: exactly the 14 filenames listed above. Any playbook not in that list must end this task byte-identical to its vendored state.
+Expected: exactly the 17 filenames listed above. Any playbook not in that list must end this task byte-identical to its vendored state. `shipping.md`, `pause-safely.md`, and `authoring-a-skill.md` appear only because of a bare "Cursor" prose mention each — they carry no other construct.
 
 - [ ] **Step 2: Apply the Task 5 substitution table to the model and subagent hits**
 
@@ -840,13 +841,13 @@ Rename `references/bugbot-triage.md` to `references/review-bot-triage.md` and re
 - `autonomous-run.md`: `AskQuestion` → `AskUserQuestion`.
 - `multi-phase-plan.md`: `node pstack/skills/poteto-mode/scripts/check-plan.mjs` → `node "${CLAUDE_PLUGIN_ROOT}/skills/poteto-mode/scripts/check-plan.mjs"`.
 
-- [ ] **Step 5: Verify the 9 clean playbooks were not touched**
+- [ ] **Step 5: Verify the 6 clean playbooks were not touched**
 
 Run:
 ```bash
 git diff --name-only HEAD -- claude/plugins/jimmy/skills/poteto-mode/playbooks | wc -l
 ```
-Expected: `14`
+Expected: `17`
 
 - [ ] **Step 6: Verify the playbooks are clean**
 
@@ -878,6 +879,7 @@ Twelve files whose only Cursor coupling is a host path or an install instruction
 - Modify: `claude/plugins/jimmy/skills/poteto-mode/scripts/worktree-audit.sh` (line 25 comment, line 27 path)
 - Modify: `claude/plugins/jimmy/docs/guide/01-setup.md` (3 hits)
 - Modify: `claude/plugins/jimmy/docs/guide/06-verify-and-ship.md` (1 hit)
+- Modify: `claude/plugins/jimmy/docs/guide/07-overnight.md` (1 hit)
 - Modify: `claude/plugins/jimmy/docs/guide/09-make-it-yours.md` (1 hit)
 
 **Interfaces:**
@@ -920,7 +922,7 @@ Only the banned constructs here — prose voice and the wider Cursor framing bel
 ```bash
 grep -rnE '\.cursor/|[Bb]ugbot|/add-plugin|grok-[0-9]|gpt-[0-9]+\.[0-9]+-sol|claude-fable-5-1-thinking|claude-opus-5-thinking|generalPurpose|AskQuestion' claude/plugins/jimmy/docs/guide/
 ```
-Expected: 5 hits across `01-setup.md` (3), `06-verify-and-ship.md` (1), `09-make-it-yours.md` (1).
+Expected: hits across `01-setup.md`, `06-verify-and-ship.md`, `07-overnight.md`, and `09-make-it-yours.md` — including bare "Cursor" prose mentions, which the `no Cursor mentions` audit check flags.
 
 Apply the Task 5 substitution table to each. `/add-plugin pstack` in `01-setup.md` becomes the two-command install:
 
