@@ -2,6 +2,12 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
+-- LSP off/on toggle: see nvim/lua/config/lsp_gate.lua (must be armed before
+-- any plugin loads, so it lives outside the VeryLazy-loaded files).
+vim.api.nvim_create_user_command("LspToggle", function()
+  require("config.lsp_gate").toggle()
+end, {})
+
 vim.api.nvim_create_user_command("CopyRelPath", function()
   local filepath = vim.fn.expand("%:p")
   local cwd = vim.fn.getcwd()
