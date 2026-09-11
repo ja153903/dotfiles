@@ -7,6 +7,7 @@
 -- mid-handshake, and print noise before being killed.
 local M = { enabled = false }
 local pending = {}
+local pending_start = {}
 
 local real_enable = vim.lsp.enable
 vim.lsp.enable = function(name, enable)
@@ -18,10 +19,24 @@ vim.lsp.enable = function(name, enable)
   end
 end
 
+-- rustaceanvim (and possibly other plugins) call vim.lsp.start() directly
+-- instead of vim.lsp.enable(), bypassing the gate above entirely.
+local real_start = vim.lsp.start
+vim.lsp.start = function(config, opts)
+  if M.enabled then
+    return real_start(config, opts)
+  end
+  table.insert(pending_start, { config = config, opts = opts })
+end
+
 function M.toggle()
   M.enabled = not M.enabled
   if M.enabled then
     real_enable(vim.tbl_keys(pending))
+    for _, req in ipairs(pending_start) do
+      real_start(req.config, req.opts)
+    end
+    pending_start = {}
     vim.api.nvim_exec_autocmds("FileType", { buffer = 0 })
   else
     for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
