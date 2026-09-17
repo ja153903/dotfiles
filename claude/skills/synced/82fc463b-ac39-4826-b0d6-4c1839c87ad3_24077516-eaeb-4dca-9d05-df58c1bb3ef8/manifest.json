@@ -1,0 +1,525 @@
+{
+  "lastUpdated": 1789622346418,
+  "skills": [
+    {
+      "skillId": "skill_019D3UbLmq5BWtUVMRkVjF9h",
+      "name": "recall",
+      "description": "Reconstruct your recent working context from your own chat history, live state, and the shared record (user reports, prior fixes, incidents), then hand back a tight current-state brief. Use for 'recall my work on X', 'catch me up', 'what have I been working on', 'where did I leave off', before starting or resuming work.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:36.570602Z",
+      "backingPluginId": "plugin_01Qr9DhpH45zbkeCWKfvJf8K"
+    },
+    {
+      "skillId": "skill_014t8oW7QhVa1nL6c1Yh6F9p",
+      "name": "unslop",
+      "description": "Cut AI tells from any writing. Must always apply.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:58.978970Z",
+      "backingPluginId": "plugin_01K6LGCLWBbuUxsi785kQAka"
+    },
+    {
+      "skillId": "skill_01T8cqh9xyKV2G9vxr92wkz4",
+      "name": "reflect",
+      "description": "Spawn three parallel review subagents over the active transcript, surface learnings, and route each to a concrete edit on an existing skill. Use when the user says reflect.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:37.719450Z",
+      "backingPluginId": "plugin_01SpZ4xuXwXNsKebZ7tmwqx7"
+    },
+    {
+      "skillId": "skill_01RtbNH3J3QG5VYv87F3FPWo",
+      "name": "rebase",
+      "description": "Rebase the current branch with smart conflict resolution.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:35.329122Z",
+      "backingPluginId": "plugin_01T65h9K8yhWYypWAFrPGAZk"
+    },
+    {
+      "skillId": "skill_0186CYyJe1tQYAVxtFgf3x6X",
+      "name": "tdd",
+      "description": "Use only when the user explicitly asks for TDD, a failing test, or a regression test, OR when the bug has an obvious cheap local test target. Skip when the test path is unclear, expensive, integration-heavy, or not requested.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:42.763430Z",
+      "backingPluginId": "plugin_013pKGoxhs2mmayaBMoASByf"
+    },
+    {
+      "skillId": "skill_01UdvBpNUgMSnfRWHf5967iN",
+      "name": "principle-type-system-discipline",
+      "description": "Apply when designing types, reviewing a function signature, or writing code in any statically-typed language. Make illegal states unrepresentable, brand semantic primitives, parse external data at boundaries, refuse to lie to the compiler, exhaust variants, derive from authoritative schemas.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:33.925549Z",
+      "backingPluginId": "plugin_01LN636ebqkSKk5nCbBB2uM1"
+    },
+    {
+      "skillId": "skill_01SxSvxrb2ALeFDfWQeFrewE",
+      "name": "principle-sequence-verifiable-units",
+      "description": "Apply to multi-step work (sweeps, migrations, runs of similar edits) and to how you stack commits and PRs. Break work into small units that each end in a verifiable state, check each before the next, and order delivery so the sequence proves itself to a reviewer.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:31.558166Z",
+      "backingPluginId": "plugin_01Dba8bSyE9KPBKgqGFCo4H6"
+    },
+    {
+      "skillId": "skill_017B7CJkmhVgynQyW9t7h9FG",
+      "name": "swarm",
+      "description": "Fan out N parallel workers, drain them, and return one report. Use for /swarm, 'swarm this', or parallel coverage, races, gauntlets, and exploration.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:41.466464Z",
+      "backingPluginId": "plugin_01EUZcgA1uMdpTfsUgkHGP2b"
+    },
+    {
+      "skillId": "skill_019GMZzpEKHMb6cDLMQc5ieW",
+      "name": "teach",
+      "description": "Explain a body of work plainly so a person actually understands it. Runs the `how` and `why` skills and weaves what they find into one clear explanation. Use for 'teach me this', 'help me really understand X', 'explain this change or subsystem to me'.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:43.893478Z",
+      "backingPluginId": "plugin_01VhPUKWLra9g3fVT84reTF7"
+    },
+    {
+      "skillId": "skill_01HCPCpZd1W9fxqcwu9YDTnN",
+      "name": "setup-jimmy",
+      "description": "Configure which role agent each jimmy role uses. Writes a config file that overrides the skill defaults. Use for /setup-jimmy, \"configure jimmy models\", or changing jimmy's model choices.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:38.941561Z",
+      "backingPluginId": "plugin_01JjrswCPdAopuNdffXau7XN"
+    },
+    {
+      "skillId": "skill_019rQfS8ipBbwRtcdY4CzERL",
+      "name": "show-me-your-work",
+      "description": "Keep a reviewable decision trail for long-running or unattended work: a TSV log with one row per decision (what, why, evidence, result). Local by default; commit it when a reviewer needs the trail to trust the result. Use for /show-me-your-work, autonomous or multi-phase runs, or work a human reviews after stepping away.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:40.113900Z",
+      "backingPluginId": "plugin_01CDcBGpazipLPsZqUyE9ttN"
+    },
+    {
+      "skillId": "skill_01FMTVn2Cg58V6s7v7KjKx36",
+      "name": "technical-writing",
+      "description": "Layered technical-writing standard: Diátaxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for /technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:56.829468Z",
+      "backingPluginId": "plugin_01NXHm6vVmvm9aEtKnSmj43Z"
+    },
+    {
+      "skillId": "skill_01B564RViAJ7kmDoNHV9rCvi",
+      "name": "typescript-best-practices",
+      "description": "TypeScript best practices. Use when reading or editing any .ts or .tsx file.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:57.865459Z",
+      "backingPluginId": "plugin_01ANYdf2h6FCiu2BEYoFTpjH"
+    },
+    {
+      "skillId": "skill_01HfGekRpBUZYD36T6jeaLNN",
+      "name": "why",
+      "description": "Use for 'why does X work this way', 'why we picked Y', design rationale, regressions, postmortems, or data-backed thresholds. Discovers available MCPs and queries each evidence category (source control, issue tracker, long-form docs, real-time chat, infrastructure observability, error tracking, product analytics warehouse) in parallel, then returns a cited read on decisions and tradeoffs. Use how for runtime behavior.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:50:00.349325Z",
+      "backingPluginId": "plugin_01SPuaCL8Jdvud9LjBhA6wTG"
+    },
+    {
+      "skillId": "skill_014dGTtLkc361xwaXfUXBpeZ",
+      "name": "principle-subtract-before-you-add",
+      "description": "Apply when sequencing an addition, refactor, or rewrite. Remove dead weight, redundant validators, and stub references first, then build on the simpler base.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:32.713927Z",
+      "backingPluginId": "plugin_01Rs7XqgKRuQCzaDUeWncVC7"
+    },
+    {
+      "skillId": "skill_017kTpxbT8qX78XnajjKDAS9",
+      "name": "principle-prove-it-works",
+      "description": "Apply after completing a task, before declaring done. Verify against the real artifact (run the feature, read the actual value, inspect the diff), not a proxy, self-report, or 'it compiles.'",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:27.382810Z",
+      "backingPluginId": "plugin_017PwyU8TUHjkXK9M12fqLFS"
+    },
+    {
+      "skillId": "skill_01HKFbgbn4k3qR1AyFhJLXHT",
+      "name": "principle-outcome-oriented-execution",
+      "description": "Apply during planned rewrites and migrations with explicit phase boundaries. Converge on the target architecture; don't preserve smooth intermediate states with throwaway compatibility code.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:26.126885Z",
+      "backingPluginId": "plugin_01VnSaJL6oYw6ybFZ86D9jkW"
+    },
+    {
+      "skillId": "skill_01NQ63VfH8hku1q6ANqf6bYR",
+      "name": "principle-minimize-reader-load",
+      "description": "Apply when reviewing or shaping code that's hard to trace. Count layers between question and answer, and hidden state in the reader's head; collapse one-caller wrappers and shrink mutable scope.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:22.641503Z",
+      "backingPluginId": "plugin_01GGmtLWWgJ86epgsdmsysTa"
+    },
+    {
+      "skillId": "skill_01Rq6qVChtjFNXY4mwvXkcxW",
+      "name": "principle-model-the-domain",
+      "description": "Apply when writing stateful logic, or when code branches a lot or repeats a shape assumption across files. Encode the domain in a structure instead of scattered conditionals.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:23.593075Z",
+      "backingPluginId": "plugin_01M4xarYU2tX6HTJJVu515AC"
+    },
+    {
+      "skillId": "skill_01Bv4cAfUsm91bSghugHqp1f",
+      "name": "principle-never-block-on-the-human",
+      "description": "Apply when tempted to ask 'should I do X?' on reversible work. Proceed, present the result, let the human course-correct after the fact; reserve confirmation for irreversible actions.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:24.913131Z",
+      "backingPluginId": "plugin_012a8NRQxiLwU49DDSchCL3V"
+    },
+    {
+      "skillId": "skill_014n6K666ns8bXdZnUt6dzVT",
+      "name": "principle-guard-the-context-window",
+      "description": "Apply when context is filling up: large outputs, long files, repeated reads, fan-out planning. Route bulk to subagents; keep summaries in the main thread, not raw payloads.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:07.009708Z",
+      "backingPluginId": "plugin_01Ho8bxxubiaRNBUUXU8JhMi"
+    },
+    {
+      "skillId": "skill_01VPTcWsRXRfxfV6GUfqDTpm",
+      "name": "principle-make-operations-idempotent",
+      "description": "Apply when designing commands, lifecycle steps, or processing loops that run amid crashes, restarts, and retries. Converge to the same end state regardless of partial prior runs.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:09.645051Z",
+      "backingPluginId": "plugin_013BUCXuhadoCcZ2yBCfqjJm"
+    },
+    {
+      "skillId": "skill_01BFLDpnZp6vnZSeVNkDz6kM",
+      "name": "principle-migrate-callers-then-delete-legacy-apis",
+      "description": "Apply when introducing a new internal API while old callers still exist. Migrate callers and delete the old API in the same wave instead of preserving compatibility layers.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:10.772878Z",
+      "backingPluginId": "plugin_016AgcbLthxbQxaKZ76zXbLk"
+    },
+    {
+      "skillId": "skill_017BmydBaw89CVUpQLGvDfqG",
+      "name": "principle-foundational-thinking",
+      "description": "Apply before writing logic: choosing core types and data structures, sequencing scaffold-vs-feature work, asking what concurrent actors share. Get the data structures right so downstream code becomes obvious.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:05.733000Z",
+      "backingPluginId": "plugin_01PX2pwje6iYU1jPprtBAE5u"
+    },
+    {
+      "skillId": "skill_01UqPqrv9fgwKKTJFo4u8kkr",
+      "name": "principle-laziness-protocol",
+      "description": "Apply when refactoring, evaluating diff size, or tempted to add abstractions, layers, or signal threading. Bias toward deletion and the smallest change that solves the problem.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:08.316074Z",
+      "backingPluginId": "plugin_01QURUUtSXJAhTpZ4GdE9F4h"
+    },
+    {
+      "skillId": "skill_011SjuVAMkwdgpbhhAuiqvfM",
+      "name": "principle-separate-before-serializing-shared-state",
+      "description": "Apply when concurrent actors might write to the same file, branch, key, or state object. Eliminate the sharing first; serialize structurally only when one shared writer is a real invariant.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:30.060478Z",
+      "backingPluginId": "plugin_016n7hmuNu9bJd5WaMiVYmvk"
+    },
+    {
+      "skillId": "skill_01E1i4iVZZe7uut7raQXAgLR",
+      "name": "principle-fix-root-causes",
+      "description": "Apply when debugging. Trace each symptom to its root cause and fix it there; reproduce first, ask why until you reach it, resist nil-check guards that silence crashes.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:03.761508Z",
+      "backingPluginId": "plugin_01RTtZDruAF5WX7hEnv99yZB"
+    },
+    {
+      "skillId": "skill_01HmMYj7cJLPTNTKmTbGcrgj",
+      "name": "principle-exhaust-the-design-space",
+      "description": "Apply when facing a novel UI interaction or architectural decision with no precedent in the codebase. Build 2-3 competing prototypes and compare side by side before committing.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:01.365971Z",
+      "backingPluginId": "plugin_01Lox2RmEjeDBxDcKj5Za7nt"
+    },
+    {
+      "skillId": "skill_01BYnrvmzdjYjg7etVkuaxQL",
+      "name": "principle-redesign-from-first-principles",
+      "description": "Apply when integrating a new requirement into an existing design. Redesign as if the requirement had been a foundational assumption from day one, instead of bolting it on.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:28.792747Z",
+      "backingPluginId": "plugin_01F5SXsK2qygQUVXTPmE3aoy"
+    },
+    {
+      "skillId": "skill_01MTDw1ccoGhSD8nk5kwgnZV",
+      "name": "principle-experience-first",
+      "description": "Apply when product, UX, or feature-scope tradeoffs come up. Choose user delight over implementation convenience; ship fewer polished features over more rough ones.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:02.590893Z",
+      "backingPluginId": "plugin_01PEUp2vY654ZxumFByDhvmp"
+    },
+    {
+      "skillId": "skill_01CrskRbiSxNTB59cKE7jC8x",
+      "name": "open-pr",
+      "description": "Write a PR description using conversation context and open PR creation in browser.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:56.361429Z",
+      "backingPluginId": "plugin_01NWfNTHSEsFpdTtUdaRN1Ry"
+    },
+    {
+      "skillId": "skill_01KGedcJM4j67c4TcNYBxF7u",
+      "name": "no-comments",
+      "description": "Spawn Comment Sicko, fix accepted findings, and offer encodings for claimed constraints.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:55.150738Z",
+      "backingPluginId": "plugin_01SBaEFSrtS3EtGxsFNaLypF"
+    },
+    {
+      "skillId": "skill_018NkZnBwoohj4fTDHPsEVaf",
+      "name": "principle-boundary-discipline",
+      "description": "Apply when wiring validation, error handling, or framework adapters. Concentrate guards at system boundaries (CLI, config, network, external APIs); trust internal types and keep business logic in pure functions.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:58.074813Z",
+      "backingPluginId": "plugin_019jY7SYWMSyNmhQ9UCuWivm"
+    },
+    {
+      "skillId": "skill_01RV92TzXRGySGPVk4rqJUN7",
+      "name": "principle-build-the-lever",
+      "description": "Apply to any non-trivial work, not just bulk work: edits, migrations, analyses, checks. Build the tool that does it or proves it (codemod, script, generator, or a skill your subagents follow) instead of working by hand. The tool is the artifact a reviewer can rerun.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:59.183001Z",
+      "backingPluginId": "plugin_012tNYFDsakF6Ax1EnmnYZqj"
+    },
+    {
+      "skillId": "skill_013PVwJaACKRQWX7VLFD2usj",
+      "name": "merge",
+      "description": "Commit, rebase, and merge the current branch.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:53.976769Z",
+      "backingPluginId": "plugin_014uwt7ujZAU5PgezAJwpmUw"
+    },
+    {
+      "skillId": "skill_012ZQZV2XHpQqSx8ta1z1i88",
+      "name": "improve-codebase-architecture",
+      "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:36.471768Z",
+      "backingPluginId": "plugin_016x7jaARa3F612r3EqWfWR3"
+    },
+    {
+      "skillId": "skill_01PgUXhponEV7aywWAAxeLjs",
+      "name": "make-bot-ui",
+      "description": "Use when building a custom UI (page, dashboard, buttons) that should wake a Grok Bot over a webhook, when the user must provide a webhook sender key, or when exposing that UI on Tailscale.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:52.782307Z",
+      "backingPluginId": "plugin_01LJ46sBxrf69tAvde4FCzkr"
+    },
+    {
+      "skillId": "skill_01CzxnSjBMN4zHHizTdNGNQV",
+      "name": "interrogate",
+      "description": "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:48.560108Z",
+      "backingPluginId": "plugin_019arXwutkgjrP9Vn9YQwzB1"
+    },
+    {
+      "skillId": "skill_01NDGHEsgcGszod1zZ5DC47N",
+      "name": "how",
+      "description": "Use for \"how does X work\", code walkthroughs before changing something, and placement / ownership / layering questions (\"where should this live\", \"which package owns this\", \"is this the right layer\"). Explains subsystem architecture, runtime flow, onboarding mental models. Can critique architecture. Use why for motivation.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:35.136938Z",
+      "backingPluginId": "plugin_015Q19pDCYxETkgH5ecsmGdT"
+    },
+    {
+      "skillId": "skill_01PDX9zbPc9jY97D73quuhKK",
+      "name": "maintain-verification-skill",
+      "description": "Periodic pass that keeps a project's verification skill and feature map honest: parallel source readers per feature, one live session driving every feature, at most one PR of proven corrections. Use for /maintain-verification-skill or \"audit the verify skill\".",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:51.602161Z",
+      "backingPluginId": "plugin_01LhMB8ArC6rAZ2nyKXj3mbo"
+    },
+    {
+      "skillId": "skill_01G1p2PtP5pMA4ouGXYsZVrj",
+      "name": "handoff",
+      "description": "Compact the current conversation into a handoff document for another agent to pick up.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:33.979330Z",
+      "backingPluginId": "plugin_01QAKpYVy8LWE5tMXqpqdXFp"
+    },
+    {
+      "skillId": "skill_01QLJhMKpqyHsyCRm5H4zpvb",
+      "name": "grilling",
+      "description": "Interview the user relentlessly about a plan or design. Use when the user wants to stress-test a plan before building, or uses any 'grill' trigger phrases.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:32.828598Z",
+      "backingPluginId": "plugin_01WWL336iNf1CEYTP4v1Py4N"
+    },
+    {
+      "skillId": "skill_01CdkMJ3TQP91UQz8C75fti7",
+      "name": "principle-encode-lessons-in-structure",
+      "description": "Apply when you catch yourself writing the same instruction a second time, or notice a recurring correction. Encode the rule as a lint, metadata flag, runtime check, or script instead of more text.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:49:00.291887Z",
+      "backingPluginId": "plugin_015qU7Xhh21DUU9CEZ2NgXuG"
+    },
+    {
+      "skillId": "skill_01GqyZdfTTTHGMsnaWVsxLc7",
+      "name": "jimmy-mode",
+      "description": "An agent style for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for /jimmy-mode or requests to work in this style.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:50.290489Z",
+      "backingPluginId": "plugin_01K6iwUvsRGthfRkeBwvYd6X"
+    },
+    {
+      "skillId": "skill_01QeLjRYuSA9BsWq3z8sM1Lg",
+      "name": "grill-with-docs",
+      "description": "A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:31.589156Z",
+      "backingPluginId": "plugin_012RhMcjLjTVKn2eCzXMJDK7"
+    },
+    {
+      "skillId": "skill_01Qb21zKrA4wmR28FmnrnZNA",
+      "name": "figure-it-out",
+      "description": "Design an auditable playbook when no narrower one fits: a large migration, an ambitious multi-part change, or work a human reviews after stepping away. Scales rigor to the task, runs a hypothesis loop, and logs decisions via show-me-your-work. Use for /figure-it-out, 'figure it out', a large migration, or when no narrower playbook applies.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:29.227461Z",
+      "backingPluginId": "plugin_01SpbvQsCaxNFF83ZnRwe1U3"
+    },
+    {
+      "skillId": "skill_01B6wXqcuekdepMGr9dNeEGF",
+      "name": "grill-me",
+      "description": "A relentless interview to sharpen a plan or design.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:30.398021Z",
+      "backingPluginId": "plugin_01E7h1y3iH5e18vRmHUGqZTo"
+    },
+    {
+      "skillId": "skill_01ArY9t3iaStTfM1Nuf9e7xr",
+      "name": "coordinator",
+      "description": "Orchestrate multiple worktree agents. Spawn, monitor, communicate, and merge.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:24.375156Z",
+      "backingPluginId": "plugin_011H1gxnE5fZYwepb1KKLgdg"
+    },
+    {
+      "skillId": "skill_013adHa4nESmo7zCTTa3RzXn",
+      "name": "create-verification-skill",
+      "description": "Generate a project-local verification skill that drives your app the way a user does — any language, framework, or platform. Use for /create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:25.663672Z",
+      "backingPluginId": "plugin_01QgR2jV1fj1qnh8r4UU5B1w"
+    },
+    {
+      "skillId": "skill_013nWwvfpq1GnrDAoo3dNMse",
+      "name": "bro",
+      "description": "Restate the last message in plain human language, with no jargon.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:21.760447Z",
+      "backingPluginId": "plugin_01UgHdcnDaCfhvfZaqCTAoE5"
+    },
+    {
+      "skillId": "import-memory",
+      "name": "import-memory",
+      "description": "Import a memory export from another AI assistant into Claude's memory — conversationally, additively, and with the content treated as data.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:02.007169Z"
+    },
+    {
+      "skillId": "docs",
+      "name": "docs",
+      "description": "docs (living docs people share, comment on and edit; use only when the user asks for one: names a doc, document, page, memo, spec, PRD, runbook or write-up, asks for somewhere to share or keep editing something, or says yes to your doc offer; a plan, comparison, summary or notes asked in chat stays in chat (at most a one-line doc offer); a report, status update, recap or \"something I can send them\" with no form named → ask first: reply, doc or file?; tabs hold tables and live charts too; a pasted claude.ai/code/artifact/… link may be a doc: check with docs tools first; not HTML pages, apps or plain chat answers; a .docx/.pptx/.xlsx/PDF asked for by name → that format's skill): asked for one → no docs-connector instructions in context? call the docs connector's `guide` with topic.instructions first, then create the doc (headings only, no body) before any search, file read or plan, even with files attached. Documenting code means docstrings or repo docs, not a doc.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-16T00:10:45.680014Z"
+    },
+    {
+      "skillId": "skill_01VWDF8m29ZWswawCxmaNggz",
+      "name": "creating-course-lectures",
+      "description": "Use when creating a new lecture or educational content that fits into an existing course or content collection — before asking the user any questions.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:26.908655Z",
+      "backingPluginId": "plugin_01LPZkFZzzVHkkFdYtTyg8oJ"
+    },
+    {
+      "skillId": "skill_014qPPWcdJsfTWpVrudHc65g",
+      "name": "blast-radius",
+      "description": "Find what a change could break somewhere else before it ships, beyond the diff, and prove the one fact it's safe because of by running real code instead of writing it up. Use for 'blast radius of X', 'what could this break', or reviewing a small diff you don't trust.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:20.571770Z",
+      "backingPluginId": "plugin_01U6EpUpwDMTvHhJZ1stroae"
+    },
+    {
+      "skillId": "skill_01Spw5fzVNAVbARxeDSPopSc",
+      "name": "automate-me",
+      "description": "Use for \"automate me\", \"create/update/refresh my -mode skill\", \"turn/capture my preferences or working style into a skill\", or wanting agents to follow how the user works. Drafts or revises a personal -mode skill via writing-skills + unslop, optionally pulling fresh evidence from recent transcripts.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:19.258965Z",
+      "backingPluginId": "plugin_01MSx5P3tyTdqXUWnPNS293g"
+    },
+    {
+      "skillId": "skill_01J17Kf49Qp6Nv7jbUQwBhWw",
+      "name": "codebase-design",
+      "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:23.004369Z",
+      "backingPluginId": "plugin_018d46jRGUdrTv9gXz3M4j1r"
+    },
+    {
+      "skillId": "skill_01MN83CRoxsQw5UXdAoxjB8q",
+      "name": "domain-modeling",
+      "description": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:28.051851Z",
+      "backingPluginId": "plugin_01Ur5zf4zAcUBKuod4epbkFu"
+    },
+    {
+      "skillId": "morning",
+      "name": "morning",
+      "description": "Render the user's morning brief as a styled HTML artifact, or set it up as a recurring weekday task. Use only when the user explicitly asks to run, see, or set up their morning brief, or if they invoke /morning by name. A question about their day, schedule, or calendar is not by itself a request for the brief; answer it directly instead.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.990356Z"
+    },
+    {
+      "skillId": "skill_01RjNuzmdjdkHteZKeSLDPcY",
+      "name": "arena",
+      "description": "Spawn N parallel candidates at the same task, pick a base, graft the strongest parts of the losers into it. Use for /arena, 'arena this', 'throw it in the arena', or when one attempt at a non-trivial artifact would lock in the wrong shape.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:17.974786Z",
+      "backingPluginId": "plugin_01MBqyEmnPBD69gJWg9jEz8J"
+    },
+    {
+      "skillId": "skill-creator",
+      "name": "skill-creator",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-09-14T19:41:01.499089Z"
+    },
+    {
+      "skillId": "skill_01XwFGv6F8YgPuKko2QY5Btw",
+      "name": "architect",
+      "description": "Sketch types, signatures, and module structure before code, then stay in the loop while implementation fills in. Use for /architect, 'architect this', 'design this', or non-trivial work where jumping to code would lock in the wrong shape.",
+      "source": "plugin",
+      "updatedAt": "2026-09-14T00:48:16.792746Z",
+      "backingPluginId": "plugin_01448ThnsSUVUTSxozhUFJdx"
+    },
+    {
+      "skillId": "pdf",
+      "name": "pdf",
+      "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+      "source": "anthropic",
+      "updatedAt": "2026-07-10T19:23:15.432550Z"
+    },
+    {
+      "skillId": "pptx",
+      "name": "pptx",
+      "description": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations as PowerPoint (.pptx) files; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email, summary, or creating a different type of slide deck); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user asks for a PowerPoint or .pptx file, or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. However, when the user asks for a deck, slides, a slide deck, or a presentation without naming a file format, default to using a dedicated slide-deck artifact type or a separate slides skill if this session offers one; otherwise, use this skill.",
+      "source": "anthropic",
+      "updatedAt": "2026-09-14T21:00:33.306681Z"
+    },
+    {
+      "skillId": "xlsx",
+      "name": "xlsx",
+      "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
+      "source": "anthropic",
+      "updatedAt": "2026-09-14T21:00:33.324012Z"
+    },
+    {
+      "skillId": "docx",
+      "name": "docx",
+      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
+      "source": "anthropic",
+      "updatedAt": "2026-09-14T21:00:33.279708Z"
+    },
+    {
+      "skillId": "skill_01C1t5ytGXViCzTvgztHjCnp",
+      "name": "restaurant-quote-request",
+      "description": "Generate quote-request emails for Jaime Abbariao and Jenny Chen to send to restaurants/venues when planning a private dinner event (e.g. a ~50-person dinner). Use this whenever Jaime asks to email restaurants or venues for pricing, availability, private dining, or catering quotes for a group event — including requests like \"draft an email asking for quotes\", \"reach out to these restaurants\", or \"write an email for the dinner we're planning.\" Produces both a reusable template and personalized, ready-to-send versions per restaurant.",
+      "source": "plugin",
+      "updatedAt": "2026-09-08T16:35:24.336496Z",
+      "backingPluginId": "plugin_0134gXsFT3FNdgWre3eyEVkq"
+    }
+  ]
+}
