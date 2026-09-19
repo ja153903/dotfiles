@@ -16,15 +16,3 @@ end
 
 -- disable neotree keymap
 -- vim.keymap.del("n", "<leader>e")
-
--- to signify that this is the zero state
-vim.keymap.set("n", "<leader>0", function()
-  vim.g.lsp_enabled = not vim.g.lsp_enabled
-  if vim.g.lsp_enabled then
-    vim.cmd("LspStart")
-    vim.notify("LSP enabled")
-  else
-    vim.cmd("LspStop")
-    vim.notify("LSP disabled")
-  end
-end, { desc = "Toggle LSP" })
