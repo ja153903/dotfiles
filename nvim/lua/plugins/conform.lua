@@ -10,10 +10,10 @@ return {
           sh = { "shfmt" },
           cpp = { "clang-format" },
           c = { "clang-format" },
-          typescript = { "oxfmt", "biome", "prettier", "prettierd", stop_after_first = true },
-          typescriptreact = { "oxfmt", "biome", "prettier", "prettierd", stop_after_first = true },
-          javascript = { "oxfmt", "biome", "prettier", "prettierd", stop_after_first = true },
-          javascriptreact = { "oxfmt", "biome", "prettier", "prettierd", stop_after_first = true },
+          typescript = { "oxfmt" },
+          typescriptreact = { "oxfmt" },
+          javascript = { "oxfmt" },
+          javascriptreact = { "oxfmt" },
           python = { "ruff_format", stop_after_first = true, lsp_format = "fallback" },
           ocaml = { "ocamlformat" },
           rust = { "rustfmt" },
@@ -23,11 +23,6 @@ return {
         ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
         formatters = {
           injected = { options = { ignore_errors = true } },
-          biome = {
-            require_cwd = true,
-          },
-          prettier = { require_cwd = true },
-          prettierd = { require_cwd = true },
           ruff_format = { require_cwd = true },
           ["clang-format"] = {
             command = "/opt/homebrew/bin/clang-format",
