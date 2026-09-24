@@ -22,3 +22,5 @@ herdr/.plugins.lock
 .superpowers/
 .claude/worktrees/
 .skill-zips/
+
+.claude/jimmy.state
