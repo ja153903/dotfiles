@@ -70,10 +70,10 @@ link_configs() {
   echo "Linking configs..."
   link "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
   link "$DOTFILES_DIR/herdr" "$CONFIG_DIR/herdr"
+  link "$DOTFILES_DIR/zed/settings.json" "$CONFIG_DIR/zed/settings.json"
 
-  # Harness-agnostic agent config: same skills for Claude Code and Codex.
+  # Claude Code uses the local skills; Codex loads Jimmy from the plugin.
   link "$DOTFILES_DIR/agent/skills" "$HOME/.claude/skills"
-  link "$DOTFILES_DIR/agent/skills" "$HOME/.codex/skills"
   link "$DOTFILES_DIR/agent/agents" "$HOME/.claude/agents"
 }
 

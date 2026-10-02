@@ -18,7 +18,7 @@ Don't ask about budget, cuisine, or dietary restrictions unless Jaime brings the
 
 ## Fixed details (always the same)
 
-- Signed **"Jaime Abbariao & Jenny Chen"**
+- Signed **"Jenny & Jaime"**
 - Tone: warm and casual, not corporate
 - Framed as a **private dinner**, not a corporate/business event
 - Leave `[Phone Number]` and `[Email Address]` as placeholders unless Jaime has given contact info in this conversation — don't invent them
