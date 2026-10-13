@@ -24,3 +24,5 @@ herdr/.plugins.lock
 .skill-zips/
 
 .claude/jimmy.state
+herdr/session-snapshots/
+herdr/herdr.sock.agent

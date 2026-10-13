@@ -20,7 +20,7 @@ return {
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      vim.o.background = "light"
+      -- vim.o.background = "light"
 
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
@@ -65,10 +65,20 @@ return {
     priority = 1000,
     opts = {},
   },
+  -- Using Lazy
+  {
+    "navarasu/onedark.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("onedark").setup({
+        style = "darker",
+      })
+    end,
+  },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "vscode",
+      colorscheme = "onedark",
     },
   },
 }
