@@ -23,7 +23,7 @@ adjust-cell-height = +25%
 clipboard-read = ask
 clipboard-write = allow
 
-background-opacity = 0.8
+background-opacity = 0.85
 background-blur-radius = 30
 
 # Keybinds
