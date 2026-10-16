@@ -70,10 +70,11 @@ return {
     "navarasu/onedark.nvim",
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
+      -- vim.o.background = "light"
       -- Lua
       require("onedark").setup({
         -- Main options --
-        style = "dark", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+        style = require("config.theme").mode(), -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         transparent = true, -- Show/hide background
         term_colors = true, -- Change terminal color as per the selected theme style
         ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
@@ -110,6 +111,7 @@ return {
           background = true, -- use background color for virtual text
         },
       })
+      require("config.theme").setup()
     end,
   },
   {

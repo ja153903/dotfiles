@@ -26,3 +26,5 @@ herdr/.plugins.lock
 .claude/jimmy.state
 herdr/session-snapshots/
 herdr/herdr.sock.agent
+
+nvim/theme-mode
