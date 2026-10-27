@@ -70,6 +70,7 @@ link_configs() {
   echo "Linking configs..."
   link "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
   link "$DOTFILES_DIR/herdr" "$CONFIG_DIR/herdr"
+  link "$DOTFILES_DIR/rex" "$CONFIG_DIR/rex"
   link "$DOTFILES_DIR/emacs" "$HOME/.doom.d"
   link "$DOTFILES_DIR/zed/settings.json" "$CONFIG_DIR/zed/settings.json"
 
