@@ -23,6 +23,12 @@ rex.bind("alt+t>l", "client.tab.next")
 rex.bind("alt+t>h", "client.tab.previous")
 rex.bind("alt+t>n", "client.tab.new")
 
+-- Sessions
+rex.bind("alt+s>l", "session.next")
+rex.bind("alt+s>h", "session.previous")
+rex.bind("alt+s>s", "session.switch")
+rex.bind("alt+s>n", "session.new")
+
 -- Pane focus
 rex.bind("alt+h", "pane.focus.left")
 rex.bind("alt+j", "pane.focus.down")
