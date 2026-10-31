@@ -29,6 +29,10 @@ class ThemeCommandTests(unittest.TestCase):
 else
     echo "$*" >> "$XDG_CONFIG_HOME/reloads"
 fi''')
+        self.stub('rex', '''case "$*" in
+    *"client ls"*) echo '{"clients": [{"client_id": "cli"}, {"client_id": "app1", "info": {"kind": "app"}}]}' ;;
+    *) echo "$*" >> "$XDG_CONFIG_HOME/rex-calls" ;;
+esac''')
 
     def stub(self, name, content):
         path = self.root / 'bin' / name
@@ -54,6 +58,10 @@ fi''')
             self.assertIn('[ui]\nname = "preserve"\n', self.herdr.read_text())
             self.assertIn('#background-opacity = 0.85\n', self.ghostty.read_text())
         self.assertEqual((self.root / 'reloads').read_text().splitlines(), ['server reload-config'] * 3)
+        self.assertEqual((self.root / 'rex-calls').read_text().splitlines(), [
+            '--autostart=false -C app1 do client.appearance.switch_mode mode=' + mode
+            for mode in ['light', 'dark', 'light']
+        ])
         self.assertEqual(self.run_theme().returncode, 0)
         self.assertEqual(self.mode.read_text(), 'dark\n')
 
@@ -87,6 +95,17 @@ else
 fi''')
         result = self.run_theme('light')
         self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_stopped_rex_is_skipped_and_rejected_action_is_reported(self):
+        self.stub('rex', 'echo "no Rex server is running" >&2\nexit 4')
+        self.assertEqual(self.run_theme('light').returncode, 0)
+        self.stub('rex', '''case "$*" in
+    *"client ls"*) echo '{"clients": [{"client_id": "app1", "info": {"kind": "app"}}]}' ;;
+    *) echo "Rex.app is not accepting actions" >&2; exit 1 ;;
+esac''')
+        result = self.run_theme('dark')
+        self.assertEqual(result.returncode, 1)
+        self.assertIn('Rex refresh failed: Rex.app is not accepting actions', result.stderr)
 
     def test_custom_herdr_config_and_symlinks_are_preserved(self):
         custom = self.root / 'custom.toml'

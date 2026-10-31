@@ -62,6 +62,25 @@ def refresh_herdr():
     return refresh(["herdr", "server", "reload-config"], "Herdr")
 
 
+def refresh_rex(mode):
+    try:
+        status = subprocess.run(["rex", "--autostart=false", "client", "ls", "--json"], capture_output=True, text=True, timeout=15)
+        if status.returncode == 4:  # no server running
+            return None
+        if status.returncode:
+            return "Rex status failed: %s" % (status.stderr.strip() or status.stdout.strip())
+        apps = [c["client_id"] for c in json.loads(status.stdout)["clients"] if c.get("info", {}).get("kind") == "app"]
+    except FileNotFoundError:
+        return None
+    except (OSError, subprocess.TimeoutExpired, ValueError, KeyError) as error:
+        return "Rex status failed: %s" % error
+    for app in apps:
+        error = refresh(["rex", "--autostart=false", "-C", app, "do", "client.appearance.switch_mode", "mode=" + mode], "Rex")
+        if error:
+            return error
+    return None
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", nargs="?", default="toggle", choices=[*THEMES, "toggle", "status"])
@@ -110,6 +129,7 @@ end if'''
     errors = [error for error in [
         refresh(["osascript", "-e", ghostty_script], "Ghostty"),
         refresh_herdr(),
+        refresh_rex(mode),
     ] if error]
     print("Theme set to %s." % mode)
     for error in errors:

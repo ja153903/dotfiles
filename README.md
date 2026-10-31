@@ -24,7 +24,10 @@ The default is dark when that file does not exist.
 
 Ghostty reloads through its macOS AppleScript interface when it is running.
 Herdr reloads its server and attached clients with `herdr server reload-config`.
-A stopped Herdr server stays stopped. Neovim sessions watch the saved mode and
+A stopped Herdr server stays stopped. Rex switches each running app to its
+light or dark appearance, which uses the themes picked in Rex's settings. Turn on
+Remote Control under Rex Server in Rex's settings so the app accepts this.
+Neovim sessions watch the saved mode and
 apply changes without restarting. macOS appearance stays independent.
 
 Restart existing Neovim sessions once to load the watcher, or run this in each
