@@ -28,3 +28,17 @@ herdr/session-snapshots/
 herdr/herdr.sock.agent
 
 nvim/theme-mode
+
+# Fisher reinstalls these from fish/fish_plugins
+fish/fish_variables
+fish/completions/fisher.fish
+fish/completions/fzf_configure_bindings.fish
+fish/completions/ggl.fish
+fish/conf.d/fzf.fish
+fish/conf.d/ggl.fish
+fish/conf.d/z.fish
+fish/functions/__z*.fish
+fish/functions/_fzf_*.fish
+fish/functions/fisher.fish
+fish/functions/fzf_configure_bindings.fish
+fish/functions/ggl.fish

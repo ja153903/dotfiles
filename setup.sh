@@ -68,15 +68,15 @@ link() {
 
 link_configs() {
   echo "Linking configs..."
+  link "$DOTFILES_DIR/fish" "$CONFIG_DIR/fish"
+  link "$DOTFILES_DIR/ghostty" "$CONFIG_DIR/ghostty"
+  link "$DOTFILES_DIR/starship.toml" "$CONFIG_DIR/starship.toml"
+  link "$DOTFILES_DIR/yazi" "$CONFIG_DIR/yazi"
   link "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
   link "$DOTFILES_DIR/herdr" "$CONFIG_DIR/herdr"
   link "$DOTFILES_DIR/rex" "$CONFIG_DIR/rex"
   link "$DOTFILES_DIR/emacs" "$HOME/.doom.d"
   link "$DOTFILES_DIR/zed/settings.json" "$CONFIG_DIR/zed/settings.json"
-
-  # Claude Code uses the local skills; Codex loads Jimmy from the plugin.
-  link "$DOTFILES_DIR/agent/skills" "$HOME/.claude/skills"
-  link "$DOTFILES_DIR/agent/agents" "$HOME/.claude/agents"
 }
 
 # --- Main ---

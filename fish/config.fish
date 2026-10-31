@@ -23,15 +23,8 @@ starship init fish | source
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
-# pnpm
-set -gx PNPM_HOME /Users/jaimeabbariao/Library/pnpm
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
-
-# Pi
-fish_add_path "/Users/jaimeabbariao/.local/share/mise/installs/node/26.7.0/bin"
+set -gx PNPM_HOME $HOME/Library/pnpm
+fish_add_path $PNPM_HOME
 
 # opam
 if command -q opam
