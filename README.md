@@ -1,46 +1,56 @@
 # Jaime's dotfiles
 
-These are my dotfiles. You can take inspiration from some of my configs.
+My macOS configs for Fish, Ghostty, Herdr, Rex, Neovim, Yazi, and Starship.
+Borrow whatever you like.
 
-`emacs/` contains my Doom Emacs configuration. `setup.sh` links it to
-`~/.doom.d`. Keep the Doom Emacs installation separate, in `~/.config/emacs`.
+## Setup
 
-## Switch terminal and editor themes
+```sh
+./setup.sh       # installs Homebrew, Neovim, Ghostty, and Herdr, then links configs into ~/.config
+./setup-fish.sh  # installs Fish and makes it the default shell
+```
 
-Link this repository's `fish`, `ghostty`, `herdr`, and `nvim` directories under
-`~/.config`, then run these commands in Fish.
+`setup.sh` backs up any existing config to `<name>.bak` before linking.
+
+## Switch light and dark themes
+
+The `theme` Fish command switches Ghostty, Herdr, Rex, and Neovim together.
 
 ```fish
 theme light
 theme dark
-theme toggle
-theme status
+theme toggle   # same as running `theme` with no argument
+theme status   # print the current mode
 ```
 
-Running `theme` without an argument toggles the current mode. The command uses
-Atom One Light or Atom One Dark in Ghostty and One Light or One Dark in Herdr
-and Neovim. It saves the mode in `nvim/theme-mode`, which Git ignores.
-The default is dark when that file does not exist.
+| App     | Light            | Dark            | How it updates                                |
+| ------- | ---------------- | --------------- | --------------------------------------------- |
+| Ghostty | Atom One Light   | Atom One Dark   | Reloads through AppleScript                   |
+| Herdr   | One Light        | One Dark        | Runs `herdr server reload-config`             |
+| Rex     | Your light theme | Your dark theme | Switches appearance mode in each running app  |
+| Neovim  | One Light        | One Dark        | Watches the saved mode and applies it live    |
 
-Ghostty reloads through its macOS AppleScript interface when it is running.
-Herdr reloads its server and attached clients with `herdr server reload-config`.
-A stopped Herdr server stays stopped. Rex switches each running app to its
-light or dark appearance, which uses the themes picked in Rex's settings. Turn on
-Remote Control under Rex Server in Rex's settings so the app accepts this.
-Neovim sessions watch the saved mode and
-apply changes without restarting. macOS appearance stays independent.
+The mode is saved in `nvim/theme-mode`, which Git ignores. Without that file,
+the mode is dark. macOS appearance is never changed.
 
-Restart existing Neovim sessions once to load the watcher, or run this in each
-session after the `onedark` plugin has loaded.
+### One-time steps
 
-```vim
-:lua require("config.theme").setup()
-```
+- **Rex:** turn on Remote Control under Settings → Rex Server, or Rex rejects
+  the switch. Rex uses the light and dark themes you pick in its settings.
+- **Neovim:** restart open sessions once so they load the watcher, or run
+  `:lua require("config.theme").setup()` in each one.
 
-The command requires Python 3 and uses `XDG_CONFIG_HOME`, or `~/.config` by
-default. `HERDR_CONFIG_PATH` overrides the Herdr config path. If an app cannot
-refresh, the command reports the error and exits with a failure status.
-The saved configs still apply when that app next starts. Rerun `theme light`
-or `theme dark` to retry the refresh without toggling again.
+### If an app doesn't update
 
-Run the command's isolated checks with `python3 -m unittest discover -s scripts/tests -v`.
+Apps that aren't running are skipped, and a stopped Herdr server stays
+stopped. If a running app fails to update, `theme` prints the error and exits
+with status 1. The saved configs still apply the next time that app starts. To
+retry, run `theme light` or `theme dark`, because `theme toggle` would flip
+the mode again.
+
+### Details
+
+- Requires Python 3. The script lives at `scripts/theme.py`.
+- Reads configs from `$XDG_CONFIG_HOME`, or `~/.config` when that's unset.
+- `HERDR_CONFIG_PATH` overrides the Herdr config location.
+- Run the tests with `python3 -m unittest discover -s scripts/tests -v`.

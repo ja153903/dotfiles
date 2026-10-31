@@ -1,95 +1,61 @@
 #!/usr/bin/env bash
+# Installs Homebrew and core apps, then links configs into ~/.config.
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
-
-# --- Install dependencies ---
+PACKAGES=(neovim ghostty herdr)
+CONFIGS=(fish ghostty herdr nvim rex starship.toml yazi)
 
 install_homebrew() {
-  if ! command -v brew &>/dev/null; then
-    echo "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    # Add brew to PATH for the rest of this script
-    if [[ -f /opt/homebrew/bin/brew ]]; then
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    elif [[ -f /usr/local/bin/brew ]]; then
-      eval "$(/usr/local/bin/brew shellenv)"
-    fi
-  else
+  if command -v brew &>/dev/null; then
     echo "Homebrew already installed."
+    return
   fi
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # Add brew to PATH for the rest of this script
+  eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)"
 }
 
 install_packages() {
-  local packages=(neovim ghostty herdr)
-  local to_install=()
-
-  for pkg in "${packages[@]}"; do
-    if ! brew list "$pkg" &>/dev/null; then
-      to_install+=("$pkg")
-    fi
+  local missing=()
+  for pkg in "${PACKAGES[@]}"; do
+    brew list "$pkg" &>/dev/null || missing+=("$pkg")
   done
-
-  if [[ ${#to_install[@]} -gt 0 ]]; then
-    echo "Installing: ${to_install[*]}..."
-    brew install "${to_install[@]}"
-  else
+  if [[ ${#missing[@]} -eq 0 ]]; then
     echo "All packages already installed."
+    return
   fi
+  echo "Installing: ${missing[*]}..."
+  brew install "${missing[@]}"
 }
 
-# --- Symlink configs ---
-
 link() {
-  local src="$1"
-  local dest="$2"
-
+  local src="$1" dest="$2"
   if [[ -L "$dest" ]]; then
-    local current
-    current="$(readlink "$dest")"
-    if [[ "$current" == "$src" ]]; then
+    if [[ "$(readlink "$dest")" == "$src" ]]; then
       echo "  ok: $dest"
       return
     fi
     echo "  updating: $dest -> $src"
     rm "$dest"
   elif [[ -e "$dest" ]]; then
-    echo "  backing up: $dest -> ${dest}.bak"
-    mv "$dest" "${dest}.bak"
-  else
-    mkdir -p "$(dirname "$dest")"
+    echo "  backing up: $dest -> $dest.bak"
+    mv "$dest" "$dest.bak"
   fi
-
   ln -s "$src" "$dest"
   echo "  linked: $dest -> $src"
 }
 
-link_configs() {
-  echo "Linking configs..."
-  link "$DOTFILES_DIR/fish" "$CONFIG_DIR/fish"
-  link "$DOTFILES_DIR/ghostty" "$CONFIG_DIR/ghostty"
-  link "$DOTFILES_DIR/starship.toml" "$CONFIG_DIR/starship.toml"
-  link "$DOTFILES_DIR/yazi" "$CONFIG_DIR/yazi"
-  link "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
-  link "$DOTFILES_DIR/herdr" "$CONFIG_DIR/herdr"
-  link "$DOTFILES_DIR/rex" "$CONFIG_DIR/rex"
-  link "$DOTFILES_DIR/emacs" "$HOME/.doom.d"
-  link "$DOTFILES_DIR/zed/settings.json" "$CONFIG_DIR/zed/settings.json"
-}
-
-# --- Main ---
-
-main() {
-  echo "=== Dotfiles Setup ==="
-  echo "Dotfiles directory: $DOTFILES_DIR"
-  echo ""
-
-  install_homebrew
-  install_packages
-  echo ""
-  link_configs
-}
-
-main
+echo "=== Dotfiles Setup ==="
+echo "Dotfiles directory: $DOTFILES_DIR"
+echo ""
+install_homebrew
+install_packages
+echo ""
+echo "Linking configs..."
+mkdir -p "$CONFIG_DIR"
+for name in "${CONFIGS[@]}"; do
+  link "$DOTFILES_DIR/$name" "$CONFIG_DIR/$name"
+done
