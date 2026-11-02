@@ -12,8 +12,8 @@ import tempfile
 
 
 THEMES = {
-    "light": {"ghostty": "Atom One Light", "herdr": "one-light"},
-    "dark": {"ghostty": "Atom One Dark", "herdr": "one-dark"},
+    "light": {"ghostty": "solarized-osaka-light", "herdr": "solarized-light", "rex": "Alpine Milk"},
+    "dark": {"ghostty": "solarized-osaka", "herdr": "solarized", "rex": "Abyssal Trench"},
 }
 
 
@@ -74,10 +74,13 @@ def refresh_rex(mode):
         return None
     except (OSError, subprocess.TimeoutExpired, ValueError, KeyError) as error:
         return "Rex status failed: %s" % error
+    # theme.change sets Rex's theme for the mode now showing, so switch first
+    actions = [["client.appearance.switch_mode", "mode=" + mode], ["client.theme.change", "name=" + THEMES[mode]["rex"]]]
     for app in apps:
-        error = refresh(["rex", "--autostart=false", "-C", app, "do", "client.appearance.switch_mode", "mode=" + mode], "Rex")
-        if error:
-            return error
+        for action in actions:
+            error = refresh(["rex", "--autostart=false", "-C", app, "do", *action], "Rex")
+            if error:
+                return error
     return None
 
 

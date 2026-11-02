@@ -19,8 +19,7 @@ function M.apply()
     return
   end
   vim.o.background = mode
-  require("onedark").setup({ style = mode })
-  require("onedark").load()
+  vim.cmd.colorscheme("solarized-osaka")
   current = mode
 end
 

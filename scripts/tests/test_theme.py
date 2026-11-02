@@ -45,9 +45,9 @@ esac''')
     def test_light_dark_toggle_and_status(self):
         self.assertEqual(self.run_theme('status').stdout, 'dark\n')
         for command, mode, ghostty, herdr in [
-            ('light', 'light', 'Atom One Light', 'one-light'),
-            ('dark', 'dark', 'Atom One Dark', 'one-dark'),
-            ('toggle', 'light', 'Atom One Light', 'one-light'),
+            ('light', 'light', 'solarized-osaka-light', 'solarized-light'),
+            ('dark', 'dark', 'solarized-osaka', 'solarized'),
+            ('toggle', 'light', 'solarized-osaka-light', 'solarized-light'),
         ]:
             result = self.run_theme(command)
             self.assertEqual(result.returncode, 0, result.stderr)
@@ -58,10 +58,10 @@ esac''')
             self.assertIn('[ui]\nname = "preserve"\n', self.herdr.read_text())
             self.assertIn('#background-opacity = 0.85\n', self.ghostty.read_text())
         self.assertEqual((self.root / 'reloads').read_text().splitlines(), ['server reload-config'] * 3)
-        self.assertEqual((self.root / 'rex-calls').read_text().splitlines(), [
-            '--autostart=false -C app1 do client.appearance.switch_mode mode=' + mode
-            for mode in ['light', 'dark', 'light']
-        ])
+        rex = '--autostart=false -C app1 do '
+        light = [rex + 'client.appearance.switch_mode mode=light', rex + 'client.theme.change name=Alpine Milk']
+        dark = [rex + 'client.appearance.switch_mode mode=dark', rex + 'client.theme.change name=Abyssal Trench']
+        self.assertEqual((self.root / 'rex-calls').read_text().splitlines(), light + dark + light)
         self.assertEqual(self.run_theme().returncode, 0)
         self.assertEqual(self.mode.read_text(), 'dark\n')
 
@@ -117,8 +117,8 @@ esac''')
         result = self.run_theme('light')
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue(self.ghostty.is_symlink())
-        self.assertIn('one-light', custom.read_text())
-        self.assertIn('Atom One Light', target.read_text())
+        self.assertIn('solarized-light', custom.read_text())
+        self.assertIn('solarized-osaka-light', target.read_text())
 
 
 if __name__ == '__main__':

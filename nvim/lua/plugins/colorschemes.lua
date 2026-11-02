@@ -64,13 +64,18 @@ return {
     lazy = false,
     priority = 1000,
     opts = {},
+    config = function(_, opts)
+      require("solarized-osaka").setup(opts)
+      require("config.theme").setup()
+    end,
   },
   -- Using Lazy
   {
     "navarasu/onedark.nvim",
     priority = 1000, -- make sure to load this before all the other start plugins
+    enabled = false,
     config = function()
-      -- vim.o.background = "light"
+      vim.o.background = "dark"
       -- Lua
       require("onedark").setup({
         -- Main options --
@@ -117,7 +122,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      colorscheme = "solarized-osaka",
     },
   },
 }
