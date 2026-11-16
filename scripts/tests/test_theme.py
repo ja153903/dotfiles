@@ -46,7 +46,7 @@ esac''')
         self.assertEqual(self.run_theme('status').stdout, 'dark\n')
         for command, mode, ghostty, herdr in [
             ('light', 'light', 'solarized-osaka-light', 'solarized-light'),
-            ('dark', 'dark', 'solarized-osaka', 'solarized'),
+            ('dark', 'dark', 'embark', 'terminal'),
             ('toggle', 'light', 'solarized-osaka-light', 'solarized-light'),
         ]:
             result = self.run_theme(command)
@@ -60,7 +60,7 @@ esac''')
         self.assertEqual((self.root / 'reloads').read_text().splitlines(), ['server reload-config'] * 3)
         rex = '--autostart=false -C app1 do '
         light = [rex + 'client.appearance.switch_mode mode=light', rex + 'client.theme.change name=Alpine Milk']
-        dark = [rex + 'client.appearance.switch_mode mode=dark', rex + 'client.theme.change name=Abyssal Trench']
+        dark = [rex + 'client.appearance.switch_mode mode=dark', rex + 'client.theme.change name=embark']
         self.assertEqual((self.root / 'rex-calls').read_text().splitlines(), light + dark + light)
         self.assertEqual(self.run_theme().returncode, 0)
         self.assertEqual(self.mode.read_text(), 'dark\n')

@@ -1,0 +1,7 @@
+# Base config for markdownlint-cli2 in nvim. A project's own config still applies on top.
+MD013: false # line length
+MD033: false # inline HTML
+MD041: false # first line must be a heading
+MD024: { siblings_only: true } # duplicate headings only within the same parent
+MD034: false # bare URLs
+MD060: false # table column style

@@ -1,0 +1,5 @@
+[opener]
+pdf = [{ run = 'tdf %s1', block = true, desc = "tdf", for = "unix" }]
+
+[open]
+prepend_rules = [{ mime = "application/pdf", use = "pdf" }]

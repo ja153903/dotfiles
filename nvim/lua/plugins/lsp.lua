@@ -18,6 +18,14 @@ return {
             return vim.lsp.rpc.start({ cmd, "--lsp", "--stdio" }, dispatchers)
           end,
         },
+        -- mason has ty installed; keep it from auto-enabling alongside basedpyright
+        ty = { enabled = false },
+        -- Neovim re-pulls diagnostics on every attach/refresh and each pull kicks
+        -- off a full analysis pass (+ progress popup). Push mode analyzes once.
+        basedpyright = {
+          -- read from initializationOptions only (not settings)
+          init_options = { disablePullDiagnostics = true },
+        },
         tinymist = {
           settings = {
             exportPdf = "onSave",

@@ -18,9 +18,9 @@ THEMES = {
         "rex": "Alpine Milk",
     },
     "dark": {
-        "ghostty": "solarized-osaka",
-        "herdr": "solarized",
-        "rex": "Abyssal Trench",
+        "ghostty": "embark",
+        "herdr": "terminal",  # no built-in embark; inherits Ghostty's palette
+        "rex": "embark",
     },
 }
 
