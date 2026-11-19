@@ -29,3 +29,7 @@ rex.bind("cmd+p>h", "pane.focus.left")
 rex.bind("cmd+p>j", "pane.focus.down")
 rex.bind("cmd+p>k", "pane.focus.up")
 rex.bind("cmd+p>l", "pane.focus.right")
+
+-- UI
+require("ui.agents")
+rex.bind("cmd+s>a", "agents")

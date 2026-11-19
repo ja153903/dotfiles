@@ -16,3 +16,5 @@ end
 
 -- disable neotree keymap
 -- vim.keymap.del("n", "<leader>e")
+
+vim.keymap.set("n", "<leader>of", "<cmd>silent !open -R %<cr>", { desc = "Reveal in Finder" })
