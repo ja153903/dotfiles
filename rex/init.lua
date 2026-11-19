@@ -32,4 +32,9 @@ rex.bind("cmd+p>l", "pane.focus.right")
 
 -- UI
 require("ui.agents")
-rex.bind("cmd+s>a", "agents")
+rex.bind("cmd+s>a", "agents")          -- go to agent
+rex.bind("cmd+s>b", "agents_next")     -- next agent needing you
+rex.bind("cmd+s>c", "agent_new")       -- start agent
+rex.bind("cmd+s>r", "agents_review")   -- review changes
+rex.bind("cmd+s>x", "agents_close")    -- close agents
+rex.bind("cmd+s>m", "agents_send")     -- send message
