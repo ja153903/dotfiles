@@ -22,11 +22,20 @@ local function run_ok(argv)
   return result ~= nil and result.ok, result
 end
 
+-- The Rex server's PATH is /usr/bin:/bin, so name fd by its Homebrew path.
+local fd = "/opt/homebrew/bin/fd"
+local search_depth = "4"
+
+-- Folders under projects_root to search, skipping hidden and gitignored ones. Falls back to the
+-- top level alone when fd is missing.
 local function project_dirs()
-  local ok, result = run_ok({ "find", projects_root, "-mindepth", "1", "-maxdepth", "1", "-type", "d", "-not", "-name", ".*" })
+  local ok, result = run_ok({ fd, "--type", "d", "--max-depth", search_depth, ".", projects_root })
+  if not ok then
+    ok, result = run_ok({ "find", projects_root, "-mindepth", "1", "-maxdepth", "1", "-type", "d", "-not", "-name", ".*" })
+  end
   if not ok then return {} end
   local dirs = {}
-  for line in result.stdout:gmatch("[^\n]+") do dirs[#dirs + 1] = line end
+  for line in result.stdout:gmatch("[^\n]+") do dirs[#dirs + 1] = (line:gsub("/+$", "")) end
   table.sort(dirs)
   return dirs
 end
@@ -55,7 +64,7 @@ end
 
 local function ask_project()
   local items = fn.map(project_dirs(), function(dir)
-    return { id = dir, title = basename(dir), subtitle = dir, icon = "folder" }
+    return { id = dir, title = dir:sub(#projects_root + 2), subtitle = dir, icon = "folder" }
   end)
   return prompt.answer_text(rex.ui.pick{
     title = "Project", placeholder = "Filter projects, or type a path", items = items, allow_other = true,
