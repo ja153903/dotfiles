@@ -1,18 +1,71 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
-vim.hl = vim.highlight
-vim.opt.list = false
-vim.opt.termguicolors = true
-vim.opt.guicursor = {
-  "n-v-c-sm:block", -- normal, visual, command: steady block
-  "i-ci-ve:ver25-blinkon500-blinkoff500-blinkwait500", -- insert: blinking vertical bar
-  "r-cr-o:hor20", -- replace, operator-pending: steady horizontal bar
+-- Ported from LazyVim's defaults, then personal overrides at the bottom.
+vim.g.autoformat = true
+vim.g.markdown_recommended_style = 0
+
+-- built-in plugins we never use; netrw is replaced by yazi
+for _, plugin in ipairs({ "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin", "netrwPlugin" }) do
+  vim.g["loaded_" .. plugin] = 1
+end
+
+local opt = vim.opt
+opt.autowrite = true
+-- leave clipboard alone over ssh so OSC 52 works
+opt.clipboard = vim.env.SSH_CONNECTION and "" or "unnamedplus"
+opt.completeopt = "menu,menuone,noselect"
+opt.conceallevel = 2
+opt.confirm = true
+opt.cursorline = true
+opt.expandtab = true
+opt.fillchars = { foldopen = "", foldclose = "", fold = " ", foldsep = " ", diff = "╱", eob = " " }
+opt.foldlevel = 99
+opt.foldmethod = "indent"
+opt.foldtext = ""
+opt.formatexpr = "v:lua.require'conform'.formatexpr()"
+opt.formatoptions = "jcroqlnt"
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
+opt.ignorecase = true
+opt.inccommand = "nosplit"
+opt.jumpoptions = "view"
+opt.laststatus = 3
+opt.linebreak = true
+opt.mouse = "a"
+opt.number = true
+opt.pumblend = 10
+opt.pumheight = 10
+opt.relativenumber = true
+opt.ruler = false
+opt.scrolloff = 4
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
+opt.shiftround = true
+opt.shiftwidth = 2
+opt.shortmess:append({ W = true, I = true, c = true, C = true })
+opt.showmode = false
+opt.sidescrolloff = 8
+opt.signcolumn = "yes"
+opt.smartcase = true
+opt.smartindent = true
+opt.smoothscroll = true
+opt.spelllang = { "en" }
+opt.splitbelow = true
+opt.splitkeep = "screen"
+opt.splitright = true
+opt.tabstop = 2
+opt.timeoutlen = vim.g.vscode and 1000 or 300
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200
+opt.virtualedit = "block"
+opt.wildmode = "longest:full,full"
+opt.winminwidth = 5
+opt.wrap = false
+
+-- personal
+opt.list = false
+opt.termguicolors = true
+opt.guicursor = {
+  "n-v-c-sm:block",
+  "i-ci-ve:ver25-blinkon500-blinkoff500-blinkwait500",
+  "r-cr-o:hor20",
 }
--- Source - https://stackoverflow.com/a/78627671
--- Posted by Daniel Macak, modified by community. See post 'Timeline' for change history
--- Retrieved 2026-01-30, License - CC BY-SA 4.0
-
-vim.o.cmdheight = 4
-
-vim.g.lazyvim_python_lsp = "basedpyright"
+opt.cmdheight = 4

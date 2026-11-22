@@ -1,22 +1,32 @@
--- just adding ocaml stuff here
-vim.lsp.config["ocamllsp"] = {
-  cmd = { "ocamllsp" },
-  filetypes = {
-    "ocaml",
-    "ocaml.interface",
-    "ocaml.menhir",
-    "ocaml.ocamllex",
-    "dune",
-    "reason",
-  },
-  root_markers = {
-    { "dune-project", "dune-workspace" },
-    { "*.opam", "esy.json", "package.json" },
-    ".git",
-  },
-  settings = {},
-}
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-vim.lsp.enable("ocamllsp")
+require("config.options")
+require("config.pack")
 
-require("config.lazy")
+if vim.g.vscode then
+  require("config.vscode")
+  return
+end
+
+require("config.theme").setup()
+for _, name in ipairs({
+  "snacks",
+  "ui",
+  "noice",
+  "lualine",
+  "editor",
+  "treesitter",
+  "blink",
+  "lsp",
+  "conform",
+  "lint",
+  "markdown",
+  "flash",
+  "yazi",
+  "codediff",
+}) do
+  require("plugins." .. name)
+end
+require("config.keymaps")
+require("config.autocmds")
