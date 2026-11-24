@@ -42,3 +42,8 @@ fish/functions/_fzf_*.fish
 fish/functions/fisher.fish
 fish/functions/fzf_configure_bindings.fish
 fish/functions/ggl.fish
+
+# Zed runtime state
+zed/prompts/
+zed/*backup*.json
+zed/*.bak

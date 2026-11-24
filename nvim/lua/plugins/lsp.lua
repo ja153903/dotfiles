@@ -24,7 +24,7 @@ local tools = {
   "stylua",
   "taplo",
   "tinymist",
-  "tsgo",
+  "tsc",
   "yaml-language-server",
 }
 -- after the UI is up: the registry check costs ~30ms and nothing at startup needs it
@@ -82,19 +82,6 @@ local servers = {
       },
     },
   },
-  -- upstream's config probes for classic `tsc` (no --lsp) before tsgo; only ever use tsgo
-  tsgo = {
-    cmd = function(dispatchers, config)
-      local cmd = "tsgo"
-      if (config or {}).root_dir then
-        local local_cmd = vim.fs.joinpath(config.root_dir, "node_modules/.bin", "tsgo")
-        if vim.fn.executable(local_cmd) == 1 then
-          cmd = local_cmd
-        end
-      end
-      return vim.lsp.rpc.start({ cmd, "--lsp", "--stdio" }, dispatchers)
-    end,
-  },
   oxlint = {
     root_dir = function(bufnr, on_dir)
       local markers = { ".oxlintrc.json", ".oxlintrc.jsonc", "oxlint.config.ts" }
@@ -136,6 +123,7 @@ local servers = {
       },
     },
   },
+  tsc = {},
   taplo = {},
   marksman = {},
   tinymist = { settings = { exportPdf = "onSave" } },

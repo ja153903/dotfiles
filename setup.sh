@@ -5,7 +5,7 @@ set -euo pipefail
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 PACKAGES=(neovim ghostty herdr)
-CONFIGS=(fish ghostty herdr nvim rex starship.toml yazi)
+CONFIGS=(fish ghostty herdr nvim rex starship.toml yazi zed)
 
 install_homebrew() {
   if command -v brew &>/dev/null; then
