@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "disable_ai": true,
   "vim_mode": true,
   "icon_theme": "Zed (Default)",
   "ui_font_family": "PlemolJP Console NF",
@@ -15,7 +16,7 @@
   "buffer_font_size": 14.0,
   "theme": {
     "mode": "dark",
-    "light": "One Light",
+    "light": "Modus Operandi Tinted",
     "dark": "Modus Vivendi Tinted",
   },
   // One TS server only; vtsls (built-in) + tsgo (extension) caused duplicate results.
@@ -23,5 +24,10 @@
     "TypeScript": { "language_servers": ["typescript-language-server"] },
     "TSX": { "language_servers": ["typescript-language-server"] },
     "JavaScript": { "language_servers": ["typescript-language-server"] },
+    // Mirrors nvim: basedpyright for types, ruff for lint + format.
+    "Python": {
+      "language_servers": ["basedpyright", "ruff"],
+      "formatter": { "language_server": { "name": "ruff" } },
+    },
   },
 }
