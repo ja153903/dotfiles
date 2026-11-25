@@ -13,7 +13,6 @@ require("snacks").setup({
   animate = { enabled = true },
   bigfile = { enabled = true },
   dashboard = { enabled = false },
-  explorer = { enabled = true },
   indent = { enabled = false },
   input = { enabled = true },
   notifier = { enabled = true },
@@ -72,10 +71,6 @@ map("n", "<leader>fg", function() P.git_files() end, { desc = "Find Files (git-f
 map("n", "<leader>fr", function() P.recent() end, { desc = "Recent" })
 map("n", "<leader>fR", function() P.recent({ filter = { cwd = true } }) end, { desc = "Recent (cwd)" })
 map("n", "<leader>fp", function() P.projects() end, { desc = "Projects" })
-map("n", "<leader>fe", function() Snacks.explorer({ cwd = root() }) end, { desc = "Explorer Snacks (root dir)" })
-map("n", "<leader>fE", function() Snacks.explorer() end, { desc = "Explorer Snacks (cwd)" })
-map("n", "<leader>e", "<leader>fe", { desc = "Explorer Snacks (root dir)", remap = true })
-map("n", "<leader>E", "<leader>fE", { desc = "Explorer Snacks (cwd)", remap = true })
 map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
 map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = root() }) end, { desc = "Terminal (Root Dir)" })
 map({ "n", "t" }, "<c-/>", function() Snacks.terminal.focus(nil, { cwd = root() }) end, { desc = "Terminal (Root Dir)" })

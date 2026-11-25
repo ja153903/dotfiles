@@ -36,7 +36,6 @@ vim.pack.add(vim.list_extend(editing, {
   gh("nvim-mini/mini.icons"),
   gh("MunifTanjim/nui.nvim"),
   gh("folke/noice.nvim"),
-  gh("nvim-lualine/lualine.nvim"),
   gh("akinsho/bufferline.nvim"),
   gh("folke/which-key.nvim"),
 

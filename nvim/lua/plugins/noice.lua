@@ -1,4 +1,4 @@
-require("noice").setup({
+local opts = {
   lsp = {
     override = {
       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -21,7 +21,15 @@ require("noice").setup({
     long_message_to_split = true,
     inc_rename = true,
   },
-})
+}
+-- noice.setup() defers attaching to VimEnter, so nvim paints once, then noice
+-- takes over the message area and the whole screen repaints (the startup flash).
+-- Attach now, before the first paint, by doing what setup's deferred load() does.
+-- ponytail: mirrors noice/init.lua's private load(); if noice changes it, revert to require("noice").setup(opts).
+require("noice.config").setup(opts)
+require("noice.commands").setup()
+require("noice.message.router").setup()
+require("noice").enable()
 
 local map = vim.keymap.set
 -- stylua: ignore start

@@ -23,7 +23,6 @@ require("bufferline").setup({
       local ret = (diag.error and " " .. diag.error .. " " or "") .. (diag.warning and " " .. diag.warning or "")
       return vim.trim(ret)
     end,
-    offsets = { { filetype = "snacks_layout_box" } },
   },
 })
 -- keep bufferline in sync after session restore

@@ -14,7 +14,6 @@ for _, name in ipairs({
   "snacks",
   "ui",
   "noice",
-  "lualine",
   "editor",
   "treesitter",
   "blink",

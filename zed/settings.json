@@ -7,9 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "new_window",
   "disable_ai": true,
   "vim_mode": true,
-  "icon_theme": "Zed (Default)",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
   "ui_font_family": "PlemolJP Console NF",
   "buffer_font_family": "PlemolJP Console NF",
   "ui_font_size": 15.0,
@@ -19,15 +24,21 @@
     "light": "Modus Operandi Tinted",
     "dark": "Modus Vivendi Tinted",
   },
-  // One TS server only; vtsls (built-in) + tsgo (extension) caused duplicate results.
+  // One TS server only: tsgo extension (typescript-ls). TS 7 ships no tsserver.js, so
+  // vtsls/typescript-language-server can't use it; "..." keeps others (e.g. oxc).
   "languages": {
-    "TypeScript": { "language_servers": ["typescript-language-server"] },
-    "TSX": { "language_servers": ["typescript-language-server"] },
-    "JavaScript": { "language_servers": ["typescript-language-server"] },
+    "TypeScript": { "language_servers": ["typescript-ls", "!typescript-language-server", "!vtsls", "..."] },
+    "TSX": { "language_servers": ["typescript-ls", "!typescript-language-server", "!vtsls", "..."] },
+    "JavaScript": { "language_servers": ["typescript-ls", "!typescript-language-server", "!vtsls", "..."] },
     // Mirrors nvim: basedpyright for types, ruff for lint + format.
     "Python": {
       "language_servers": ["basedpyright", "ruff"],
       "formatter": { "language_server": { "name": "ruff" } },
     },
+  },
+  "lsp": {
+    // Apple's /usr/bin/clangd (21) lags on C++23/26 (e.g. no std::generator); use Homebrew's.
+    // Unversioned path so `brew upgrade llvm` picks up C++26 reflection when clang ships it.
+    "clangd": { "binary": { "path": "/opt/homebrew/opt/llvm/bin/clangd" } },
   },
 }
