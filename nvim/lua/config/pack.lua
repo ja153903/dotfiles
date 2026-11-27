@@ -32,6 +32,7 @@ vim.pack.add(vim.list_extend(editing, {
   -- core / ui
   gh("folke/snacks.nvim"),
   { src = gh("embark-theme/vim"), name = "embark" },
+  gh("savq/melange-nvim"),
   gh("craftzdog/solarized-osaka.nvim"),
   gh("nvim-mini/mini.icons"),
   gh("MunifTanjim/nui.nvim"),

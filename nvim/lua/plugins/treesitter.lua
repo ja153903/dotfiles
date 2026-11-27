@@ -21,6 +21,8 @@ TS.install({
   "python",
   "query",
   "regex",
+  "ron",
+  "rust",
   "toml",
   "tsx",
   "typescript",

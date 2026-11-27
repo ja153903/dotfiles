@@ -13,14 +13,14 @@ import tempfile
 
 THEMES = {
     "light": {
-        "ghostty": "solarized-osaka-light",
-        "herdr": "solarized-light",
-        "rex": "Alpine Milk",
+        "ghostty": "melange-light",
+        "herdr": "terminal",
+        "rex": "melange-light",
     },
     "dark": {
-        "ghostty": "embark",
-        "herdr": "terminal",  # no built-in embark; inherits Ghostty's palette
-        "rex": "embark",
+        "ghostty": "melange",
+        "herdr": "terminal",  # no built-in melange; inherits Ghostty's palette
+        "rex": "melange",
     },
 }
 

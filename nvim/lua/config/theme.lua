@@ -19,7 +19,7 @@ function M.apply()
     return
   end
   vim.o.background = mode
-  vim.cmd.colorscheme(mode == "light" and "solarized-osaka" or "embark")
+  vim.cmd.colorscheme("melange")
   current = mode
 end
 

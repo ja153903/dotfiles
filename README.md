@@ -25,10 +25,10 @@ theme status   # print the current mode
 
 | App     | Light                 | Dark            | How it updates                               |
 | ------- | --------------------- | --------------- | -------------------------------------------- |
-| Ghostty | Solarized Osaka Light | Embark          | Reloads through AppleScript                  |
-| Herdr   | Solarized Light       | Terminal        | Runs `herdr server reload-config`            |
-| Rex     | Alpine Milk           | Embark          | Switches mode and theme in each running app  |
-| Neovim  | Solarized Osaka Light | Embark          | Watches the saved mode and applies it live   |
+| Ghostty | Melange Light         | Melange         | Reloads through AppleScript                  |
+| Herdr   | Terminal              | Terminal        | Runs `herdr server reload-config`            |
+| Rex     | Melange Light         | Melange         | Switches mode and theme in each running app  |
+| Neovim  | Melange Light         | Melange         | Watches the saved mode and applies it live   |
 
 The mode is saved in `nvim/theme-mode`, which Git ignores. Without that file,
 the mode is dark. macOS appearance is never changed.
@@ -36,8 +36,9 @@ the mode is dark. macOS appearance is never changed.
 ### One-time steps
 
 - **Rex:** turn on Remote Control under Settings → Rex Server, or Rex rejects
-  the switch. Then import the Embark theme into each Rex app:
-  `rex -C <app> do client.theme.import path=$PWD/ghostty/themes/embark`.
+  the switch. Then import both Melange themes into each Rex app:
+  `rex -C <app> do client.theme.import path=$PWD/ghostty/themes/melange`, and
+  the same for `melange-light`.
 - **Neovim:** restart open sessions once so they load the watcher, or run
   `:lua require("config.theme").setup()` in each one.
 

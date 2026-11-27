@@ -45,9 +45,9 @@ esac''')
     def test_light_dark_toggle_and_status(self):
         self.assertEqual(self.run_theme('status').stdout, 'dark\n')
         for command, mode, ghostty, herdr in [
-            ('light', 'light', 'solarized-osaka-light', 'solarized-light'),
-            ('dark', 'dark', 'embark', 'terminal'),
-            ('toggle', 'light', 'solarized-osaka-light', 'solarized-light'),
+            ('light', 'light', 'melange-light', 'terminal'),
+            ('dark', 'dark', 'melange', 'terminal'),
+            ('toggle', 'light', 'melange-light', 'terminal'),
         ]:
             result = self.run_theme(command)
             self.assertEqual(result.returncode, 0, result.stderr)
@@ -59,8 +59,8 @@ esac''')
             self.assertIn('#background-opacity = 0.85\n', self.ghostty.read_text())
         self.assertEqual((self.root / 'reloads').read_text().splitlines(), ['server reload-config'] * 3)
         rex = '--autostart=false -C app1 do '
-        light = [rex + 'client.appearance.switch_mode mode=light', rex + 'client.theme.change name=Alpine Milk']
-        dark = [rex + 'client.appearance.switch_mode mode=dark', rex + 'client.theme.change name=embark']
+        light = [rex + 'client.appearance.switch_mode mode=light', rex + 'client.theme.change name=melange-light']
+        dark = [rex + 'client.appearance.switch_mode mode=dark', rex + 'client.theme.change name=melange']
         self.assertEqual((self.root / 'rex-calls').read_text().splitlines(), light + dark + light)
         self.assertEqual(self.run_theme().returncode, 0)
         self.assertEqual(self.mode.read_text(), 'dark\n')
@@ -117,8 +117,8 @@ esac''')
         result = self.run_theme('light')
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue(self.ghostty.is_symlink())
-        self.assertIn('solarized-light', custom.read_text())
-        self.assertIn('solarized-osaka-light', target.read_text())
+        self.assertIn('terminal', custom.read_text())
+        self.assertIn('melange-light', target.read_text())
 
 
 if __name__ == '__main__':

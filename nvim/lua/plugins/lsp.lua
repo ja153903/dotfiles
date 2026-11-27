@@ -123,6 +123,10 @@ local servers = {
       },
     },
   },
+  -- binary from rustup/homebrew, not mason: it must match the toolchain
+  rust_analyzer = {
+    settings = { ["rust-analyzer"] = { check = { command = "clippy" }, cargo = { allFeatures = true } } },
+  },
   tsc = {},
   taplo = {},
   marksman = {},
